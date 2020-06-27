@@ -1,3 +1,7 @@
+# SIMBS website
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c52d7f93-80d5-44c5-ad4f-3bbb2ea02def/deploy-status)](https://app.netlify.com/sites/simbs/deploys)
+
 # Prismic Gatsby Example Blog
 
 > [Gatsby](https://www.gatsbyjs.org/) example blog project with content managed in [Prismic](https://prismic.io)
@@ -10,17 +14,18 @@
 
 Run the following commands:
 
-``` bash
+```bash
 npm install
 npm start
 ```
+
 Then you can access it at [http://localhost:8000](http://localhost:8000).
 
 ## Launching the project in production
 
 Run the following commands to compile the project and launch the server for production:
 
-``` bash
+```bash
 npm run build
 npm run serve
 ```
