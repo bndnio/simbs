@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-blog",
+  "name": "simbs",
   "private": true,
-  "description": "A sample blog website built using Gatsby connected to Prismic CMS",
+  "description": "The SIMBS website built using Gatsby connected to Prismic CMS",
   "version": "0.1.0",
-  "author": "Levi Gable",
+  "author": "Brendon",
   "dependencies": {
     "gatsby": "^2.20.12",
     "gatsby-plugin-manifest": "^2.3.3",
@@ -23,10 +23,19 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^2.0.4"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "prismic",
+    "mtb",
+    "victoria",
+    "vancouver",
+    "island"
   ],
   "license": "MIT",
   "scripts": {
@@ -38,6 +47,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prismicio/gatsby-blog"
+    "url": "https://github.com/bndnio/simbs"
   }
 }
