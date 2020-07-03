@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Brendon",
   "dependencies": {
+    "@prismicio/gatsby-source-prismic-graphql": "^3.6.6",
     "foundation-sites": "^6.6.3",
     "gatsby": "^2.20.12",
     "gatsby-plugin-manifest": "^2.3.3",
@@ -13,7 +14,6 @@
     "gatsby-plugin-sass": "^2.2.1",
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-source-prismic-graphql": "^3.5.0",
     "gatsby-transformer-sharp": "^2.4.4",
     "node-sass": "^4.13.1",
     "prismic-javascript": "^2.7.0",
@@ -36,18 +36,25 @@
     "mtb",
     "victoria",
     "vancouver",
-    "island"
+    "island",
+    "mountain",
+    "bike"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "eslint src/**/*.{js,jsx}",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "now-build": "gatsby build"
+    "now-build": "gatsby build",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/bndnio/simbs"
+  },
+  "bugs": {
+    "url": "https://github.com/bndnio/simbs/issues"
   }
 }
