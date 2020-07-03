@@ -1,11 +1,11 @@
 const { apiEndpoint } = require("./prismic-config")
-var repo = /([^\/]+)\.cdn\.prismic\.io\/api\/v2/.exec(apiEndpoint)
+var repo = /([^\/]+)\.cdn\.prismic\.io/.exec(apiEndpoint)[1]
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Prismic Blog`,
-    description: `Blog example for Gatsby & Prismic`,
-    author: `@levimykel`,
+    title: `SIMBS`,
+    description: `Home of the South Island Mountain Bike Society`,
+    author: `@bndnio`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
