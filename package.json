@@ -43,7 +43,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "format": "eslint src/**/*.{js,jsx}",
+    "format": "eslint './**/*.{js,jsx}' --fix",
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "now-build": "gatsby build",
