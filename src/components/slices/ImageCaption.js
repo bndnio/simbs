@@ -61,5 +61,6 @@ const renderSwitch = function (slice) {
 }
 
 export default ({ slice }) => {
+  if (!slice.primary.image) return null
   return <Fragment>{renderSwitch(slice)}</Fragment>
 }

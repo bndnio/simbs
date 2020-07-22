@@ -98,9 +98,10 @@ const PostSlices = ({ slices }) => {
 // Display the title, date, and content of the Post
 const PostBody = ({ blogPost }) => {
   const titled = blogPost.title.length !== 0
-  let postDate = Date(post.date)
+  // Store and format the blog post's publication date
+  let postDate = new Date(blogPost.date)
   postDate = postDate
-    ? new Intl.DateTimeFormat("en-US", {
+    ? new Intl.DateTimeFormat("en-CA", {
         month: "short",
         day: "2-digit",
         year: "numeric",
