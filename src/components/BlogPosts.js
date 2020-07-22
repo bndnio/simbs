@@ -42,6 +42,7 @@ const PostSummary = ({ post }) => {
 
   // Default title when post has no title set
   const defaultTitle = "Untitled"
+  const defaultAuthor = "SIMBS"
 
   return (
     <div className="post-summary" key={post.id}>
@@ -53,6 +54,11 @@ const PostSummary = ({ post }) => {
             : defaultTitle}
         </Link>
       </h2>
+      <h3>
+        {RichText.asText(post.author).length !== 0
+          ? `By: ${RichText.asText(post.author)}`
+          : defaultAuthor}
+      </h3>
       <p className="blog-post-meta">
         <time>{postDate}</time>
       </p>

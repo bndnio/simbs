@@ -17,6 +17,8 @@ export const query = graphql`
               type
             }
             title
+            author
+            acknowledgements
             date
             body {
               __typename
@@ -39,7 +41,16 @@ export const query = graphql`
                 label
                 primary {
                   image
-                  caption
+                  image_caption
+                }
+              }
+              ... on PRISMIC_PostBodyMedia {
+                type
+                label
+                primary {
+                  media_caption
+                  media_link
+                  media_title
                 }
               }
             }
@@ -97,9 +108,19 @@ const PostBody = ({ blogPost }) => {
         <h1 data-wio-id={blogPost._meta.id}>
           {titled ? RichText.asText(blogPost.title) : "Untitled"}
         </h1>
+        {/* Render author if present */}
+        {blogPost.author && <h2>By: {RichText.asText(blogPost.author)}</h2>}
+        {/* Render post date */}
+        <p className="blog-post-meta">
+          <time>{postDate}</time>
+        </p>
       </div>
-      {/* Go through the slices of the post and render the appropiate one */}
+      {/* Go through the slices of the post and render the appropriate one */}
       <PostSlices slices={blogPost.body} />
+      {/* Render acknowledgements */}
+      {blogPost.acknowledgements && (
+        <p>{RichText.asText(blogPost.acknowledgements)}</p>
+      )}
     </div>
   )
 }
