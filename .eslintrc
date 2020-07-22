@@ -1,22 +1,18 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": ["plugin:prettier/recommended", "prettier", "prettier/react"],
   "plugins": ["prettier"],
   "env": {
     "commonjs": true,
-    "es6": true,
-    "node": true,
-    "browser": false
+    "es6": true
   },
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "jsx": false
+      "jsx": true,
+      "ecmaVersion": 8
     },
     "sourceType": "module"
-  },
-  "globals": {
-    "strapi": true
   },
   "rules": {
     "prettier/prettier": "warn",
