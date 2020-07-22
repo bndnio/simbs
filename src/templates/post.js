@@ -98,6 +98,15 @@ const PostSlices = ({ slices }) => {
 // Display the title, date, and content of the Post
 const PostBody = ({ blogPost }) => {
   const titled = blogPost.title.length !== 0
+  let postDate = Date(post.date)
+  postDate = postDate
+    ? new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }).format(postDate)
+    : ""
+
   return (
     <div>
       <div className="container post-header">
