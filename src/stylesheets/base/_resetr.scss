@@ -12,9 +12,20 @@
     # Global selectors
     # ================================================================= */
 
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Addition */
+  width: 100%; /* Addition */
+  margin: 0;
+}
+
 html {
   box-sizing: border-box;
-  background: white; /* Addition */
+  background: #fdfdfd; /* Addition */
   color: black; /* Addition */
   font-family: sans-serif; /* Addition */
   font-size: 16px; /* Addition */

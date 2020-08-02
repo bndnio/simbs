@@ -2,29 +2,31 @@
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: #FFF7C7; /* WebKit/Blink Browsers */
+  background: #fff7c7; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #FFF7C7; /* Gecko Browsers */
+  background: #fff7c7; /* Gecko Browsers */
 }
 
 body {
-  padding: 3rem 0 0 0;
   color: #353535;
   line-height: 1.5;
   font-family: $font-serif;
-  font-size: 20px;
+  font-size: 16px;
+}
 
-  @media (max-width: $max-width-sm) {
-    padding-top: 1rem;
-  }
+main {
+  flex-grow: 1;
+  margin-bottom: 2rem;
 }
 
 .container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.reading-block {
   max-width: 700px;
   margin: auto;
-
-  @media (max-width: $max-width-sm) {
-    padding: 0 20px;
-  }
 }
