@@ -1,12 +1,15 @@
 footer {
-  color: #9A9A9A;
+  flex: 0 0;
+  color: #9a9a9a;
   font-family: $font-sans-serif;
   font-size: 16px;
   font-style: italic;
   text-align: center;
 
+  border-top: 1px solid whitesmoke;
+  @include box-shadow(inset 0px 5px 10px whitesmoke);
+
   p {
-    border-top: 1px solid #DADADA;
     padding: 2rem 0;
     margin-bottom: 0;
   }

@@ -1,0 +1,7 @@
+nav {
+  flex-grow: 0;
+  flex: 0 0 50px;
+  margin-bottom: 1rem;
+
+  @include box-shadow(0px 1px 3px lightgray);
+}
