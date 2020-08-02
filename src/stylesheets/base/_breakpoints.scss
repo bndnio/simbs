@@ -1,0 +1,33 @@
+// Variables
+$max-width-phone: 599px;
+$min-width-tablet-portrait: 600px;
+$min-width-tablet-landscape: 900px;
+$min-width-desktop: 1200;
+$min-width-big-desktop: 1800;
+
+// Mixins
+@mixin for-phone-only {
+  @media (max-width: $max-width-phone) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: $min-width-tablet-portrait) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: $min-width-tablet-landscape) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: $min-width-desktop) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: $min-width-big-desktop) {
+    @content;
+  }
+}

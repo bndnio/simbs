@@ -9,7 +9,7 @@
   }
 
   .emphasized {
-    @media screen and (min-width: $min-width-emph) {
+    @media screen and (min-width: $min-width-tablet-landscape) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }
@@ -24,7 +24,7 @@
   }
 }
 
-// Full Width Image 
+// Full Width Image
 .full-width-image {
   height: 400px;
   position: relative;
@@ -35,7 +35,7 @@
   color: white;
   margin-bottom: 3rem;
 
-  @media (max-width: $max-width-sm) {
+  @include for-phone-only {
     padding: 20px;
     height: 200px;
   }
@@ -49,7 +49,7 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 
-    @media (max-width: $max-width-sm) {
+    @include for-phone-only {
       width: 80%;
     }
   }
@@ -57,15 +57,15 @@
   .image-label {
     font-size: 40px;
     font-weight: 900;
-    color: #FFFFFF;
+    color: #ffffff;
 
-    @media (max-width: $max-width-sm) {
+    @include for-phone-only {
       font-size: 25px;
     }
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;

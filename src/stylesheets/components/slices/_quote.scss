@@ -6,7 +6,7 @@
     font-size: 24px;
     color: #868686;
 
-    @media screen and (min-width: $min-width-emph) {
+    @media screen and (min-width: $min-width-tablet-landscape) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
       font-size: 30px;
@@ -14,11 +14,11 @@
     }
 
     &:before {
-      content: "« "
+      content: "« ";
     }
 
     &:after {
-      content: " »"
+      content: " »";
     }
   }
 }
