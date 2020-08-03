@@ -4,14 +4,10 @@ import { linkResolver } from "../../utils/linkResolver"
 import htmlSerializer from "../../utils/htmlSerializer"
 
 export default ({ slice }) => (
-  <div name={slice.primary.anchor} className="post-text reading-block">
-    {slice.primary.text_title && (
+  <div name={slice.primary.anchor} className="text container reading-block">
+    {slice.primary.title && (
       <h2>
-        {RichText.render(
-          slice.primary.text_title,
-          linkResolver,
-          htmlSerializer
-        )}
+        {RichText.render(slice.primary.title, linkResolver, htmlSerializer)}
       </h2>
     )}
     {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}

@@ -43,7 +43,7 @@ export const query = graphql`
                 label
                 primary {
                   anchor
-                  text_title
+                  title
                   text
                 }
               }
