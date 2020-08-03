@@ -59,14 +59,14 @@ const PostSummary = ({ post }) => {
               : defaultTitle}
           </h2>
           <Categories categories={post.categories} />
-          <p className="blog-post-meta">
+          <p className="post-meta">
             <time>{postDate}</time>
-            <span className="emphasize">
+            <strong>
               {`${postDate && "  "}// `}
               {RichText.asText(post.author).length !== 0
                 ? `${RichText.asText(post.author)}`
                 : defaultAuthor}
-            </span>
+            </strong>
           </p>
           {/* Renders a small preview of the post's text */}
           {firstParagraph(post)}

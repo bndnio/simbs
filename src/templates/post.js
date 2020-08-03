@@ -19,6 +19,7 @@ export const query = graphql`
             title
             author
             date
+            banner
             categories {
               category {
                 ... on PRISMIC_Blog_post_category {
@@ -147,24 +148,45 @@ const PostBody = ({ blogPost, acknowledgements }) => {
     : ""
 
   return (
-    <div className="container reading-block">
-      <div className=" post-header">
-        <div className="back">
-          <Link to="/blog">back to list</Link>
+    <div className="post">
+      {/* Put contents in width controleld box */}
+      <div className="container reading-block">
+        <div className="post-header">
+          <div className="back">
+            <Link to="/blog">back to list</Link>
+          </div>
+          {/* Render the edit button */}
+          <h1 data-wio-id={blogPost._meta.id}>
+            {titled ? RichText.asText(blogPost.title) : "Untitled"}
+          </h1>
+          <p className="post-meta">
+            {/* Render author if present */}
+            {blogPost.author && (
+              <span>By {RichText.asText(blogPost.author)}</span>
+            )}
+            {" // "}
+            {/* Render post date */}
+            {postDate && (
+              <span>
+                Published <time>{postDate}</time>
+              </span>
+            )}
+          </p>
         </div>
-        {/* Render the edit button */}
-        <h1 data-wio-id={blogPost._meta.id}>
-          {titled ? RichText.asText(blogPost.title) : "Untitled"}
-        </h1>
-        {/* Render author if present */}
-        {blogPost.author && <h2>By: {RichText.asText(blogPost.author)}</h2>}
-        {/* Render post date */}
-        <p className="blog-post-meta">{postDate && <time>{postDate}</time>}</p>
       </div>
-      {/* Go through the slices of the post and render the appropriate one */}
-      <PostSlices slices={blogPost.body} />
-      {/* Render acknowledgements */}
-      {acknowledgements && <p>{RichText.asText(blogPost.acknowledgements)}</p>}
+      {/* Render banner image if available */}
+      {blogPost.banner && (
+        <img className="post-banner" src={blogPost.banner.url}></img>
+      )}
+      {/* Put contents back in container */}
+      <div className="container reading-block">
+        {/* Go through the slices of the post and render the appropriate one */}
+        <PostSlices slices={blogPost.body} />
+        {/* Render acknowledgements */}
+        {acknowledgements && (
+          <p>{RichText.asText(blogPost.acknowledgements)}</p>
+        )}
+      </div>
     </div>
   )
 }

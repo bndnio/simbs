@@ -1,27 +1,40 @@
-.post-header {
-  padding: 20px 0px;
+.post {
+  .post-header {
+    padding: 20px 0px;
 
-  .back {
-    color: #9a9a9a;
-    display: block;
-    max-width: 700px;
-    margin: 0 auto 2em auto;
-    font-family: $font-sans-serif;
-    font-size: 16px;
-
-    &:before {
-      content: "←";
-      display: inline-block;
-      position: relative;
-      margin-right: 8px;
-    }
-
-    a {
+    .back {
       color: #9a9a9a;
+      display: block;
+      max-width: 700px;
+      margin: 0 auto 2em auto;
+      font-family: $font-sans-serif;
+      font-size: 16px;
 
-      &:hover {
-        text-decoration: underline;
+      &:before {
+        content: "←";
+        display: inline-block;
+        position: relative;
+        margin-right: 8px;
+      }
+
+      a {
+        color: #9a9a9a;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
+
+    .post-meta {
+      font-size: 20px;
+    }
   }
+}
+
+.post-banner {
+  display: block;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
