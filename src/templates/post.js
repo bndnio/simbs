@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Layout from "../components/layouts"
-import { ImageCaption, Quote, Text } from "../components/slices"
+import { CTA, ImageCaption, Quote, Text } from "../components/slices"
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -18,7 +18,6 @@ export const query = graphql`
             }
             title
             author
-            acknowledgements
             date
             categories {
               category {
@@ -108,7 +107,7 @@ const PostSlices = ({ slices }) => {
 }
 
 // Display the title, date, and content of the Post
-const PostBody = ({ blogPost }) => {
+const PostBody = ({ blogPost, acknowledgements }) => {
   const titled = blogPost.title.length !== 0
   // Store and format the blog post's publication date
   let postDate = blogPost.date ? new Date(blogPost.date) : null
@@ -138,9 +137,7 @@ const PostBody = ({ blogPost }) => {
       {/* Go through the slices of the post and render the appropriate one */}
       <PostSlices slices={blogPost.body} />
       {/* Render acknowledgements */}
-      {blogPost.acknowledgements && (
-        <p>{RichText.asText(blogPost.acknowledgements)}</p>
-      )}
+      {acknowledgements && <p>{RichText.asText(blogPost.acknowledgements)}</p>}
     </div>
   )
 }
