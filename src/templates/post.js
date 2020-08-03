@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Layout from "../components/layouts"
+import Categories from "../components/Categories"
 import { CTA, ImageCaption, Media, Quote, Text } from "../components/slices"
 
 // Query for the Blog Post content in Prismic
@@ -165,6 +166,10 @@ const PostBody = ({ blogPost, acknowledgements }) => {
             {titled ? RichText.asText(blogPost.title) : "Untitled"}
           </h1>
           <p className="post-meta">
+            {/* Render categories if present */}
+            {blogPost.categories && (
+              <Categories categories={blogPost.categories} />
+            )}
             {/* Render author if present */}
             {blogPost.author && (
               <span>
