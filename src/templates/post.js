@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Layout from "../components/layouts"
 import Categories from "../components/Categories"
-import { CTA, ImageCaption, Media, Quote, Text } from "../components/slices"
+import { CTA, ImageCaption, Media, PullQuote, Text } from "../components/slices"
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -45,7 +45,7 @@ export const query = graphql`
                   text
                 }
               }
-              ... on PRISMIC_PostBodyQuote {
+              ... on PRISMIC_PostBodyPull_quote {
                 type
                 label
                 primary {
@@ -118,10 +118,10 @@ const PostSlices = ({ slices }) => {
             </div>
           )
 
-        case "quote":
+        case "pull_quote":
           return (
             <div key={index} className="homepage-slice-wrapper">
-              {<Quote slice={slice} />}
+              {<PullQuote slice={slice} />}
             </div>
           )
 
