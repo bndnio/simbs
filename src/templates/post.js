@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Layout from "../components/layouts"
-import { CTA, ImageCaption, Quote, Text } from "../components/slices"
+import { CTA, ImageCaption, Media, Quote, Text } from "../components/slices"
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -101,6 +101,13 @@ const PostSlices = ({ slices }) => {
           return (
             <div key={index} className="homepage-slice-wrapper">
               {<Text slice={slice} />}
+            </div>
+          )
+
+        case "media":
+          return (
+            <div key={index} className="homepage-slice-wrapper">
+              {<Media slice={slice} />}
             </div>
           )
 
