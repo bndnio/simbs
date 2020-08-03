@@ -34,7 +34,12 @@ export const query = graphql`
               type
             }
             title
-            author
+            author {
+              ... on PRISMIC_Author {
+                first_name
+                last_name
+              }
+            }
             date
             thumbnail
             categories {
@@ -123,19 +128,6 @@ export default ({ data }) => {
     return queryCategories
   }
 
-  // Change selected state on query param state
-  // useEffect(() => {
-  //   const queryCategories = getCategoryQueryParams()
-
-  //   // If this category is selected
-  //   if (queryCategories.includes(category._meta.uid)) {
-  //     setSelected(true)
-  //     // If the category is not selected
-  //   } else {
-  //     setSelected(false)
-  //   }
-  // }, [location.search])
-
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
   const posts = data.prismic.allPosts.edges
@@ -146,9 +138,6 @@ export default ({ data }) => {
   const filteredPosts = posts.filter((post) =>
     postHasCategories(post, getCategoryQueryParams())
   )
-
-  // Set initial state by looking at url state
-  // const [selected, setSelected] = useState(isInUrl())
 
   return (
     <Layout>

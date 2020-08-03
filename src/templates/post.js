@@ -17,7 +17,12 @@ export const query = graphql`
               type
             }
             title
-            author
+            author {
+              ... on PRISMIC_Author {
+                first_name
+                last_name
+              }
+            }
             date
             banner
             categories {
@@ -162,7 +167,9 @@ const PostBody = ({ blogPost, acknowledgements }) => {
           <p className="post-meta">
             {/* Render author if present */}
             {blogPost.author && (
-              <span>By {RichText.asText(blogPost.author)}</span>
+              <span>
+                By {blogPost.author.first_name} {blogPost.author.last_name}
+              </span>
             )}
             {" // "}
             {/* Render post date */}

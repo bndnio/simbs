@@ -63,8 +63,8 @@ const PostSummary = ({ post }) => {
             <time>{postDate}</time>
             <strong>
               {`${postDate && "  "}// `}
-              {RichText.asText(post.author).length !== 0
-                ? `${RichText.asText(post.author)}`
+              {post.author
+                ? `By ${post.author.first_name} ${post.author.last_name}`
                 : defaultAuthor}
             </strong>
           </p>
