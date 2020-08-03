@@ -99,7 +99,7 @@ const PostSlices = ({ slices }) => {
 const PostBody = ({ blogPost }) => {
   const titled = blogPost.title.length !== 0
   // Store and format the blog post's publication date
-  let postDate = new Date(blogPost.date)
+  let postDate = blogPost.date ? new Date(blogPost.date) : null
   postDate = postDate
     ? new Intl.DateTimeFormat("en-CA", {
         month: "short",
@@ -109,10 +109,10 @@ const PostBody = ({ blogPost }) => {
     : ""
 
   return (
-    <div>
-      <div className="container post-header">
+    <div className="reading-block">
+      <div className=" post-header">
         <div className="back">
-          <Link to="/">back to list</Link>
+          <Link to="/blog">back to list</Link>
         </div>
         {/* Render the edit button */}
         <h1 data-wio-id={blogPost._meta.id}>
@@ -121,9 +121,7 @@ const PostBody = ({ blogPost }) => {
         {/* Render author if present */}
         {blogPost.author && <h2>By: {RichText.asText(blogPost.author)}</h2>}
         {/* Render post date */}
-        <p className="blog-post-meta">
-          <time>{postDate}</time>
-        </p>
+        <p className="blog-post-meta">{postDate && <time>{postDate}</time>}</p>
       </div>
       {/* Go through the slices of the post and render the appropriate one */}
       <PostSlices slices={blogPost.body} />

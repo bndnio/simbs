@@ -1,9 +1,8 @@
-
 .post-header {
-  padding: 20px;
+  padding: 20px 0px;
 
   .back {
-    color: #9A9A9A;
+    color: #9a9a9a;
     display: block;
     max-width: 700px;
     margin: 0 auto 2em auto;
@@ -11,14 +10,14 @@
     font-size: 16px;
 
     &:before {
-      content: '←';
+      content: "←";
       display: inline-block;
       position: relative;
       margin-right: 8px;
     }
 
     a {
-      color: #9A9A9A;
+      color: #9a9a9a;
 
       &:hover {
         text-decoration: underline;
