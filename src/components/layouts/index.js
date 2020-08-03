@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import Nav from "./Nav"
 import Footer from "./Footer"
 import "../../stylesheets/main.scss"
 
@@ -46,6 +47,7 @@ const Layout = (props) => {
           rel="stylesheet"
         ></link>
       </Helmet>
+      <Nav />
       <main>{props.children}</main>
       <Footer />
     </Fragment>

@@ -4,9 +4,13 @@ import prismicLogo from "../../images/logo-prismic.svg"
 export default () => (
   <footer className="container">
     <p>
-      Proudly published with{" "}
-      <a href="https://prismic.io" target="_blank" rel="noopener noreferrer">
-        Prismic
+      Made by{" "}
+      <a
+        href="https://github.io/bndnio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Brendon
       </a>
       <br />
       <a href="https://prismic.io" target="_blank" rel="noopener noreferrer">
