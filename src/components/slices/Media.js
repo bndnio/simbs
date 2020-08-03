@@ -14,10 +14,10 @@ export default function MediaSlice({ slice }) {
         dangerouslySetInnerHTML={{ __html: slice.primary.media_link.html }}
       />
       {/* Optionally render media caption */}
-      {slice.primary.caption &&
-      RichText.asText(slice.primary.caption) !== "" ? (
+      {slice.primary.media_caption &&
+      RichText.asText(slice.primary.media_caption) !== "" ? (
         <span className="media-caption">
-          {RichText.asText(slice.primary.caption)}
+          {RichText.asText(slice.primary.media_caption)}
         </span>
       ) : null}
     </div>
