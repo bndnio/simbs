@@ -81,7 +81,7 @@ const BlogHomeHead = ({ home, categories }) => {
         <h1>{RichText.asText(home.headline)}</h1>
         <p className="blog-description">{RichText.asText(home.description)}</p>
       </div>
-      <Categories categories={categories} />
+      <Categories categories={categories} displayAll enableToggle />
       {/* </div> */}
     </div>
   )
