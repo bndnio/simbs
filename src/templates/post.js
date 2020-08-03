@@ -62,6 +62,19 @@ export const query = graphql`
                   media_title
                 }
               }
+              ... on PRISMIC_PostBodyCall_to_action {
+                type
+                label
+                primary {
+                  cta_link {
+                    ... on PRISMIC__ExternalLink {
+                      target
+                      url
+                    }
+                  }
+                  cta_title
+                }
+              }
             }
           }
         }
@@ -77,6 +90,13 @@ const PostSlices = ({ slices }) => {
   return slices.map((slice, index) => {
     const res = (() => {
       switch (slice.type) {
+        case "call_to_action":
+          return (
+            <div key={index} className="homepage-slice-wrapper">
+              {<CTA slice={slice} />}
+            </div>
+          )
+
         case "text":
           return (
             <div key={index} className="homepage-slice-wrapper">
