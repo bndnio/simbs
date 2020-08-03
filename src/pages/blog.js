@@ -57,6 +57,8 @@ export const query = graphql`
                 type
                 label
                 primary {
+                  anchor
+                  text_title
                   text
                 }
               }
