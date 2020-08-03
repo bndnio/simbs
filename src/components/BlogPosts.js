@@ -6,10 +6,12 @@ import { linkResolver } from "../utils/linkResolver"
 // Function to retrieve a small preview of the post's text
 const firstParagraph = (post) => {
   // Find the first text slice of post's body
-  let firstTextSlice = post.body.find((slice) => slice.type === "text")
+  let firstTextSlice = post.body
+    ? post.body.find((slice) => slice.type === "text")
+    : null
   if (firstTextSlice != null) {
     // Set the character limit for the text we'll show in the homepage
-    const textLimit = 300
+    const textLimit = 160
     let text = RichText.asText(firstTextSlice.primary.text)
     let limitedText = text.substring(0, textLimit)
 
@@ -31,7 +33,7 @@ const firstParagraph = (post) => {
 // A summary of the Blog Post
 const PostSummary = ({ post }) => {
   // Store and format the blog post's publication date
-  let postDate = new Date(post.date)
+  let postDate = post.date ? new Date(post.date) : null
   postDate = postDate
     ? new Intl.DateTimeFormat("en-CA", {
         month: "short",
@@ -46,24 +48,28 @@ const PostSummary = ({ post }) => {
 
   return (
     <div className="post-summary" key={post.id}>
-      <h2>
-        {/* We render a link to a particular post using the linkResolver for the url and its title */}
-        <Link to={linkResolver(post._meta)}>
-          {RichText.asText(post.title).length !== 0
-            ? RichText.asText(post.title)
-            : defaultTitle}
-        </Link>
-      </h2>
-      <h3>
-        {RichText.asText(post.author).length !== 0
-          ? `By: ${RichText.asText(post.author)}`
-          : defaultAuthor}
-      </h3>
-      <p className="blog-post-meta">
-        <time>{postDate}</time>
-      </p>
-      {/* Renders a small preview of the post's text */}
-      {firstParagraph(post)}
+      {post.thumbnail && <img src={post.thumbnail.url}></img>}
+      <div className="post-summary-content" key={post.id}>
+        <h2>
+          {/* We render a link to a particular post using the linkResolver for the url and its title */}
+          <Link to={linkResolver(post._meta)}>
+            {RichText.asText(post.title).length !== 0
+              ? RichText.asText(post.title)
+              : defaultTitle}
+          </Link>
+        </h2>
+        <p className="blog-post-meta">
+          <time>{postDate}</time>
+          <span className="emphasize">
+            {`${postDate && "  "}// `}
+            {RichText.asText(post.author).length !== 0
+              ? `${RichText.asText(post.author)}`
+              : defaultAuthor}
+          </span>
+        </p>
+        {/* Renders a small preview of the post's text */}
+        {firstParagraph(post)}
+      </div>
     </div>
   )
 }

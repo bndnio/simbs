@@ -32,6 +32,7 @@ export const query = graphql`
             title
             author
             date
+            thumbnail
             body {
               ... on PRISMIC_PostBodyText {
                 type
@@ -50,12 +51,15 @@ export const query = graphql`
 
 // Using the queried Blog Home document data, we render the top section
 const BlogHomeHead = ({ home }) => {
-  const avatar = { backgroundImage: "url(" + home.image.url + ")" }
+  const banner = { backgroundImage: "url(" + home.image.url + ")" }
   return (
-    <div className="home-header container" data-wio-id={home._meta.id}>
-      <div className="blog-avatar" style={avatar}></div>
-      <h1>{RichText.asText(home.headline)}</h1>
-      <p className="blog-description">{RichText.asText(home.description)}</p>
+    <div className="blog-header container" data-wio-id={home._meta.id}>
+      {/* <div className="blog-banner-bg" style={banner}> */}
+      <div className="blog-banner-text">
+        <h1>{RichText.asText(home.headline)}</h1>
+        <p className="blog-description">{RichText.asText(home.description)}</p>
+      </div>
+      {/* </div> */}
     </div>
   )
 }
