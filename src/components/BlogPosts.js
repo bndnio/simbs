@@ -47,29 +47,29 @@ const PostSummary = ({ post }) => {
   const defaultAuthor = "SIMBS"
 
   return (
+    // We render a link to a particular post using the linkResolver for the url and its title
     <div className="post-summary" key={post.id}>
-      {post.thumbnail && <img src={post.thumbnail.url}></img>}
-      <div className="post-summary-content" key={post.id}>
-        <h2>
-          {/* We render a link to a particular post using the linkResolver for the url and its title */}
-          <Link to={linkResolver(post._meta)}>
+      <Link to={linkResolver(post._meta)}>
+        {post.thumbnail && <img src={post.thumbnail.url}></img>}
+        <div className="post-summary-content" key={post.id}>
+          <h2>
             {RichText.asText(post.title).length !== 0
               ? RichText.asText(post.title)
               : defaultTitle}
-          </Link>
-        </h2>
-        <p className="blog-post-meta">
-          <time>{postDate}</time>
-          <span className="emphasize">
-            {`${postDate && "  "}// `}
-            {RichText.asText(post.author).length !== 0
-              ? `${RichText.asText(post.author)}`
-              : defaultAuthor}
-          </span>
-        </p>
-        {/* Renders a small preview of the post's text */}
-        {firstParagraph(post)}
-      </div>
+          </h2>
+          <p className="blog-post-meta">
+            <time>{postDate}</time>
+            <span className="emphasize">
+              {`${postDate && "  "}// `}
+              {RichText.asText(post.author).length !== 0
+                ? `${RichText.asText(post.author)}`
+                : defaultAuthor}
+            </span>
+          </p>
+          {/* Renders a small preview of the post's text */}
+          {firstParagraph(post)}
+        </div>
+      </Link>
     </div>
   )
 }

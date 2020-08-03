@@ -109,7 +109,7 @@ const PostBody = ({ blogPost }) => {
     : ""
 
   return (
-    <div className="reading-block">
+    <div className="container reading-block">
       <div className=" post-header">
         <div className="back">
           <Link to="/blog">back to list</Link>

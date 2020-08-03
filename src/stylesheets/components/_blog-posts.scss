@@ -10,6 +10,11 @@
   margin: 1rem auto;
   cursor: pointer;
 
+  > a {
+    // Because we're using Gatsby Link, make Link (<a>) element display block
+    display: block;
+  }
+
   .post-summary {
     flex: 1 1 250px;
     overflow: hidden;
