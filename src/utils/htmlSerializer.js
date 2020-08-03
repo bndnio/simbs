@@ -24,7 +24,7 @@ export default function (type, element, content, children, index) {
         ? { target: element.data.target, rel: "noopener" }
         : {}
       result = (
-        <a href={url} {...target} key={index}>
+        <a className="link" href={url} {...target} key={index}>
           {content}
         </a>
       )
@@ -56,7 +56,7 @@ export default function (type, element, content, children, index) {
           ? { target: element.linkTo.target, rel: "noopener" }
           : {}
         result = (
-          <a href={url} {...target}>
+          <a className="link" href={url} {...target}>
             {result}
           </a>
         )

@@ -1,5 +1,5 @@
 a {
-  color: $primary-color;
+  color: #353535;
   text-decoration: none;
   background-repeat: repeat-x;
   background-size: 2px 2px;
@@ -78,4 +78,8 @@ em {
   pre {
     font-size: 14px;
   }
+}
+
+.link {
+  color: $primary-color;
 }
