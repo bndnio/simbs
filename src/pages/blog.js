@@ -1,9 +1,12 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
+import { useLocation } from "@reach/router"
+import queryString from "query-string"
 import Layout from "../components/layouts"
 import BlogPosts from "../components/BlogPosts"
 import Categories from "../components/Categories"
+import toArray from "../utils/toArray"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
@@ -71,6 +74,26 @@ export const query = graphql`
   }
 `
 
+function postHasCategories(post, categories) {
+  // If categories are falsey allow all posts
+  if (!categories) return true
+  if (categories.length == 0) return true
+
+  // If post doesn't have category, disallow
+  if (!post.node.categories) return false
+
+  const postCategoryUids = post.node.categories.map(
+    (category) => category.category._meta.uid
+  )
+
+  for (let postCategory of postCategoryUids) {
+    console.log("categories", categories)
+    console.log("postcategory", postCategory)
+    if (categories.includes(postCategory)) return true
+  }
+  return false
+}
+
 // Using the queried Blog Home document data, we render the top section
 const BlogHomeHead = ({ home, categories }) => {
   const banner = { backgroundImage: "url(" + home.image.url + ")" }
@@ -88,6 +111,31 @@ const BlogHomeHead = ({ home, categories }) => {
 }
 
 export default ({ data }) => {
+  // Get router location hook
+  const location = useLocation()
+
+  // Get list of query param values from 'category' query params
+  const getCategoryQueryParams = () => {
+    // Build category query param list from url
+    const queryParams = queryString.parse(location.search)
+    const queryCategories = toArray(queryParams.category)
+
+    return queryCategories
+  }
+
+  // Change selected state on query param state
+  // useEffect(() => {
+  //   const queryCategories = getCategoryQueryParams()
+
+  //   // If this category is selected
+  //   if (queryCategories.includes(category._meta.uid)) {
+  //     setSelected(true)
+  //     // If the category is not selected
+  //   } else {
+  //     setSelected(false)
+  //   }
+  // }, [location.search])
+
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
   const posts = data.prismic.allPosts.edges
@@ -95,10 +143,17 @@ export default ({ data }) => {
 
   if (!doc) return null
 
+  const filteredPosts = posts.filter((post) =>
+    postHasCategories(post, getCategoryQueryParams())
+  )
+
+  // Set initial state by looking at url state
+  // const [selected, setSelected] = useState(isInUrl())
+
   return (
     <Layout>
       <BlogHomeHead home={doc.node} categories={categories} />
-      <BlogPosts posts={posts} />
+      <BlogPosts posts={filteredPosts} />
     </Layout>
   )
 }
