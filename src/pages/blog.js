@@ -94,8 +94,6 @@ function postHasCategories(post, categories) {
   )
 
   for (let postCategory of postCategoryUids) {
-    console.log("categories", categories)
-    console.log("postcategory", postCategory)
     if (categories.includes(postCategory)) return true
   }
   return false
