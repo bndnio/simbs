@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { RichText, Date } from "prismic-reactjs"
 import { linkResolver } from "../utils/linkResolver"
+import Categories from "./Categories"
 
 // Function to retrieve a small preview of the post's text
 const firstParagraph = (post) => {
@@ -57,6 +58,7 @@ const PostSummary = ({ post }) => {
               ? RichText.asText(post.title)
               : defaultTitle}
           </h2>
+          <Categories categories={post.categories} />
           <p className="blog-post-meta">
             <time>{postDate}</time>
             <span className="emphasize">

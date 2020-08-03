@@ -20,6 +20,16 @@ export const query = graphql`
             author
             acknowledgements
             date
+            categories {
+              category {
+                ... on PRISMIC_Blog_post_category {
+                  name
+                  _meta {
+                    uid
+                  }
+                }
+              }
+            }
             body {
               __typename
               ... on PRISMIC_PostBodyText {
@@ -63,6 +73,8 @@ export const query = graphql`
 
 // Sort and display the different slice options
 const PostSlices = ({ slices }) => {
+  if (!slices) return null
+
   return slices.map((slice, index) => {
     const res = (() => {
       switch (slice.type) {
