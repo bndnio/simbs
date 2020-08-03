@@ -55,9 +55,9 @@ const AboutHead = ({ page }) => {
       className="about-header container reading-block"
       data-wio-id={page._meta.id}
     >
-      {/* Render About page title */}
+      {/* Render About page */}
       {page.about_page_title && (
-        <h2>{RichText.asText(page.about_page_title)}</h2>
+        <h1>{RichText.asText(page.about_page_title)}</h1>
       )}
     </div>
   )

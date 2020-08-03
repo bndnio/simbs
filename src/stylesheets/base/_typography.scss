@@ -30,6 +30,16 @@ h3 {
   font-size: 22px;
   font-weight: 900;
 }
+h4 {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 900;
+}
+h5 {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
 
 p,
 pre,
@@ -67,16 +77,20 @@ em {
     line-height: 45px;
   }
   h2 {
-    font-size: 28px;
+    font-size: 24px;
   }
   h3 {
-    font-size: 18px;
+    font-size: 20px;
+  }
+  h4,
+  h5 {
+    font-size: 16px;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
   pre {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 

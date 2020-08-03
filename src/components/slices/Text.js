@@ -5,7 +5,9 @@ import htmlSerializer from "../../utils/htmlSerializer"
 
 export default ({ slice }) => (
   <div name={slice.primary.anchor} className="text container reading-block">
+    {/* Render text section title */}
     {slice.primary.title && <h2>{RichText.asText(slice.primary.title)}</h2>}
+    {/* Render text body */}
     {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}
   </div>
 )

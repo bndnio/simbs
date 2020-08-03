@@ -32,7 +32,7 @@ function TeamHead({ team }) {
   if (!team.team_section) return null
 
   // Render team section header
-  return <h3>{RichText.asText(team.team_section)}</h3>
+  return <h2>{RichText.asText(team.team_section)}</h2>
 }
 
 export default function Team({ slice }) {
