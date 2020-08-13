@@ -1,1 +1,16 @@
-$color-primary: lightskyblue;
+$color-background: #f2f2f7;
+$color-background-darker: #dadade;
+$color-background-lighter: #f9f9f9;
+$color-background-gradient: linear-gradient(
+  145deg,
+  $color-background-darker,
+  $color-background-lighter
+);
+$color-background-darkest: #b8b8bc;
+$color-background-lightest: #ffffff;
+
+$color-text-primary: #333;
+$color-text-secondary: #808080;
+$color-text-inverted: #fff;
+
+$color-primary: #60bd60;

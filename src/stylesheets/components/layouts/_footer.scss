@@ -7,7 +7,7 @@ footer {
   text-align: center;
 
   border-top: 1px solid whitesmoke;
-  @include box-shadow(inset 0px 5px 10px whitesmoke);
+  @include shadow-pressed-0();
 
   p {
     padding: 2rem 0;

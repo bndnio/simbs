@@ -4,7 +4,7 @@
     display: inline-block;
     font-style: italic;
     font-size: 24px;
-    color: #868686;
+    color: $color-text-secondary;
     text-align: center;
 
     @media screen and (min-width: $min-width-tablet-landscape) {

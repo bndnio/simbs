@@ -1,4 +1,6 @@
 .blog-header {
+  margin-top: 2rem;
+
   .blog-banner-bg {
     display: flex;
     flex-direction: column;
@@ -14,7 +16,7 @@
   }
 
   .blog-banner-text {
-    color: #353535;
+    color: $color-text-primary;
 
     .blog-description {
       font-size: 18px;

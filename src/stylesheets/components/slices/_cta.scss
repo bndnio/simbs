@@ -3,14 +3,25 @@
     display: block;
     width: fit-content;
     margin: 2rem auto;
-    padding: 0.5rem 3rem;
+    padding: 0.75rem 4rem;
 
-    background-color: $color-primary;
-    color: white;
+    background-color: $color-background;
+    color: $color-text-primary;
     text-align: center;
     font-size: 20px;
-    font-weight: 600;
+    font-family: $font-sans-serif;
+    font-weight: 900;
 
+    transition: box-shadow 150ms ease-in;
     @include rounded();
+    @include shadow-raised-2();
+
+    &:hover {
+      @include shadow-raised-3();
+    }
+
+    &:active {
+      @include shadow-raised-0();
+    }
   }
 }

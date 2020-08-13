@@ -90,7 +90,7 @@ function postHasCategories(post, categories) {
   if (!post.node.categories) return false
 
   const postCategoryUids = post.node.categories.map(
-    (category) => category.category._meta.uid
+    (category) => category?.category?._meta.uid
   )
 
   for (let postCategory of postCategoryUids) {

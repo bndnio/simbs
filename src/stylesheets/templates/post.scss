@@ -3,7 +3,7 @@
     padding: 20px 0px;
 
     .back {
-      color: #9a9a9a;
+      color: $color-text-secondary;
       display: block;
       max-width: 700px;
       margin: 0 auto 2em auto;
@@ -18,7 +18,7 @@
       }
 
       a {
-        color: #9a9a9a;
+        color: $color-text-secondary;
 
         &:hover {
           text-decoration: underline;

@@ -1,33 +1,45 @@
 .categories {
-  margin: 0.5rem 0rem 2rem;
   display: flex;
-  gap: 0.5rem;
+  margin: 1rem 0rem 2rem;
+
+  font-family: $font-sans-serif;
+  font-weight: 600;
 
   .category {
-    border: 1px solid lightgray;
-    background: white;
-    padding: 0 1em;
+    padding: 0.5rem 2em;
+    margin: 0rem 1rem 0.5rem 0rem;
+
     cursor: inherit;
-    @include rounded(26px);
+    @include rounded();
   }
 
   .toggleable {
     cursor: pointer;
 
-    transition: box-shadow 150ms ease-in;
-    @include box-shadow(0px 2px 5px lightgray);
-
-    &:hover {
-      @include box-shadow(0px 5px 10px lightgray);
-    }
+    transition: background-color 500ms ease-in-out;
+    @include shadow-raised-2();
 
     &:active {
-      @include box-shadow(0px 1px 3px lightgray);
+      @include shadow-pressed-1();
+    }
+
+    &.selected {
+      @include shadow-pressed-0();
+
+      &:active {
+        @include shadow-pressed-1();
+      }
     }
   }
 
-  .selected {
-    background-color: $color-primary;
-    border-color: $color-primary;
+  :not(.toggleable) {
+    padding: 0.25em 1em;
+    margin: 0rem 0.5rem 0.5rem 0rem;
+    border: 1px solid lightgray;
+    @include rounded(0.8em);
+
+    &.selected {
+      border-color: $color-primary;
+    }
   }
 }

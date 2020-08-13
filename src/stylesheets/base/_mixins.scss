@@ -4,8 +4,67 @@
   box-shadow: $shadow;
 }
 
-@mixin rounded($radius: 0.5em) {
+@mixin rounded($radius: 1em) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin shadow-dimpled() {
+  background: linear-gradient(
+    145deg,
+    $color-background-darker,
+    $color-background-lightest
+  );
+  box-shadow: 7px 4px 10px $color-background-darker,
+    -7px -4px 10px $color-background-lighter;
+}
+
+@mixin shadow-none() {
+  box-shadow: none;
+}
+
+// TODO: [DEPRECATED]
+@mixin shadow-raised() {
+  @include shadow-raised-2();
+}
+
+@mixin shadow-raised-0() {
+  box-shadow: 2px 2px 4px $color-background-darker,
+    -2px -2px 4px $color-background-lighter;
+}
+
+@mixin shadow-raised-1() {
+  box-shadow: 2px 2px 6px $color-background-darkest,
+    -2px -2px 6px $color-background-lighter;
+}
+
+@mixin shadow-raised-2() {
+  box-shadow: 3px 3px 12px $color-background-darkest,
+    -3px -3px 12px $color-background-lighter;
+}
+
+@mixin shadow-raised-3() {
+  box-shadow: 5px 5px 16px $color-background-darkest,
+    -5px -5px 16px $color-background-lighter;
+}
+
+// TODO: [DEPRECATED]
+@mixin shadow-pressed() {
+  @include shadow-pressed-2();
+}
+
+@mixin shadow-pressed-0() {
+  box-shadow: inset 1px 1px 6px $color-background-darkest,
+    inset -1px -1px 6px $color-background-lighter;
+}
+
+@mixin shadow-pressed-1() {
+  box-shadow: inset 2px 2px 8px $color-background-darkest,
+    inset -2px -2px 8px $color-background-lighter;
+}
+
+@mixin shadow-pressed-2() {
+  box-shadow: inset 3px 3px 12px $color-background-darkest,
+    inset -3px -3px 12px $color-background-lightest;
 }
