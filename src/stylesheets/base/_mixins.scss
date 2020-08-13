@@ -35,18 +35,21 @@
 }
 
 @mixin shadow-raised-1() {
-  box-shadow: 2px 2px 6px $color-background-darkest,
-    -2px -2px 6px $color-background-lighter;
+  //   box-shadow: 2px 2px 6px $color-background-darkest,
+  //     -2px -2px 6px $color-background-lighter;
+  box-shadow: 0px 3px 6px #b8b8bc, -0px -3px 6px #ffffff;
 }
 
 @mixin shadow-raised-2() {
-  box-shadow: 3px 3px 12px $color-background-darkest,
-    -3px -3px 12px $color-background-lighter;
+  //   box-shadow: 3px 3px 12px $color-background-darkest,
+  //     -3px -3px 12px $color-background-lighter;
+  box-shadow: 0px 6px 12px #b8b8bc, -0px -7px 14px #ffffff;
 }
 
 @mixin shadow-raised-3() {
-  box-shadow: 5px 5px 16px $color-background-darkest,
-    -5px -5px 16px $color-background-lighter;
+  //   box-shadow: 5px 5px 16px $color-background-darkest,
+  //     -5px -5px 16px $color-background-lighter;
+  box-shadow: 0px 10px 20px #b8b8bc, -0px -10px 20px #ffffff;
 }
 
 // TODO: [DEPRECATED]
@@ -55,16 +58,24 @@
 }
 
 @mixin shadow-pressed-0() {
-  box-shadow: inset 1px 1px 6px $color-background-darkest,
-    inset -1px -1px 6px $color-background-lighter;
+  //   box-shadow: inset 1px 1px 6px $color-background-darkest,
+  //     inset -1px -1px 6px $color-background-lighter;
+  box-shadow: inset 0px 3px 6px #b8b8bc, inset -0px -3px 6px #ffffff;
 }
 
 @mixin shadow-pressed-1() {
-  box-shadow: inset 2px 2px 8px $color-background-darkest,
-    inset -2px -2px 8px $color-background-lighter;
+  //   box-shadow: inset 2px 2px 8px $color-background-darkest,
+  //     inset -2px -2px 8px $color-background-lighter;
+  box-shadow: inset 0px 6px 12px #b8b8bc, inset -0px -7px 14px #ffffff;
 }
 
 @mixin shadow-pressed-2() {
-  box-shadow: inset 3px 3px 12px $color-background-darkest,
-    inset -3px -3px 12px $color-background-lightest;
+  //   box-shadow: inset 3px 3px 12px $color-background-darkest,
+  //     inset -3px -3px 12px $color-background-lightest;
+  box-shadow: inset 0px 10px 20px #b8b8bc, inset -0px -10px 20px #ffffff;
+}
+
+@mixin shadow-frame() {
+  box-shadow: 0px 2px 4px #b8b8bc, -0px -2px 4px #ffffff,
+    inset 0px 2px 4px #b8b8bc, inset -0px -2px 4px #ffffff;
 }

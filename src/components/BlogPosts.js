@@ -51,7 +51,11 @@ const PostSummary = ({ post }) => {
     // We render a link to a particular post using the linkResolver for the url and its title
     <div className="post-summary" key={post.id}>
       <Link to={linkResolver(post._meta)}>
-        {post.thumbnail && <img src={post.thumbnail.url}></img>}
+        {post.thumbnail && (
+          <div className="post-img-frame">
+            <img src={post.thumbnail.url}></img>
+          </div>
+        )}
         <div className="post-summary-content" key={post.id}>
           <h2>
             {RichText.asText(post.title).length !== 0

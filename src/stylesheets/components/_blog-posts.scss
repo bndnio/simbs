@@ -5,7 +5,7 @@
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
-  gap: 2rem;
+  // gap: 2rem;
 
   margin: 1rem auto;
 
@@ -22,6 +22,7 @@
     overflow: hidden;
     background-color: $color-background-lighter;
     @include rounded();
+    margin: 1rem;
 
     transition: box-shadow 150ms ease-in;
     @include shadow-raised-2();
@@ -36,19 +37,27 @@
 
     img {
       display: block;
-      width: 90%;
-      margin: 5%;
+      width: 100%;
       @include rounded(0.5em);
-      @include shadow-raised-1();
     }
 
     p {
       margin: 0px;
     }
 
+    .post-img-frame {
+      display: block;
+      border: transparent 3px solid;
+      width: 90%;
+      margin: 5%;
+
+      @include rounded(0.5em);
+      @include shadow-frame();
+    }
+
     .post-summary-content {
       display: block;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1rem 1rem;
 
       h2 {
         margin: 0;

@@ -1,5 +1,7 @@
 .categories {
   display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
   margin: 1rem 0rem 2rem;
 
   font-family: $font-sans-serif;

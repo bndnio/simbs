@@ -11,6 +11,7 @@ export default function MediaSlice({ slice }) {
         </h3>
       )}
       <div
+        class="media-embed-wrapper"
         dangerouslySetInnerHTML={{ __html: slice.primary.media_link.html }}
       />
       {/* Optionally render media caption */}

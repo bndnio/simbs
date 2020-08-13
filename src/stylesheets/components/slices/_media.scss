@@ -6,9 +6,18 @@
     font-weight: 600;
     font-weight: 600;
   }
+
   .media-caption {
     font-size: 18px;
     color: grey;
     font-weight: 600;
+  }
+
+  .media-embed-wrapper {
+    max-width: 100vw;
+    overflow-x: scroll;
+    margin: 0 -20px;
+    padding: 1rem;
+    background-color: $color-background-darker;
   }
 }
