@@ -4,7 +4,7 @@ import { linkResolver } from "../../utils/linkResolver"
 import htmlSerializer from "../../utils/htmlSerializer"
 
 export default ({ slice }) => (
-  <div name={slice.primary.anchor} className="text container reading-block">
+  <div name={slice.primary.anchor} className="text container">
     {/* Render text section title */}
     {slice.primary.title && <h2>{RichText.asText(slice.primary.title)}</h2>}
     {/* Render text body */}

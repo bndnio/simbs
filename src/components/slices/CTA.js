@@ -2,7 +2,7 @@ import React from "react"
 import { RichText } from "prismic-reactjs"
 
 export default ({ slice }) => (
-  <div className="cta reading-block">
+  <div className="cta">
     <a
       className="cta-button"
       target={slice.primary.cta_link.target}

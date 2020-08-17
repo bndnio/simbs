@@ -3,7 +3,7 @@ import { RichText } from "prismic-reactjs"
 
 // Default Image
 const DefaultImage = ({ slice }) => (
-  <div className="post-image reading-block">
+  <div className="post-image">
     <figcaption className="block-img">
       <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
       {slice.primary.caption &&
@@ -18,7 +18,7 @@ const DefaultImage = ({ slice }) => (
 
 // Emphasized Image
 const EmphasizedImage = ({ slice }) => (
-  <div className="post-image reading-block">
+  <div className="post-image">
     <figcaption className="block-img emphasized">
       <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
       {slice.primary.caption &&
