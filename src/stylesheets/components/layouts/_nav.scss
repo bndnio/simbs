@@ -1,7 +1,10 @@
 nav {
   .nav-placeholder {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     height: 60px;
+
+    flex-grow: 0;
+    flex: 0 0 50px;
   }
 
   .nav-shadow {
@@ -25,39 +28,113 @@ nav {
     width: 100vw;
 
     display: flex;
-    flex-grow: 0;
-    flex: 0 0 50px;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     align-content: stretch;
 
-    height: 60px;
-    padding: 0 1rem;
+    min-height: 60px;
+    padding: 10px 1rem;
     z-index: 100;
 
     font-family: $font-sans-serif;
 
-    background-color: rgba(255, 255, 255, 0.5);
     &.raised {
       background-color: rgba(255, 255, 255, 1);
+    }
+
+    &.force-shadow {
+      @include box-shadow(0px 10px 20px #b8b8bc);
     }
 
     img {
       height: 40px;
     }
 
-    .nav-items {
+    a {
+      text-align: right;
+      flex: 1 1 0;
+      @include for-tablet-landscape-up() {
+        flex: none;
+      }
+    }
+
+    .material-icons {
+      cursor: pointer;
+      font-size: 32px;
+    }
+
+    .nav-item {
+      transition: color 150ms ease-in-out;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .nav-mobile {
       display: flex;
+      flex: 1 1 0;
+      @include for-tablet-landscape-up() {
+        display: none;
+      }
+    }
+
+    .nav-mobile-drawer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 2rem;
+      font-size: 24px;
+      width: 100%;
+
+      &:not(.visible) {
+        opacity: 0;
+        margin-bottom: -300px;
+      }
+    }
+
+    .nav-desktop {
+      display: none;
+      @include for-tablet-landscape-up() {
+        display: flex;
+      }
       justify-content: space-between;
       align-content: center;
 
       .nav-item {
         margin: 0rem 0.75rem;
+      }
+    }
+  }
 
-        transition: color 150ms ease-in-out;
-        &:hover {
-          color: $color-primary;
-        }
+  .join-button {
+    font-family: $font-sans-serif;
+    font-weight: 900;
+    color: $color-text-inverted;
+    background-color: $color-primary;
+    padding: 0.5rem 1.5rem;
+    @include rounded(0.75em);
+
+    transition: box-shadow 150ms ease-in;
+    @include shadow-raised-1();
+
+    &:hover {
+      @include shadow-raised-2();
+    }
+
+    &:active {
+      @include shadow-raised-0();
+    }
+
+    &.flat {
+      @include shadow-none();
+
+      &:hover {
+        @include shadow-raised-0();
+      }
+
+      &:active {
+        @include shadow-none();
       }
     }
   }
