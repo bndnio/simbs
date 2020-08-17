@@ -40,7 +40,7 @@ export default function Team({ slice }) {
   if (!slice) return null
 
   return (
-    <div className="team container">
+    <div className="team container" id="team">
       {/* Render slice header */}
       <TeamHead team={slice.primary} />
       {/* Render team members */}
