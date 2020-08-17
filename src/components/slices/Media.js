@@ -2,6 +2,8 @@ import React from "react"
 import { RichText } from "prismic-reactjs"
 
 export default function MediaSlice({ slice }) {
+  if (!slice?.primary) return null
+
   return (
     <div className="media">
       {/* Optionally render media title */}
@@ -12,7 +14,7 @@ export default function MediaSlice({ slice }) {
       )}
       <div
         class="media-embed-wrapper"
-        dangerouslySetInnerHTML={{ __html: slice.primary.media_link.html }}
+        dangerouslySetInnerHTML={{ __html: slice.primary.media_link?.html }}
       />
       {/* Optionally render media caption */}
       {slice.primary.media_caption &&

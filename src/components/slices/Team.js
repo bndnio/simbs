@@ -10,7 +10,7 @@ function Member({ member }) {
     // Member section
     <div className="team-member">
       {/* Member portrait image */}
-      <img className="team-member-portrait" src={member.portrait.url}></img>
+      <img className="team-member-portrait" src={member.portrait?.url}></img>
       {/* Member summary section */}
       <div className="team-member-summary">
         {/* Member summary header section */}
@@ -29,10 +29,10 @@ function Member({ member }) {
 
 function TeamHead({ team }) {
   // If team section header empty, abort
-  if (!team.team_section) return null
+  if (!team?.team_section) return null
 
   // Render team section header
-  return <h2>{RichText.asText(team.team_section)}</h2>
+  return <h2>{RichText.asText(team?.team_section)}</h2>
 }
 
 export default function Team({ slice }) {
