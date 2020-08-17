@@ -51,12 +51,12 @@ nav {
       height: 40px;
     }
 
-    a {
-      text-align: right;
+    .cta {
       flex: 1 1 0;
       @include for-tablet-landscape-up() {
         flex: none;
       }
+      text-align: right;
     }
 
     .material-icons {
@@ -88,7 +88,7 @@ nav {
       width: 100%;
 
       &:not(.visible) {
-        opacity: 0;
+        display: none;
         margin-bottom: -300px;
       }
     }

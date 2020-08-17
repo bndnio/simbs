@@ -119,12 +119,15 @@ function Nav({ data }) {
         <div className="nav-desktop">
           <NavItems navItems={doc.node.navto} />
         </div>
-        <a
-          className="cta"
-          href="https://www.joinit.org/o/south-island-mountain-bike-society"
-        >
-          <span className={`join-button ${scroll ? "flat" : ""}`}>Join</span>
-        </a>
+        <div className="cta">
+          <a href="https://www.joinit.org/o/south-island-mountain-bike-society">
+            <span
+              className={`join-button ${scroll || mobileMenu ? "flat" : ""}`}
+            >
+              Join
+            </span>
+          </a>
+        </div>
         <div className={`nav-mobile-drawer ${mobileMenu ? "visible" : ""}`}>
           <NavItems navItems={doc.node.navto} />
         </div>
