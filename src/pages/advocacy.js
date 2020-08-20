@@ -39,7 +39,7 @@ export const query = graphql`
 // Using the queried Advocacy Page document data, we render the top section
 const AdvocacyHead = ({ page }) => {
   return (
-    <div className="advocacy-header container " data-wio-id={page._meta.id}>
+    <div className="advocacy-header container" data-wio-id={page._meta.id}>
       {/* Render Advocacy page */}
       {page.title && <h1>{RichText.asText(page.title)}</h1>}
       {page.description &&
