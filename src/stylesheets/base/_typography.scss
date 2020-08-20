@@ -41,6 +41,7 @@ h5 {
   font-weight: 600;
 }
 
+// Basic spacing between text block elements
 p,
 pre,
 ul,
@@ -54,6 +55,19 @@ ol {
 ul li,
 ol li {
   margin-left: 1em;
+}
+
+// Tighten spacing between text block & list
+p + ul,
+p + ol {
+  margin-top: -1rem;
+}
+
+// Add spacing after blocks of text
+p:last-child,
+ol:last-child,
+ul:last-child {
+  margin-bottom: 3rem;
 }
 
 pre {
