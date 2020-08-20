@@ -1,8 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
-import { linkResolver } from "../utils/linkResolver"
-import htmlSerializer from "../utils/htmlSerializer"
 import Layout from "../components/layouts"
 import { Team, Text } from "../components/slices"
 
