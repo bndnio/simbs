@@ -13,6 +13,7 @@
   .category {
     padding: 0.5rem 2em;
     margin: 0rem 1rem 0.5rem 0rem;
+    background-color: $color-background-lightest;
 
     cursor: inherit;
     @include rounded();

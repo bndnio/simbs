@@ -91,6 +91,7 @@ function Nav({ data }) {
   return (
     <nav>
       <div className="nav-placeholder"></div>
+      <div className={`nav-border ${scroll ? "raised" : ""}`}></div>
       <div className={`nav-shadow ${scroll ? "raised" : ""}`}></div>
       <div
         ref={setNavRef}

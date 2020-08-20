@@ -1,4 +1,24 @@
 nav {
+  .nav-border {
+    position: fixed;
+    top: 0;
+    height: 64px;
+    width: 100vw;
+
+    opacity: 1;
+    transition: opacity 150ms ease-in;
+
+    background-image: linear-gradient(
+      90deg,
+      $color-primary 35%,
+      $color-contrary 100%
+    );
+
+    &.raised {
+      opacity: 0;
+    }
+  }
+
   .nav-placeholder {
     margin-bottom: 1rem;
     height: 60px;
@@ -38,6 +58,8 @@ nav {
     z-index: 100;
 
     font-family: $font-sans-serif;
+    font-weight: 600;
+    background-color: $color-background;
 
     &.raised {
       background-color: $color-background-lightest;
