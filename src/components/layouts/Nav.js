@@ -116,7 +116,9 @@ function Nav({ data }) {
             </span>
           )}
         </div>
-        <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
+        <a href="/">
+          <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
+        </a>
         <div className="nav-desktop">
           <NavItems navItems={doc.node.navto} />
         </div>

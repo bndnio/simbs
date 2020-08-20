@@ -69,8 +69,8 @@ nav {
       @include shadow-raised-3();
     }
 
-    img {
-      height: 40px;
+    * {
+      max-height: 40px;
     }
 
     .cta {
