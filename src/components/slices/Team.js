@@ -18,7 +18,11 @@ function Member({ member }) {
           {/* Render member name */}
           <h3>{RichText.asText(member.first_and_lastname)}</h3>
           {/* Render position title */}
-          <h4 className="team-position">{RichText.asText(member.position)}</h4>
+          <h4 className="team-member-position">
+            {RichText.asText(member.position)}
+          </h4>
+          {/* Render member name */}
+          <span className="team-member-email">{member.email}</span>
         </div>
         {/* Render description <p> from prismic */}
         {RichText.render(member.description, linkResolver, htmlSerializer)}

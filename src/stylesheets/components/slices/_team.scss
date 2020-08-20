@@ -4,9 +4,10 @@
     align-items: flex-start;
 
     margin: 0rem 1rem 2rem 0rem;
-    padding: 2rem;
+    padding: 1.5rem;
 
-    @include shadow-pressed-0();
+    @include shadow-raised-0();
+    background-color: $color-background-lightest;
     @include rounded();
 
     @include for-phone-only {
@@ -15,11 +16,10 @@
 
     .team-member-portrait {
       display: block;
-      flex: 0.25 1 150px;
-      max-width: 200px;
+      flex: 0.25 1 200px;
+      max-width: 250px;
       margin: 0 2rem 0 0; // right-side margin for desktop
 
-      border: 1px solid lightgray;
       @include shadow-frame();
       @include rounded(150px);
 
@@ -37,11 +37,13 @@
       @include for-phone-only {
         flex-basis: 0;
         width: 100%;
-        padding: 0 10%;
+        padding: 0 5%;
       }
     }
 
     .team-member-head {
+      margin-bottom: 1rem;
+
       @include for-phone-only {
         * {
           text-align: center;
@@ -49,7 +51,12 @@
       }
     }
 
-    h3 {
+    .team-member-email {
+      display: block;
+    }
+
+    h3,
+    h4 {
       margin-bottom: 0;
     }
 

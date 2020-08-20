@@ -38,6 +38,7 @@ export const query = graphql`
                   portrait
                   first_and_lastname
                   description
+                  email
                 }
               }
             }
