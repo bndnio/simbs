@@ -4,7 +4,7 @@
   box-shadow: $shadow;
 }
 
-@mixin rounded($radius: 1em) {
+@mixin rounded($radius: 0.75em) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
@@ -41,19 +41,28 @@
 @mixin shadow-raised-1() {
   //   box-shadow: 2px 2px 6px $color-background-darkest,
   //     -2px -2px 6px $color-background-lighter;
-  @include box-shadow(0px 3px 6px #b8b8bc, -0px -3px 6px #ffffff);
+  @include box-shadow(
+    0px 3px 6px $color-background-darkest,
+    -0px -3px 6px $color-background-lightest
+  );
 }
 
 @mixin shadow-raised-2() {
   //   box-shadow: 3px 3px 12px $color-background-darkest,
   //     -3px -3px 12px $color-background-lighter;
-  @include box-shadow(0px 6px 12px #b8b8bc, -0px -7px 14px #ffffff);
+  @include box-shadow(
+    0px 6px 12px $color-background-darkest,
+    -0px -7px 14px $color-background-lightest
+  );
 }
 
 @mixin shadow-raised-3() {
   //   box-shadow: 5px 5px 16px $color-background-darkest,
   //     -5px -5px 16px $color-background-lighter;
-  @include box-shadow(0px 10px 20px #b8b8bc, -0px -10px 20px #ffffff);
+  @include box-shadow(
+    0px 10px 20px $color-background-darkest,
+    -0px -10px 20px $color-background-lightest
+  );
 }
 
 // TODO: [DEPRECATED]

@@ -1,4 +1,7 @@
 .categories {
+  transition: color 0.5s ease-in-out;
+  color: $color-text-primary;
+
   display: flex;
   flex-wrap: wrap;
   white-space: nowrap;
@@ -18,18 +21,23 @@
   .toggleable {
     cursor: pointer;
 
-    transition: background-color 500ms ease-in-out;
-    @include shadow-raised-2();
+    transition: box-shadow 200ms;
+    @include shadow-raised-1();
+
+    &:hover {
+      @include shadow-raised-2();
+    }
 
     &:active {
-      @include shadow-pressed-1();
+      color: $color-primary;
+      @include shadow-raised-0();
     }
 
     &.selected {
-      @include shadow-pressed-0();
+      color: $color-primary;
 
       &:active {
-        @include shadow-pressed-1();
+        color: $color-text-primary;
       }
     }
   }
@@ -38,7 +46,7 @@
     padding: 0.25em 1em;
     margin: 0rem 0.5rem 0.5rem 0rem;
     border: 1px solid lightgray;
-    @include rounded(0.8em);
+    @include rounded();
 
     &.selected {
       border-color: $color-primary;

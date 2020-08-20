@@ -13,7 +13,7 @@ nav {
     height: 60px;
     width: 100vw;
 
-    @include box-shadow(0px 10px 20px #b8b8bc);
+    @include shadow-raised-3();
     opacity: 0;
     transition: opacity 150ms ease-in;
 
@@ -40,11 +40,11 @@ nav {
     font-family: $font-sans-serif;
 
     &.raised {
-      background-color: rgba(255, 255, 255, 1);
+      background-color: $color-background-lightest;
     }
 
     &.force-shadow {
-      @include box-shadow(0px 10px 20px #b8b8bc);
+      @include shadow-raised-3();
     }
 
     img {
@@ -113,7 +113,7 @@ nav {
     color: $color-text-inverted;
     background-color: $color-primary;
     padding: 0.5rem 1.5rem;
-    @include rounded(0.75em);
+    @include rounded();
 
     transition: box-shadow 150ms ease-in;
     @include shadow-raised-1();

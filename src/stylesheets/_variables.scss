@@ -1,13 +1,13 @@
 $color-background: #f0f2f4;
-$color-background-darker: #dadade;
-$color-background-lighter: #f9f9f9;
+$color-background-darker: scale-color($color-background, $lightness: -10%);
+$color-background-lighter: scale-color($color-background, $lightness: +10%);
 $color-background-gradient: linear-gradient(
   145deg,
   $color-background-darker,
   $color-background-lighter
 );
-$color-background-darkest: #b8b8bc;
-$color-background-lightest: #ffffff;
+$color-background-darkest: scale-color($color-background, $lightness: -20%);
+$color-background-lightest: scale-color($color-background, $lightness: +20%);
 
 $color-text-primary: #333;
 $color-text-secondary: #808080;
