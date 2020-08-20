@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Layout from "../components/layouts"
 import Categories from "../components/Categories"
-import { CTA, ImageCaption, Media, PullQuote, Text } from "../components/slices"
+import Slices from "../components/slices"
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -92,56 +92,6 @@ export const query = graphql`
   }
 `
 
-// Sort and display the different slice options
-const PostSlices = ({ slices }) => {
-  if (!slices) return null
-
-  return slices.map((slice, index) => {
-    const res = (() => {
-      switch (slice.type) {
-        case "call_to_action":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<CTA slice={slice} />}
-            </div>
-          )
-
-        case "text":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<Text slice={slice} />}
-            </div>
-          )
-
-        case "media":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<Media slice={slice} />}
-            </div>
-          )
-
-        case "pull_quote":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<PullQuote slice={slice} />}
-            </div>
-          )
-
-        case "image_with_caption":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<ImageCaption slice={slice} />}
-            </div>
-          )
-
-        default:
-          return
-      }
-    })()
-    return res
-  })
-}
-
 // Display the title, date, and content of the Post
 const PostBody = ({ blogPost, acknowledgements }) => {
   const titled = blogPost.title.length !== 0
@@ -195,7 +145,7 @@ const PostBody = ({ blogPost, acknowledgements }) => {
       {/* Put contents back in container */}
       <div className="container reading-block">
         {/* Go through the slices of the post and render the appropriate one */}
-        <PostSlices slices={blogPost.body} />
+        <Slices slices={blogPost.body} />
         {/* Render acknowledgements */}
         {acknowledgements && (
           <p>{RichText.asText(blogPost.acknowledgements)}</p>

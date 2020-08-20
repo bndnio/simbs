@@ -2,7 +2,7 @@ import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import Layout from "../components/layouts"
-import { Team, Text } from "../components/slices"
+import Slices from "../components/slices"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
@@ -59,35 +59,6 @@ const AboutHead = ({ page }) => {
   )
 }
 
-// Sort and display the different slice options
-const AboutSlices = ({ slices }) => {
-  if (!slices) return null
-
-  return slices.map((slice, index) => {
-    const res = (() => {
-      switch (slice.type) {
-        case "text":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<Text slice={slice} />}
-            </div>
-          )
-
-        case "team":
-          return (
-            <div key={index} className="homepage-slice-wrapper">
-              {<Team slice={slice} />}
-            </div>
-          )
-
-        default:
-          return
-      }
-    })()
-    return res
-  })
-}
-
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismic.allAbout_pages.edges.slice(0, 1).pop()
@@ -97,7 +68,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <AboutHead page={doc.node} />
-      <AboutSlices slices={doc.node.body} />
+      <Slices slices={doc.node.body} />
     </Layout>
   )
 }
