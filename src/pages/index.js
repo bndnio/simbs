@@ -8,16 +8,25 @@ import BlogPosts from "../components/BlogPosts"
 export const query = graphql`
   {
     prismic {
-      allBlog_homes(uid: null) {
+      allHome_pages {
         edges {
           node {
             _meta {
               id
+              uid
               type
             }
-            headline
-            description
-            image
+            cta_link {
+              ... on PRISMIC__ExternalLink {
+                target
+                _linkType
+                url
+              }
+            }
+            subtitle
+            cta_text
+            title
+            banner
           }
         }
       }
@@ -51,27 +60,29 @@ export const query = graphql`
 
 // Using the queried Blog Home document data, we render the top section
 const BlogHomeHead = ({ home }) => {
-  const avatar = { backgroundImage: "url(" + home.image.url + ")" }
+  const banner = { backgroundImage: "url(" + home.banner.url + ")" }
   return (
     <div className="home-header container" data-wio-id={home._meta.id}>
-      <div className="blog-avatar" style={avatar}></div>
-      <h1>{RichText.asText(home.headline)}</h1>
-      <p className="blog-description">{RichText.asText(home.description)}</p>
+      <img src={home.banner.url}></img>
+      <div className="home-banner" style={banner}></div>
+      <h1>{RichText.asText(home.title)}</h1>
+      <h2>{RichText.asText(home.subtitle)}</h2>
+      <a className="home-cta link" href={home.cta_link?.url}>
+        {RichText.asText(home.cta_text)}
+      </a>
     </div>
   )
 }
 
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
-  const posts = data.prismic.allPosts.edges
+  const doc = data.prismic.allHome_pages.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
   return (
     <Layout>
       <BlogHomeHead home={doc.node} />
-      <BlogPosts posts={posts} />
     </Layout>
   )
 }
