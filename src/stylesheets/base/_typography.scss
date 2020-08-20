@@ -70,6 +70,15 @@ ul:last-child {
   margin-bottom: 3rem;
 }
 
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  margin-top: 3rem;
+}
+
 pre {
   white-space: pre-wrap; // css-3
   white-space: -moz-pre-wrap; // Mozilla, since 1999
