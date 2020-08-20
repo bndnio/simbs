@@ -133,7 +133,7 @@ nav {
     font-family: $font-sans-serif;
     font-weight: 900;
     color: $color-text-inverted;
-    background-color: $color-primary;
+    background-color: scale-color($color-contrary, $lightness: -10%);
     padding: 0.5rem 1.5rem;
     @include rounded();
 
