@@ -93,9 +93,9 @@
 
 @mixin shadow-frame() {
   @include box-shadow(
-    0px 2px 4px $color-background-darker,
-    -0px -2px 4px $color-background-lighter,
-    inset 0px 2px 4px $color-background-darker,
-    inset -0px -2px 4px $color-background-lighter
+    0px 2px 4px $color-background-darkest,
+    -0px -2px 4px $color-background-lightest,
+    inset 0px 2px 4px $color-background-darkest,
+    inset -0px -2px 4px $color-background-lightest
   );
 }
