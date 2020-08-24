@@ -1,161 +1,61 @@
-nav {
-  .nav-border {
-    position: fixed;
-    top: 0;
-    height: 64px;
-    width: 100vw;
-
-    opacity: 1;
-    transition: opacity 150ms ease-in;
-
-    background-image: linear-gradient(
-      90deg,
-      $color-primary 35%,
-      $color-contrary 100%
-    );
-
-    &.raised {
-      opacity: 0;
-    }
-  }
-
-  .nav-placeholder {
+header {
+  .navbar-placeholder {
     margin-bottom: 1rem;
     height: 60px;
-
-    flex-grow: 0;
-    flex: 0 0 50px;
   }
 
-  .nav-shadow {
-    position: fixed;
-    top: 0;
-    height: 60px;
-    width: 100vw;
+  // Override defaults for navbar content
+  .navbar .nav {
+    margin: 1rem;
+    padding: unset;
+    font-weight: unset;
 
-    @include shadow-raised-3();
-    opacity: 0;
-    transition: opacity 150ms ease-in;
-
-    &.raised {
-      opacity: 1;
+    .nav-item {
+      margin: 0 0 0.4rem;
     }
   }
 
-  .nav-bar {
+  // Set navbar defaults & positioning
+  .navbar {
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: stretch;
-
-    min-height: 60px;
-    padding: 10px 1rem;
-    z-index: 100;
+    height: 3rem;
+    padding: 0.5rem 1rem;
 
     font-weight: 600;
-    background-color: $color-background;
 
-    &.raised {
-      background-color: $color-background-lightest;
+    transition: background-color 0.2s ease-in-out;
+    &:not(.undocked) {
+      background-color: change-color($color: $color-background, $alpha: 0.6);
     }
-
-    &.force-shadow {
-      @include shadow-raised-3();
-    }
-
-    * {
-      max-height: 40px;
-    }
-
-    .cta {
-      flex: 1 1 0;
-      @include for-tablet-landscape-up() {
-        flex: none;
-      }
-      text-align: right;
-    }
-
-    .material-icons {
-      cursor: pointer;
-      font-size: 32px;
+    &.undocked {
+      background-color: change-color($color: $color-background, $alpha: 1);
     }
 
     .nav-item {
-      transition: color 150ms ease-in-out;
+      margin: 0rem 0.75rem;
+      color: $gray-color-dark;
+
       &:hover {
         color: $color-primary;
       }
     }
 
-    .nav-mobile {
-      display: flex;
-      flex: 1 1 0;
-      @include for-tablet-landscape-up() {
-        display: none;
-      }
+    img {
+      max-height: 40px;
     }
 
-    .nav-mobile-drawer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem 2rem;
-      font-size: 24px;
-      width: 100%;
-
-      &:not(.visible) {
-        display: none;
-        margin-bottom: -300px;
-      }
+    .off-canvas-toggle {
+      top: 0.1rem;
+      left: 0;
     }
 
-    .nav-desktop {
-      display: none;
-      @include for-tablet-landscape-up() {
-        display: flex;
-      }
-      justify-content: space-between;
-      align-content: center;
-
-      .nav-item {
-        margin: 0rem 0.75rem;
-      }
-    }
-  }
-
-  .join-button {
-    font-weight: 900;
-    color: $color-text-inverted;
-    background-color: scale-color($color-contrary, $lightness: -10%);
-    padding: 0.5rem 1.5rem;
-    @include rounded();
-
-    transition: box-shadow 150ms ease-in;
-    @include shadow-raised-1();
-
-    &:hover {
-      @include shadow-raised-2();
-    }
-
-    &:active {
-      @include shadow-raised-0();
-    }
-
-    &.flat {
-      @include shadow-none();
-
-      &:hover {
-        @include shadow-raised-0();
-      }
-
-      &:active {
-        @include shadow-none();
-      }
+    // Fix issue where a tag takes up room below img
+    .img-link {
+      display: block;
+      height: 0;
     }
   }
 }

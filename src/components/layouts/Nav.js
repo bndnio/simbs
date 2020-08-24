@@ -21,20 +21,28 @@ const debounce = (fn) => {
   }
 }
 
-function NavItems({ navItems }) {
+function NavItems({ navItems, list }) {
   if (!navItems) return null
 
   return (
     <>
       {navItems.map((navItem) => (
-        <NavItem navItem={navItem} />
+        <NavItem list={list} navItem={navItem} />
       ))}
     </>
   )
 }
 
-function NavItem({ navItem }) {
+function NavItem({ navItem, list }) {
   if (!navItem) return null
+
+  if (list) {
+    return (
+      <li className="nav-item">
+        <a href={navItem.page}>{navItem.page_name}</a>
+      </li>
+    )
+  }
 
   return (
     <a className="nav-item" href={navItem.page}>
@@ -70,72 +78,57 @@ function Nav({ data }) {
     }
   }, [])
 
-  // Hook to watch click position for mobile menu
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (navRef && !navRef?.contains(event.target)) {
-        setMobileMenu(false)
-      }
-    }
-
-    // Bind the event listener
-    document.addEventListener("click", handleClickOutside)
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("click", handleClickOutside)
-    }
-  }, [])
-
   const doc = data.prismic.allNavigations.edges.slice(0, 1).pop()
 
   return (
-    <nav>
-      <div className="nav-placeholder"></div>
-      <div className={`nav-border ${scroll ? "raised" : ""}`}></div>
-      <div className={`nav-shadow ${scroll ? "raised" : ""}`}></div>
-      <div
-        ref={setNavRef}
-        className={`nav-bar ${scroll || mobileMenu ? "raised" : ""} ${
-          mobileMenu ? "force-shadow" : ""
-        }`}
-      >
-        <div className="nav-mobile">
-          {mobileMenu ? (
-            <span
-              className="material-icons"
-              onClick={() => setMobileMenu(false)}
-            >
-              close
-            </span>
-          ) : (
-            <span
-              className="material-icons"
-              onClick={() => setMobileMenu(true)}
-            >
-              menu
-            </span>
-          )}
-        </div>
-        <a href="/">
-          <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
-        </a>
-        <div className="nav-desktop">
-          <NavItems navItems={doc.node.navto} />
-        </div>
-        <div className="cta">
-          <a href="https://www.joinit.org/o/south-island-mountain-bike-society">
-            <span
-              className={`join-button ${scroll || mobileMenu ? "flat" : ""}`}
-            >
-              Join
-            </span>
+    <header>
+      <div className="navbar-placeholder"></div>
+      <nav className={`navbar ${scroll ? "undocked" : ""}`}>
+        {/* Left nav */}
+        <section className="navbar-section hide-md">
+          <a href="/">
+            <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
           </a>
-        </div>
-        <div className={`nav-mobile-drawer ${mobileMenu ? "visible" : ""}`}>
+        </section>
+        <section className="navbar-section off-canvas show-md">
+          <a
+            className="off-canvas-toggle btn"
+            onClick={() => setMobileMenu(true)}
+          >
+            <i className="icon icon-menu"></i>
+          </a>
+          <div className={`off-canvas-sidebar ${mobileMenu ? "active" : ""}`}>
+            <ul className="nav">
+              <NavItems list navItems={doc.node.navto} />
+            </ul>
+          </div>
+          <div
+            className="off-canvas-overlay"
+            onClick={() => setMobileMenu(false)}
+          ></div>
+        </section>
+
+        {/* Center nav */}
+        <section className="navbar-center show-md">
+          <a className="img-link" href="/">
+            <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
+          </a>
+        </section>
+        <section className="navbar-center hide-md">
           <NavItems navItems={doc.node.navto} />
-        </div>
-      </div>
-    </nav>
+        </section>
+
+        {/* Right nav */}
+        <section className="navbar-section">
+          <a
+            className="btn btn-primary"
+            href="https://www.joinit.org/o/south-island-mountain-bike-society"
+          >
+            <span className={"join-button"}>Join</span>
+          </a>
+        </section>
+      </nav>
+    </header>
   )
 }
 
