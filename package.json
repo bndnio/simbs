@@ -23,7 +23,8 @@
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "spectre.css": "^0.5.9"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
