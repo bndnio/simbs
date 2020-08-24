@@ -12,16 +12,6 @@
     # Global selectors
     # ================================================================= */
 
-html,
-body,
-#___gatsby,
-#gatsby-focus-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%; /* Addition */
-  margin: 0;
-}
-
 html {
   box-sizing: border-box;
   background: #fdfdfd; /* Addition */
