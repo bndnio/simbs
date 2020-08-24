@@ -1,33 +1,39 @@
-// Variables
-$max-width-phone: 599px;
-$min-width-tablet-portrait: 600px;
-$min-width-tablet-landscape: 900px;
-$min-width-desktop: 1200;
-$min-width-big-desktop: 1800;
+// For reference, spectre default variables
+// $size-xs: 480px !default;
+// $size-sm: 600px !default;
+// $size-md: 840px !default;
+// $size-lg: 960px !default;
+// $size-xl: 1280px !default;
+// $size-2x: 1440px !default;
 
 // Mixins
 @mixin for-phone-only {
-  @media (max-width: $max-width-phone) {
+  @media (max-width: $size-sm - 1px) {
     @content;
   }
 }
 @mixin for-tablet-portrait-up {
-  @media (min-width: $min-width-tablet-portrait) {
+  @media (min-width: $size-sm) {
     @content;
   }
 }
 @mixin for-tablet-landscape-up {
-  @media (min-width: $min-width-tablet-landscape) {
+  @media (min-width: $size-md) {
+    @content;
+  }
+}
+@mixin for-small-desktop-up {
+  @media (min-width: $size-sm) {
     @content;
   }
 }
 @mixin for-desktop-up {
-  @media (min-width: $min-width-desktop) {
+  @media (min-width: $size-xl) {
     @content;
   }
 }
 @mixin for-big-desktop-up {
-  @media (min-width: $min-width-big-desktop) {
+  @media (min-width: $size-2x) {
     @content;
   }
 }

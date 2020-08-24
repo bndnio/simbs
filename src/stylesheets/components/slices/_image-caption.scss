@@ -9,7 +9,7 @@
   }
 
   .emphasized {
-    @media screen and (min-width: $min-width-tablet-landscape) {
+    @include for-tablet-landscape-up {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }
