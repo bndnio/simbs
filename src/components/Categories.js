@@ -77,15 +77,24 @@ function Category({ category, enableToggle }) {
     })
   }
 
+  if (enableToggle) {
+    return (
+      <button
+        className={`btn btn-lg ${selected ? "btn-primary" : ""}`}
+        onClick={toggleCategory}
+      >
+        {category.name}
+      </button>
+    )
+  }
+
   return (
-    <div
-      className={`category ${selected ? "selected" : ""} ${
-        enableToggle ? "toggleable" : ""
-      }`}
+    <span
+      className={`label ${selected ? "label-secondary" : ""}`}
       onClick={toggleCategory}
     >
       {category.name}
-    </div>
+    </span>
   )
 }
 
@@ -139,15 +148,24 @@ function AllCategory({ enableToggle = false }) {
     })
   }
 
+  if (enableToggle) {
+    return (
+      <button
+        className={`btn btn-lg ${selected ? "btn-primary" : ""}`}
+        onClick={clearCategories}
+      >
+        All
+      </button>
+    )
+  }
+
   return (
-    <div
-      className={`category ${selected ? "selected" : ""} ${
-        enableToggle ? "toggleable" : ""
-      }`}
+    <span
+      className={`label ${selected ? "label-secondary" : ""}`}
       onClick={clearCategories}
     >
       All
-    </div>
+    </span>
   )
 }
 
@@ -160,7 +178,7 @@ export default function Categories({
   if (!categories) return null
 
   return (
-    <div className="categories">
+    <div className={`categories ${enableToggle ? "btn-group" : ""}`}>
       {displayAll && <AllCategory enableToggle={enableToggle} />}
       {categories.map((category) => {
         // Get category object despite hows it's passe din

@@ -1,56 +1,8 @@
 .categories {
-  transition: color 0.5s ease-in-out;
-  color: $color-text-primary;
-
-  display: flex;
-  flex-wrap: wrap;
-  white-space: nowrap;
+  display: block;
   margin: 1rem 0rem;
 
-  font-weight: 600;
-
-  .category {
-    padding: 0.5rem 2em;
-    margin: 0rem 1rem 0.5rem 0rem;
-    background-color: $color-background-lightest;
-
-    cursor: inherit;
-    @include rounded();
-  }
-
-  .toggleable {
-    cursor: pointer;
-
-    transition: box-shadow 200ms;
-    @include shadow-raised-1();
-
-    &:hover {
-      @include shadow-raised-2();
-    }
-
-    &:active {
-      color: $color-primary;
-      @include shadow-raised-0();
-    }
-
-    &.selected {
-      color: $color-primary;
-
-      &:active {
-        color: $color-text-primary;
-      }
-    }
-  }
-
-  :not(.toggleable) {
-    padding: 0.25em 1em;
-    margin: 0rem 0.5rem 0.5rem 0rem;
-    border: 1px solid lightgray;
-    @include rounded();
-
-    &.selected {
-      border-color: $color-primary;
-      border-width: 2px;
-    }
+  .btn:not(:last-child) {
+    margin-right: 0.5rem;
   }
 }
