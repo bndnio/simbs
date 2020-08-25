@@ -45,7 +45,7 @@ function NavItem({ navItem, list }) {
   }
 
   return (
-    <a className="nav-item" href={navItem.page}>
+    <a className="nav-item btn btn-link" href={navItem.page}>
       {navItem.page_name}
     </a>
   )

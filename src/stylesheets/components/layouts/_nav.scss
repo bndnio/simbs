@@ -8,7 +8,6 @@ header {
   .navbar .nav {
     margin: 1rem;
     padding: unset;
-    font-weight: unset;
 
     .nav-item {
       margin: 0 0 0.4rem;
@@ -24,8 +23,6 @@ header {
     height: 3rem;
     padding: 0.5rem 1rem;
 
-    font-weight: 600;
-
     transition: background-color 0.2s ease-in-out;
     &:not(.undocked) {
       background-color: change-color($color: $color-background, $alpha: 0.6);
@@ -35,7 +32,6 @@ header {
     }
 
     .nav-item {
-      margin: 0rem 0.75rem;
       color: $gray-color-dark;
 
       &:hover {
