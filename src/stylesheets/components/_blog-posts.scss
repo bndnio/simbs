@@ -1,77 +1,21 @@
 .blog-posts {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-  // gap: 2rem;
-
-  margin: 1rem auto;
-
-  > a {
-    // Because we're using Gatsby Link, make Link (<a>) element display block
-    display: block;
-  }
-
-  .post-summary {
-    cursor: pointer;
-
-    flex: 1 1 280px;
-    max-width: 330px;
-    overflow: hidden;
-    background-color: $color-background-lightest;
-    @include rounded();
-    margin: 1rem;
-
-    transition: box-shadow 150ms ease-in;
-    @include shadow-raised-2();
-
-    &:hover {
-      @include shadow-raised-3();
-    }
-
-    &:active {
-      @include shadow-raised-0();
+  .post-card {
+    margin-bottom: 1rem;
+    a {
+      color: $body-font-color;
+      text-decoration: none;
     }
 
     img {
-      display: block;
       width: 100%;
-      @include rounded(0.5em);
     }
 
     p {
       margin: 0px;
     }
 
-    .post-img-frame {
-      display: block;
-      border: transparent 3px solid;
-      width: 90%;
-      margin: 5%;
-
-      @include rounded(0.5em);
-      @include shadow-frame();
-    }
-
-    .post-summary-content {
-      display: block;
-      padding: 0.5rem 1rem 1rem;
-
-      h2 {
-        margin: 0;
-      }
-
-      .categories {
-        margin: 0.5rem 0;
-      }
-
-      .post-meta {
-        margin-bottom: 8px;
-        font-size: $font-size;
-        color: #9a9a9a;
-      }
+    .categories {
+      margin: 0.5rem 0;
     }
   }
 }

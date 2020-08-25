@@ -49,33 +49,35 @@ const PostSummary = ({ post }) => {
 
   return (
     // We render a link to a particular post using the linkResolver for the url and its title
-    <div className="post-summary" key={post.id}>
-      <Link to={linkResolver(post._meta)}>
-        {post.thumbnail && (
-          <div className="post-img-frame">
-            <img src={post.thumbnail.url}></img>
+    <div className="column col-4 col-lg-6 col-sm-12" key={post.id}>
+      <div className="card post-card">
+        <Link to={linkResolver(post._meta)}>
+          {post.thumbnail && (
+            <div className="card-image">
+              <img src={post.thumbnail.url}></img>
+            </div>
+          )}
+          <div className="card-header" key={post.id}>
+            <h2 className="card-title">
+              {RichText.asText(post.title).length !== 0
+                ? RichText.asText(post.title)
+                : defaultTitle}
+            </h2>
+            <Categories categories={post.categories} />
+            <div className="card-subtitle text-gray">
+              <time>{postDate}</time>
+              <strong>
+                {`${postDate && "  "}// `}
+                {post.author
+                  ? `By ${post.author.first_name} ${post.author.last_name}`
+                  : defaultAuthor}
+              </strong>
+            </div>
           </div>
-        )}
-        <div className="post-summary-content" key={post.id}>
-          <h2>
-            {RichText.asText(post.title).length !== 0
-              ? RichText.asText(post.title)
-              : defaultTitle}
-          </h2>
-          <Categories categories={post.categories} />
-          <p className="post-meta">
-            <time>{postDate}</time>
-            <strong>
-              {`${postDate && "  "}// `}
-              {post.author
-                ? `By ${post.author.first_name} ${post.author.last_name}`
-                : defaultAuthor}
-            </strong>
-          </p>
-          {/* Renders a small preview of the post's text */}
-          {firstParagraph(post)}
-        </div>
-      </Link>
+          {/* Render a small preview of the post's text */}
+          <div className="card-body">{firstParagraph(post)}</div>
+        </Link>
+      </div>
     </div>
   )
 }
@@ -84,7 +86,7 @@ export default ({ posts }) => {
   if (!posts) return null
 
   return (
-    <div className="blog-posts container">
+    <div className="columns container blog-posts">
       {posts.map((post) => {
         return <PostSummary post={post.node} key={post.node._meta.id} />
       })}
