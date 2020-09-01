@@ -58,21 +58,21 @@ const PostSummary = ({ post }) => {
             </div>
           )}
           <div className="card-header" key={post.id}>
-            <h2 className="card-title">
+            <h2 className="card-title h5">
               {RichText.asText(post.title).length !== 0
                 ? RichText.asText(post.title)
                 : defaultTitle}
             </h2>
-            <Categories categories={post.categories} />
             <div className="card-subtitle text-gray">
-              <time>{postDate}</time>
               <strong>
-                {`${postDate && "  "}// `}
-                {post.author
-                  ? `By ${post.author.first_name} ${post.author.last_name}`
-                  : defaultAuthor}
+                <time>{postDate}</time>
               </strong>
+              {`${postDate && "  "}// `}
+              {post.author
+                ? `By ${post.author.first_name} ${post.author.last_name}`
+                : defaultAuthor}
             </div>
+            <Categories categories={post.categories} />
           </div>
           {/* Render a small preview of the post's text */}
           <div className="card-body">{firstParagraph(post)}</div>

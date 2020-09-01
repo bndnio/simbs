@@ -1,6 +1,8 @@
 .blog-posts {
   .post-card {
+    @include box-shadow(0 0.25rem 1rem rgba(48, 55, 66, 0.15));
     margin-bottom: 1rem;
+
     a {
       color: $body-font-color;
       text-decoration: none;
@@ -14,8 +16,12 @@
       margin: 0px;
     }
 
+    .card-title {
+      margin-bottom: 0.25rem;
+    }
+
     .categories {
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 0;
     }
   }
 }
