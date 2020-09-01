@@ -13,7 +13,7 @@ $color-text-primary: #333;
 $color-text-secondary: #808080;
 $color-text-inverted: #fff;
 
-$color-primary: #60bd60;
+$color-primary: scale-color(#60bd60, $lightness: -20%);
 $color-contrary: #00d4ff;
 
 $primary-color: $color-primary;
