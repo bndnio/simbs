@@ -8,11 +8,14 @@ function Member({ member }) {
 
   return (
     // Member section
-    <div className="team-member">
+    <div className="team-member columns">
       {/* Member portrait image */}
-      <img className="team-member-portrait" src={member.portrait?.url}></img>
+      <img
+        className="team-member-portrait column col-3 col-md-4 col-sm-12"
+        src={member.portrait?.url}
+      ></img>
       {/* Member summary section */}
-      <div className="team-member-summary">
+      <div className="team-member-summary column col-9 col-md-8 col-sm-12">
         {/* Member summary header section */}
         <div className="team-member-head">
           {/* Render member name */}
@@ -22,8 +25,8 @@ function Member({ member }) {
             {RichText.asText(member.position)}
           </h4>
           {/* Render member name */}
-          <a class="link" href={`mailto:${member.email}`} target="_blank">
-            <span className="team-member-email">{member.email}</span>
+          <a href={`mailto:${member.email}`} target="_blank">
+            <span>{member.email}</span>
           </a>
         </div>
         {/* Render description <p> from prismic */}
@@ -46,7 +49,7 @@ export default function Team({ slice }) {
   if (!slice) return null
 
   return (
-    <div className="team container" id="team">
+    <div className="team container column" id="team">
       {/* Render slice header */}
       <TeamHead team={slice.primary} />
       {/* Render team members */}
