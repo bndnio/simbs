@@ -117,25 +117,25 @@ const PostBody = ({ blogPost, acknowledgements }) => {
           <h1 data-wio-id={blogPost._meta.id}>
             {titled ? RichText.asText(blogPost.title) : "Untitled"}
           </h1>
-          <p className="post-meta">
-            {/* Render categories if present */}
-            {blogPost.categories && (
-              <Categories categories={blogPost.categories} />
-            )}
-            {/* Render author if present */}
-            {blogPost.author && (
-              <span>
-                By {blogPost.author.first_name} {blogPost.author.last_name}
-              </span>
-            )}
-            {" // "}
+          <div className="post-meta">
             {/* Render post date */}
             {postDate && (
               <span>
                 Published <time>{postDate}</time>
               </span>
             )}
-          </p>
+            {" // "}
+            {/* Render author if present */}
+            {blogPost.author && (
+              <span>
+                By {blogPost.author.first_name} {blogPost.author.last_name}
+              </span>
+            )}
+            {/* Render categories if present */}
+            {blogPost.categories && (
+              <Categories categories={blogPost.categories} />
+            )}
+          </div>
         </div>
       </div>
       {/* Render banner image if available */}
