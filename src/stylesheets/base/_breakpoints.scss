@@ -23,7 +23,7 @@
   }
 }
 @mixin for-small-desktop-up {
-  @media (min-width: $size-sm) {
+  @media (min-width: $size-lg) {
     @content;
   }
 }
