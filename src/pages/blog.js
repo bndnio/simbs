@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 import queryString from "query-string"
 import Layout from "../components/layouts"
+import Banner from "../components/Banner"
 import BlogPosts from "../components/BlogPosts"
 import Categories from "../components/Categories"
 import toArray from "../utils/toArray"
@@ -101,16 +102,20 @@ function postHasCategories(post, categories) {
 
 // Using the queried Blog Home document data, we render the top section
 const BlogHomeHead = ({ home, categories }) => {
-  const banner = { backgroundImage: "url(" + home.image.url + ")" }
   return (
-    <div className="blog-header container" data-wio-id={home._meta.id}>
-      {/* <div className="blog-banner-bg" style={banner}> */}
-      <div className="blog-banner-text">
+    <div className="blog-header" data-wio-id={home._meta.id}>
+      <Banner
+        url={home.image.url}
+        title={RichText.asText(home.headline)}
+        subtitle={RichText.asText(home.description)}
+      />
+      {/* <div className="blog-banner-text">
         <h1>{RichText.asText(home.headline)}</h1>
         <p className="blog-description">{RichText.asText(home.description)}</p>
+      </div> */}
+      <div className="container">
+        <Categories categories={categories} displayAll enableToggle />
       </div>
-      <Categories categories={categories} displayAll enableToggle />
-      {/* </div> */}
     </div>
   )
 }
