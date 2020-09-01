@@ -1,0 +1,46 @@
+.banner {
+  width: 100%;
+  margin-bottom: 2rem;
+
+  background-position: center;
+  background-size: cover;
+
+  color: $gray-color-light;
+  text-align: center;
+
+  .banner-wrapper {
+    backdrop-filter: blur(1px);
+  }
+
+  .banner-content {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    @include for-small-desktop-up() {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  &.hero {
+    height: 100vh;
+    margin-top: -3rem;
+
+    .banner-content {
+      padding-top: 50%;
+    }
+  }
+
+  .banner-title {
+  }
+
+  .banner-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+  }
+}

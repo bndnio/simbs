@@ -2,7 +2,6 @@ import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import Layout from "../components/layouts"
-import BlogPosts from "../components/BlogPosts"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
