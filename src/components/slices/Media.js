@@ -5,7 +5,7 @@ export default function MediaSlice({ slice }) {
   if (!slice?.primary) return null
 
   return (
-    <div className="media">
+    <div className="media container">
       {/* Optionally render media title */}
       {slice.primary.media_title && (
         <h3 className="media-title">

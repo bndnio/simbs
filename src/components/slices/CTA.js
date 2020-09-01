@@ -7,7 +7,7 @@ export default function CTA({ slice }) {
   return (
     <div className="cta">
       <a
-        className="cta-button"
+        className="cta-button btn btn-lg"
         target={slice.primary.cta_link?.target}
         rel="noopener"
         href={slice.primary.cta_link?.url}

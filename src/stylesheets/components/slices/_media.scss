@@ -18,6 +18,9 @@
     overflow-x: scroll;
     margin: 0 -20px;
     padding: 1rem;
-    background-color: $color-background-darker;
+  }
+
+  a {
+    color: $body-font-color;
   }
 }
