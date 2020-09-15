@@ -4,8 +4,7 @@ footer {
   font-style: italic;
   text-align: center;
 
-  border-top: 1px solid whitesmoke;
-  @include shadow-pressed-0();
+  background-color: $gray-color-light;
 
   p {
     padding: 2rem 0;
