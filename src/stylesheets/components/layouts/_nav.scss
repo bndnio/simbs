@@ -27,8 +27,7 @@ header {
     transition: border-color 0.2s ease-in-out;
     &:not(.undocked) {
       background-color: change-color($color: $color-background, $alpha: 0.6);
-      border-bottom: solid 1px
-        change-color($color: $color-background, $alpha: 0.6);
+      border-bottom: solid 1px change-color($color: $gray-color, $alpha: 0);
     }
     &.undocked {
       background-color: change-color($color: $color-background, $alpha: 1);
@@ -36,7 +35,7 @@ header {
     }
 
     .nav-item {
-      color: $gray-color-dark;
+      color: $dark-color;
 
       &:hover {
         color: $color-primary;

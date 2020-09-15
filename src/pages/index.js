@@ -1,6 +1,7 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
+import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
 
 // Query for the Blog Home content in Prismic
@@ -26,6 +27,7 @@ export const query = graphql`
             cta_text
             title
             banner
+            banner_overlay
           }
         }
       }
@@ -59,16 +61,24 @@ export const query = graphql`
 
 // Using the queried Blog Home document data, we render the top section
 const BlogHomeHead = ({ home }) => {
-  const banner = { backgroundImage: "url(" + home.banner.url + ")" }
   return (
-    <div className="home-header container" data-wio-id={home._meta.id}>
-      <img src={home.banner.url}></img>
-      <div className="home-banner" style={banner}></div>
-      <h1>{RichText.asText(home.title)}</h1>
-      <h2>{RichText.asText(home.subtitle)}</h2>
-      <a className="home-cta link" href={home.cta_link?.url}>
-        {RichText.asText(home.cta_text)}
-      </a>
+    <div className="home-header" data-wio-id={home._meta.id}>
+      <BannerBG hero url={home.banner.url}>
+        <div className="banner-content">
+          <div className="banner-content-col">
+            <img className="simbs-crest" src={home.banner_overlay.url} />
+          </div>
+          <div className="banner-content-col">
+            <h1 className="banner-title">{RichText.asText(home.title)}</h1>
+            <h2 className="banner-subtitle">
+              {RichText.asText(home.subtitle)}
+            </h2>
+            <a className="home-cta link" href={home.cta_link?.url}>
+              {RichText.asText(home.cta_text)}
+            </a>
+          </div>
+        </div>
+      </BannerBG>
     </div>
   )
 }

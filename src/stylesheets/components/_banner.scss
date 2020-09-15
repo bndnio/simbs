@@ -9,6 +9,7 @@
   text-align: center;
 
   .banner-wrapper {
+    height: 100%;
     backdrop-filter: blur(1px);
   }
 
@@ -32,7 +33,13 @@
     margin-top: -3rem;
 
     .banner-content {
-      padding-top: 50%;
+      height: 100%;
+      padding-top: 3rem+3rem;
+
+      @include for-small-desktop-up() {
+        padding-top: 5rem+3rem;
+        padding-bottom: 5rem;
+      }
     }
   }
 
