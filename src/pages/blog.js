@@ -20,8 +20,8 @@ export const query = graphql`
               id
               type
             }
-            headline
-            description
+            title
+            subtitle
             image
           }
         }
@@ -101,17 +101,17 @@ function postHasCategories(post, categories) {
 }
 
 // Using the queried Blog Home document data, we render the top section
-const BlogHomeHead = ({ home, categories }) => {
+const BlogHomeHead = ({ page, categories }) => {
   return (
-    <div className="blog-header" data-wio-id={home._meta.id}>
+    <div className="blog-header" data-wio-id={page._meta.id}>
       <Banner
-        url={home.image.url}
-        title={RichText.asText(home.headline)}
-        subtitle={RichText.asText(home.description)}
+        url={page.image?.url}
+        title={RichText.asText(page.title || "")}
+        subtitle={RichText.asText(page.subtitle || "")}
       />
       {/* <div className="blog-banner-text">
-        <h1>{RichText.asText(home.headline)}</h1>
-        <p className="blog-description">{RichText.asText(home.description)}</p>
+        <h1>{RichText.asText(page.title)}</h1>
+        <p className="blog-subtitle">{RichText.asText(page.subtitle)}</p>
       </div> */}
       <div className="container">
         <Categories categories={categories} displayAll enableToggle />
@@ -134,7 +134,7 @@ export default ({ data }) => {
   }
 
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
+  const doc = data.prismic.allBlog_pages.edges.slice(0, 1).pop()
   const posts = data.prismic.allPosts.edges
   const categories = data.prismic.allBlog_post_categorys.edges
 
@@ -146,7 +146,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <BlogHomeHead home={doc.node} categories={categories} />
+      <BlogHomeHead page={doc.node} categories={categories} />
       <BlogPosts posts={filteredPosts} />
     </Layout>
   )

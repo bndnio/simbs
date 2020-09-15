@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import { linkResolver } from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
+import Banner from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
 
@@ -17,6 +18,8 @@ export const query = graphql`
               id
             }
             title
+            subtitle
+            image
             description
             body {
               ... on PRISMIC_Trails_pageBodyText {
@@ -39,11 +42,17 @@ export const query = graphql`
 // Using the queried Trails Page document data, we render the top section
 const TrailsHead = ({ page }) => {
   return (
-    <div className="trails-header container" data-wio-id={page._meta.id}>
-      {/* Render Trails page */}
-      {page.title && <h1>{RichText.asText(page.title)}</h1>}
-      {page.description &&
-        RichText.render(page.description, linkResolver, htmlSerializer)}
+    <div className="trails-header" data-wio-id={page._meta.id}>
+      <Banner
+        url={page.image?.url}
+        title={RichText.asText(page.title || "")}
+        subtitle={RichText.asText(page.subtitle || "")}
+      />
+
+      <div className="container">
+        {page.description &&
+          RichText.render(page.description, linkResolver, htmlSerializer)}
+      </div>
     </div>
   )
 }

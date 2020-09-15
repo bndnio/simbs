@@ -1,6 +1,7 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
+import Banner from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
 
@@ -14,7 +15,8 @@ export const query = graphql`
             _meta {
               id
             }
-            about_page_title
+            title
+            image
             body {
               ... on PRISMIC_About_pageBodyText {
                 type
@@ -50,11 +52,12 @@ export const query = graphql`
 // Using the queried About Page document data, we render the top section
 const AboutHead = ({ page }) => {
   return (
-    <div className="about-header container" data-wio-id={page._meta.id}>
-      {/* Render About page */}
-      {page.about_page_title && (
-        <h1>{RichText.asText(page.about_page_title)}</h1>
-      )}
+    <div className="about-header" data-wio-id={page._meta.id}>
+      <Banner
+        url={page.image?.url}
+        title={RichText.asText(page.title || "")}
+        subtitle={RichText.asText(page.subtitle || "")}
+      />
     </div>
   )
 }

@@ -7,7 +7,7 @@ function Banner({ url, title, subtitle, children }) {
   }
 
   return (
-    <div className="banner" style={banner}>
+    <div className="banner" style={url ? banner : {}}>
       <div className="banner-wrapper">
         {children || (
           <div className="container banner-content">
