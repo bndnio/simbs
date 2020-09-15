@@ -16,6 +16,7 @@ export const query = graphql`
               id
             }
             title
+            subtitle
             image
             body {
               ... on PRISMIC_About_pageBodyText {
