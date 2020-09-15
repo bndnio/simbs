@@ -134,7 +134,7 @@ export default ({ data }) => {
   }
 
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allBlog_pages.edges.slice(0, 1).pop()
+  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
   const posts = data.prismic.allPosts.edges
   const categories = data.prismic.allBlog_post_categorys.edges
 
