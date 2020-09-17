@@ -51,8 +51,8 @@ const MembershipHead = ({ page }) => {
     <div className="membership-header" data-wio-id={page._meta.id}>
       <Banner
         url={page.image?.url}
-        title={RichText.asText(page.title || "")}
-        subtitle={RichText.asText(page.subtitle || "")}
+        title={page.title && RichText.asText(page.title)}
+        subtitle={page.subtitle && RichText.asText(page.subtitle)}
       />
     </div>
   )
