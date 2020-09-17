@@ -49,10 +49,11 @@ const TrailsHead = ({ page }) => {
         subtitle={page.subtitle && RichText.asText(page.subtitle)}
       />
 
-      <div className="container">
-        {page.description &&
-          RichText.render(page.description, linkResolver, htmlSerializer)}
-      </div>
+      {page.description && (
+        <div className="container">
+          {RichText.render(page.description, linkResolver, htmlSerializer)}
+        </div>
+      )}
     </div>
   )
 }

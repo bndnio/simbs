@@ -109,10 +109,7 @@ const BlogHomeHead = ({ page, categories }) => {
         title={page.title && RichText.asText(page.title)}
         subtitle={page.subtitle && RichText.asText(page.subtitle)}
       />
-      {/* <div className="blog-banner-text">
-        <h1>{RichText.asText(page.title)}</h1>
-        <p className="blog-subtitle">{RichText.asText(page.subtitle)}</p>
-      </div> */}
+
       <div className="container">
         <Categories categories={categories} displayAll enableToggle />
       </div>

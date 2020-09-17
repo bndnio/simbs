@@ -18,6 +18,7 @@ export const query = graphql`
             title
             subtitle
             image
+            description
             body {
               ... on PRISMIC_Membership_pageBodyText {
                 type
@@ -54,6 +55,12 @@ const MembershipHead = ({ page }) => {
         title={page.title && RichText.asText(page.title)}
         subtitle={page.subtitle && RichText.asText(page.subtitle)}
       />
+
+      {page.description && (
+        <div className="container">
+          {RichText.render(page.description, linkResolver, htmlSerializer)}
+        </div>
+      )}
     </div>
   )
 }
