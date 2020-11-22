@@ -10,10 +10,9 @@ function Member({ member }) {
     // Member section
     <div className="team-member columns">
       {/* Member portrait image */}
-      <img
-        className="team-member-portrait column col-3 col-md-4 col-sm-12"
-        src={member.portrait?.url}
-      ></img>
+      <div className="column col-3 col-md-4 col-sm-12">
+        <img className="team-member-portrait" src={member.portrait?.url}></img>
+      </div>
       {/* Member summary section */}
       <div className="team-member-summary column col-9 col-md-8 col-sm-12">
         {/* Member summary header section */}
