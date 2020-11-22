@@ -89,7 +89,7 @@ function Nav({ clearNav, data }) {
         }`}
       >
         {/* Left nav */}
-        <section className="navbar-section hide-md">
+        <section className="navbar-section logo hide-md">
           <a href="/">
             <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
           </a>
@@ -113,7 +113,7 @@ function Nav({ clearNav, data }) {
         </section>
 
         {/* Center nav */}
-        <section className="navbar-center show-md">
+        <section className="navbar-center logo show-md">
           <a className="img-link" href="/">
             <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
           </a>

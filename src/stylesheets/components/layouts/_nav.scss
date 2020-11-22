@@ -1,16 +1,12 @@
 header {
   .navbar-placeholder {
-    height: 60px;
+    height: 3rem;
   }
 
   // Override defaults for navbar content
   .navbar .nav {
     margin: 1rem;
     padding: unset;
-
-    .nav-item {
-      margin: 0 0 0.4rem;
-    }
   }
 
   // Set navbar defaults & positioning
@@ -21,12 +17,12 @@ header {
     z-index: 1000;
 
     height: 3rem;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
 
     transition: all 0.2s ease-in-out;
     background-color: change-color($color: $color-background, $alpha: 1);
 
-    &.docked {
+    &.clear-nav.docked {
       background-color: change-color($color: $color-background, $alpha: 0);
       .nav-item {
         color: $color-text-inverted;
@@ -36,15 +32,19 @@ header {
     .nav-item {
       color: $color-text-primary;
       font-weight: 800;
-      padding: 0 1rem;
+      padding: 0.5rem 1rem;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $color-primary;
       }
     }
 
-    img {
-      max-height: 40px;
+    .logo {
+      margin-top: 4px;
+      img {
+        height: 50px;
+      }
     }
 
     .off-canvas-toggle {
@@ -59,7 +59,17 @@ header {
     }
   }
 
-  .join-button {
-    padding: 0.5rem 0.8rem;
+  .btn {
+    height: unset;
+    line-height: unset;
+
+    // Fix Join Button
+    &.btn-primary {
+      padding: 0.2rem 0.8rem;
+    }
+
+    :active {
+      outline: unset;
+    }
   }
 }
