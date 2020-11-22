@@ -2,7 +2,7 @@
   // Extent _banner.scss
   .banner {
     .banner-content {
-      flex-wrap: wrap;
+      flex-direction: column;
       @include for-small-desktop-up {
         flex-direction: row;
       }
@@ -13,15 +13,15 @@
 
     .banner-content-col {
       display: flex;
-      flex: 1 1 0;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin: 0rem 1rem;
     }
   }
 
   .simbs-crest {
     max-width: 400px;
-    width: 70vmin;
+    width: 50vmin;
   }
 }
