@@ -5,11 +5,11 @@ import { useLocation } from "@reach/router"
 import queryString from "query-string"
 import Layout from "../components/layouts"
 import Banner from "../components/Banner"
-import BlogPosts from "../components/BlogPosts"
+import Posts from "../components/Posts"
 import Categories from "../components/Categories"
 import toArray from "../utils/toArray"
 
-// Query for the Blog Home content in Prismic
+// Query for the News Home content in Prismic
 export const query = graphql`
   {
     prismic {
@@ -100,10 +100,10 @@ function postHasCategories(post, categories) {
   return false
 }
 
-// Using the queried Blog Home document data, we render the top section
-const BlogHomeHead = ({ page, categories }) => {
+// Using the queried News Home document data, we render the top section
+const NewsHead = ({ page, categories }) => {
   return (
-    <div className="blog-header" data-wio-id={page._meta.id}>
+    <div className="news-header" data-wio-id={page._meta.id}>
       <Banner
         url={page.image?.url}
         title={page.title && RichText.asText(page.title)}
@@ -130,7 +130,7 @@ export default ({ data }) => {
     return queryCategories
   }
 
-  // Define the Blog Home & Blog Post content returned from Prismic
+  // Define the News Home & News Post content returned from Prismic
   const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
   const posts = data.prismic.allPosts.edges
   const categories = data.prismic.allBlog_post_categorys.edges
@@ -143,8 +143,8 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <BlogHomeHead page={doc.node} categories={categories} />
-      <BlogPosts posts={filteredPosts} />
+      <NewsHead page={doc.node} categories={categories} />
+      <Posts posts={filteredPosts} />
     </Layout>
   )
 }
