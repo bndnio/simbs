@@ -4,6 +4,8 @@ import { graphql } from "gatsby"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
+import { linkResolver } from "../utils/linkResolver"
+import htmlSerializer from "../utils/htmlSerializer"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
