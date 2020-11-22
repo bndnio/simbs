@@ -90,7 +90,7 @@ export default ({ data }) => {
   if (!doc) return null
 
   return (
-    <Layout>
+    <Layout clearNav>
       <BlogHomeHead home={doc.node} />
     </Layout>
   )

@@ -51,7 +51,7 @@ function NavItem({ navItem, list }) {
   )
 }
 
-function Nav({ data }) {
+function Nav({ clearNav, data }) {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [navRef, setNavRef] = useState(null)
@@ -83,7 +83,11 @@ function Nav({ data }) {
   return (
     <header>
       <div className="navbar-placeholder"></div>
-      <nav className={`navbar ${scroll ? "undocked" : ""}`}>
+      <nav
+        className={`navbar ${clearNav ? "clear-nav" : ""} ${
+          scroll ? "" : "docked"
+        }`}
+      >
         {/* Left nav */}
         <section className="navbar-section hide-md">
           <a href="/">
@@ -152,7 +156,7 @@ export default function (props) {
           }
         }
       `}
-      render={(data) => <Nav data={data}></Nav>}
+      render={(data) => <Nav {...props} data={data}></Nav>}
     />
   )
 }

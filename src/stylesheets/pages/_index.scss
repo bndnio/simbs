@@ -1,17 +1,20 @@
 .home-header {
-  .banner-content {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .banner {
+    .banner-content {
+      flex-direction: row;
+      flex-wrap: wrap;
 
-    justify-content: space-around;
-    align-items: center;
-  }
+      justify-content: space-around;
+      align-items: center;
+    }
 
-  .banner-content-col {
-    display: flex;
-    flex: 1 1 0;
-    flex-direction: column;
-    justify-content: center;
+    .banner-content-col {
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .simbs-crest {

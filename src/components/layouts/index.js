@@ -17,11 +17,13 @@ export default (props) => (
         }
       }
     `}
-    render={(data) => <Layout data={data} {...props} />}
+    render={(data) => <Layout {...props} data={data} />}
   />
 )
 
 const Layout = (props) => {
+  // Pass along clearNav setting
+  const { clearNav } = props
   // Define the meta title and description
   const title = props.data.site.siteMetadata.title
   const description = props.data.site.siteMetadata.description
@@ -47,7 +49,7 @@ const Layout = (props) => {
           rel="stylesheet"
         ></link>
       </Helmet>
-      <Nav />
+      <Nav clearNav={clearNav} />
       <main>{props.children}</main>
       <Footer />
     </Fragment>
