@@ -1,8 +1,11 @@
 .home-header {
+  // Extent _banner.scss
   .banner {
     .banner-content {
-      flex-direction: row;
       flex-wrap: wrap;
+      @include for-small-desktop-up {
+        flex-direction: row;
+      }
 
       justify-content: space-around;
       align-items: center;
@@ -19,5 +22,6 @@
 
   .simbs-crest {
     max-width: 400px;
+    width: 70vmin;
   }
 }

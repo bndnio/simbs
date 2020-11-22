@@ -21,9 +21,13 @@ header {
 
     transition: all 0.2s ease-in-out;
     background-color: change-color($color: $color-background, $alpha: 1);
+    border-bottom: 1px solid
+      change-color($color: $color-background-darkest, $alpha: 1);
 
     &.clear-nav.docked {
       background-color: change-color($color: $color-background, $alpha: 0);
+      border-bottom: 1px solid
+        change-color($color: $color-background-darkest, $alpha: 0);
       .nav-item {
         color: $color-text-inverted;
       }
@@ -48,7 +52,7 @@ header {
     }
 
     .off-canvas-toggle {
-      top: 0.1rem;
+      top: 0.6rem;
       left: 0;
     }
 

@@ -114,9 +114,12 @@ function Nav({ clearNav, data }) {
 
         {/* Center nav */}
         <section className="navbar-center logo show-md">
-          <a className="img-link" href="/">
-            <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
-          </a>
+          {/* Hide SIMBS middle logo if nav is clear */}
+          {clearNav ? null : (
+            <a className="img-link" href="/">
+              <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
+            </a>
+          )}
         </section>
         <section className="navbar-center hide-md">
           <NavItems navItems={doc.node.navto} />
