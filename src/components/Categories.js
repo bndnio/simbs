@@ -60,7 +60,9 @@ function Category({ category, enableToggle }) {
       )
       // If not selected, add to the list
     } else {
-      nextQueryCategories = [...queryCategories, uid]
+      nextQueryCategories = [uid]
+      // Replace with below to enable tag multi-select
+      // nextQueryCategories = [...queryCategories, uid]
     }
 
     // Build new object of query params
@@ -72,7 +74,7 @@ function Category({ category, enableToggle }) {
       .join("&")
 
     // Push new url by replacing the current one
-    return navigate(`/blog${nextQueryString ? "?" : ""}${nextQueryString}`, {
+    return navigate(`/news${nextQueryString ? "?" : ""}${nextQueryString}`, {
       replace: true,
     })
   }
@@ -143,7 +145,7 @@ function AllCategory({ enableToggle = false }) {
       .join("&")
 
     // Push new url by replacing the current one
-    return navigate(`/blog${nextQueryString ? "?" : ""}${nextQueryString}`, {
+    return navigate(`/news${nextQueryString ? "?" : ""}${nextQueryString}`, {
       replace: true,
     })
   }
