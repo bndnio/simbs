@@ -2,6 +2,7 @@
   // Extent _banner.scss
   .banner {
     .banner-content {
+      flex-wrap: wrap;
       flex-direction: column;
       @include for-small-desktop-up {
         flex-direction: row;

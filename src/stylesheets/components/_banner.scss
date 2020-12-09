@@ -35,6 +35,7 @@
     .banner-content {
       height: 100%;
       padding-top: 3rem;
+      padding-bottom: 0rem;
 
       @include for-small-desktop-up() {
         padding-top: 5rem+3rem;

@@ -1,4 +1,4 @@
-$color-background: #fff;
+$color-background: #fafafa;
 $color-background-darker: scale-color($color-background, $lightness: -10%);
 $color-background-lighter: scale-color($color-background, $lightness: +10%);
 $color-background-gradient: linear-gradient(
@@ -11,7 +11,7 @@ $color-background-lightest: scale-color($color-background, $lightness: +30%);
 
 $color-text-primary: #333;
 $color-text-secondary: #808080;
-$color-text-inverted: #fff;
+$color-text-inverted: #fafafa;
 
 $color-primary: scale-color(#60bd60, $lightness: -20%);
 $color-contrary: #00d4ff;
