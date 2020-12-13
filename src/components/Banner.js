@@ -22,8 +22,8 @@ function Banner({ url, hero, title, subtitle }) {
   return (
     <BannerBG url={url} hero={hero}>
       <div className="container banner-content">
-        {title && <h1 className="banner-title">{title}</h1>}
-        {subtitle && <h3 className="banner-subtitle">{subtitle}</h3>}
+        {title && <h1>{title}</h1>}
+        {subtitle && <h4>{subtitle}</h4>}
       </div>
     </BannerBG>
   )

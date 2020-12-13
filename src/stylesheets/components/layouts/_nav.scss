@@ -3,14 +3,21 @@ header {
     height: 3rem;
   }
 
-  // Override defaults for navbar content
-  .navbar .nav {
+  // Override defaults for spectre navbar content
+  .navbar .nav-items {
     margin: 1rem;
     padding: unset;
   }
 
-  // Set navbar defaults & positioning
+  //Override defaults for spectre navbar-section
+  .navbar .navbar-section {
+    flex: unset;
+  }
+
+  // Set navbar defaults & positioning (override)
   .navbar {
+    flex-wrap: nowrap;
+
     position: fixed;
     top: 0;
     width: 100%;

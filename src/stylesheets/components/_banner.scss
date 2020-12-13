@@ -1,5 +1,6 @@
 .banner {
   width: 100%;
+  min-height: 50vh;
   margin-bottom: 2rem;
 
   background-position: center;
@@ -42,13 +43,5 @@
         padding-bottom: 5rem;
       }
     }
-  }
-
-  .banner-title {
-  }
-
-  .banner-subtitle {
-    font-size: 1.2rem;
-    font-weight: 600;
   }
 }
