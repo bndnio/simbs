@@ -102,7 +102,7 @@ function Nav({ clearNav, data }) {
             <i className="icon icon-menu"></i>
           </a>
           <div className={`off-canvas-sidebar ${mobileMenu ? "active" : ""}`}>
-            <ul className="nav-items">
+            <ul className="nav">
               <NavItems list navItems={doc.node.navto} />
             </ul>
           </div>

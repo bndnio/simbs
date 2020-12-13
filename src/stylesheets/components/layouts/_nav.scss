@@ -4,14 +4,19 @@ header {
   }
 
   // Override defaults for spectre navbar content
-  .navbar .nav-items {
+  .navbar .nav {
     margin: 1rem;
     padding: unset;
   }
 
-  //Override defaults for spectre navbar-section
+  // Override defaults for spectre navbar-section
   .navbar .navbar-section {
     flex: unset;
+  }
+
+  // Override spacing of mobile menu toggle button
+  .navbar-section.off-canvas {
+    width: 34px;
   }
 
   // Set navbar defaults & positioning (override)

@@ -27,7 +27,6 @@ export const query = graphql`
             cta_text
             title
             banner
-            banner_overlay
           }
         }
       }
@@ -41,11 +40,9 @@ const HomeHead = ({ home }) => {
     <div className="home-header" data-wio-id={home._meta.id}>
       <BannerBG hero url={home.banner.url}>
         <div className="banner-content">
-          <div className="banner-content-col">
-            <h1 className="banner-title">{RichText.asText(home.title)}</h1>
-            <h2 className="banner-subtitle">
-              {RichText.asText(home.subtitle)}
-            </h2>
+          <div className="banner-content-unit">
+            <h1>{RichText.asText(home.title)}</h1>
+            <h4>{RichText.asText(home.subtitle)}</h4>
             <a className="btn btn-primary" href={home.cta_link?.url}>
               {RichText.asText(home.cta_text)}
             </a>
