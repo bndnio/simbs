@@ -1,5 +1,5 @@
 import React from "react"
-import { RichText } from "prismic-reactjs"
+import { RichText, Link } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
@@ -37,6 +37,14 @@ export const query = graphql`
             sponsor {
               logo
               name
+              link {
+                _linkType
+                ... on PRISMIC__ExternalLink {
+                  target
+                  _linkType
+                  url
+                }
+              }
             }
           }
         }
@@ -66,8 +74,21 @@ const HomeHead = ({ home }) => {
 
 const HomeSponsor = ({ sponsor }) => {
   if (!sponsor?.logo) return null
+  const SponsorImg = () => <img src={sponsor.logo.url} alt={sponsor.logo.alt} />
 
-  return <img src={sponsor.logo.url} alt={sponsor.logo.alt} />
+  if (sponsor.link?._linkType === "Link.web") {
+    return (
+      <a
+        href={Link.url(sponsor.link)}
+        rel="noopener"
+        target={sponsor.link?.target}
+      >
+        <SponsorImg />
+      </a>
+    )
+  }
+
+  return <SponsorImg />
 }
 
 const HomeSponsors = ({ title, sponsors = [] }) => {
