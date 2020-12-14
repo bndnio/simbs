@@ -1,6 +1,7 @@
 import React from "react"
 import CTA from "./CTA"
 import ImageCaption from "./ImageCaption"
+import InfoPanel from "./InfoPanel"
 import Media from "./Media"
 import PullQuote from "./PullQuote"
 import Team from "./Team"
@@ -26,6 +27,13 @@ export default function Slices({ slices }) {
           return (
             <div key={index} className="slice-wrapper">
               {<ImageCaption slice={slice} />}
+            </div>
+          )
+
+        case "info_panel":
+          return (
+            <div key={index} className="slice-wrapper">
+              {<InfoPanel slice={slice} />}
             </div>
           )
 

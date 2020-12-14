@@ -45,6 +45,15 @@ export const query = graphql`
                   email
                 }
               }
+              ... on PRISMIC_About_pageBodyInfo_panel {
+                type
+                label
+                fields {
+                  info_description
+                  info_image
+                  info_slogan
+                }
+              }
             }
           }
         }

@@ -1,0 +1,44 @@
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $color-contrary;
+  color: $color-text-inverted;
+  padding: 3rem 1rem 0;
+
+  .info-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-bottom: 3rem;
+
+    &.opposite {
+      flex-direction: row-reverse;
+    }
+
+    & > * {
+      margin: 0.5rem 1rem;
+    }
+
+    & > img {
+      max-width: 30rem;
+      max-height: 10rem;
+    }
+
+    & > .info-content {
+      flex: 1 0 0;
+      min-width: 18rem;
+    }
+
+    p {
+      margin: 0rem;
+    }
+  }
+
+  .image-placeholder {
+    background-color: $color-contrary;
+  }
+}
