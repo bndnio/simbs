@@ -3,6 +3,7 @@ import { RichText, Link } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
+import Slices from "../components/slices"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
@@ -28,6 +29,31 @@ export const query = graphql`
             cta_text
             title
             banner
+            body {
+              ... on PRISMIC_Home_pageBodyCta_cards {
+                type
+                label
+                primary {
+                  cta_cards_title
+                  cta_explainer_text
+                }
+                fields {
+                  card_description
+                  cta_background
+                  card_title
+                  cta_text
+                  cta_internal_link
+                  cta_link {
+                    _linkType
+                    ... on PRISMIC__ExternalLink {
+                      target
+                      _linkType
+                      url
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -110,7 +136,7 @@ const HomeHighlights = ({ highlights }) => {
   return null
 }
 
-const HomeCommunity = ({ community }) => {
+const HomeNews = ({ community }) => {
   return null
 }
 
@@ -130,8 +156,9 @@ export default ({ data }) => {
     <Layout clearNav>
       <HomeHead home={doc.node} />
       <HomeSponsors title={doc.node?.sponsors_title} sponsors={sponsors} />
+      <Slices slices={doc.node.body} />
       <HomeHighlights />
-      <HomeCommunity />
+      <HomeNews />
       <HomeSocial />
     </Layout>
   )

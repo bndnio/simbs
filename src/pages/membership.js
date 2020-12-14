@@ -40,6 +40,29 @@ export const query = graphql`
                   media_title
                 }
               }
+              ... on PRISMIC_Membership_pageBodyCta_cards {
+                type
+                label
+                primary {
+                  cta_cards_title
+                  cta_explainer_text
+                }
+                fields {
+                  card_description
+                  cta_background
+                  card_title
+                  cta_text
+                  cta_internal_link
+                  cta_link {
+                    _linkType
+                    ... on PRISMIC__ExternalLink {
+                      target
+                      _linkType
+                      url
+                    }
+                  }
+                }
+              }
             }
           }
         }
