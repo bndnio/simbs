@@ -136,7 +136,7 @@ const HomeHighlights = ({ highlights }) => {
   return null
 }
 
-const HomeNews = ({ community }) => {
+const HomeNews = ({ news }) => {
   return null
 }
 
