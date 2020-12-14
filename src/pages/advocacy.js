@@ -31,6 +31,22 @@ export const query = graphql`
                   title
                 }
               }
+              ... on PRISMIC_Advocacy_pageBodyInfo_panel {
+                type
+                label
+                fields {
+                  info_description
+                  info_image
+                  info_slogan
+                }
+              }
+              ... on PRISMIC_Advocacy_pageBodyPull_quote {
+                type
+                label
+                primary {
+                  quote
+                }
+              }
             }
           }
         }
