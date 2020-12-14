@@ -14,11 +14,6 @@ export function BannerBG({ url, hero, children }) {
 }
 
 function Banner({ url, hero, title, subtitle }) {
-  const bannerOpacity = 0.2
-  const banner = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, ${bannerOpacity}), rgba(0, 0, 0, ${bannerOpacity})), url('${url}')`,
-  }
-
   return (
     <BannerBG url={url} hero={hero}>
       <div className="container banner-content">

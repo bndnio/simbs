@@ -1,5 +1,6 @@
 import React from "react"
 import CTA from "./CTA"
+import CTACards from "./CTACards"
 import ImageCaption from "./ImageCaption"
 import InfoPanel from "./InfoPanel"
 import Media from "./Media"
@@ -20,6 +21,13 @@ export default function Slices({ slices }) {
           return (
             <div key={index} className="slice-wrapper">
               {<CTA slice={slice} />}
+            </div>
+          )
+
+        case "cta_cards":
+          return (
+            <div key={index} className="slice-wrapper">
+              {<CTACards slice={slice} />}
             </div>
           )
 

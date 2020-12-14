@@ -1,0 +1,48 @@
+.card-wrapper {
+  margin: 0 0.5rem 1rem;
+  min-width: 10rem;
+  width: 45%;
+  @include for-tablet-landscape-up {
+    width: 30%;
+  }
+  @include for-phone-only {
+    width: 80%;
+  }
+}
+
+.cta-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;
+  .invert {
+    color: $color-text-inverted;
+  }
+
+  .cta-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 1rem;
+    min-width: 10rem;
+    min-height: 8rem;
+    @include for-phone-only {
+      width: 100%;
+    }
+
+    @include box-shadow(0 0.25rem 1rem rgba(48, 55, 66, 0.15));
+
+    .card-top {
+      text-align: center;
+      * {
+        margin: unset;
+      }
+    }
+  }
+}
