@@ -22,7 +22,7 @@ export const query = graphql`
             image
             description
             body {
-              ... on PRISMIC_Trails_pageBodyText {
+              ... on PRISMIC_Events_pageBodyText {
                 type
                 label
                 primary {
@@ -31,7 +31,7 @@ export const query = graphql`
                   title
                 }
               }
-              ... on PRISMIC_Trails_pageBodyText_with_embed {
+              ... on PRISMIC_Events_pageBodyText_with_embed {
                 type
                 label
                 primary {
@@ -50,7 +50,7 @@ export const query = graphql`
 `
 
 // Using the queried Events Page document data, we render the top section
-const TrailsHead = ({ page }) => {
+const EventsHead = ({ page }) => {
   return (
     <div className="events-header" data-wio-id={page._meta.id}>
       <Banner
@@ -70,13 +70,13 @@ const TrailsHead = ({ page }) => {
 
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allTrails_pages.edges.slice(0, 1).pop()
+  const doc = data.prismic.allEvents_pages.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
   return (
     <Layout>
-      <TrailsHead page={doc.node} />
+      <EventsHead page={doc.node} />
       <Slices slices={doc.node.body} />
     </Layout>
   )
