@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { RichText } from "prismic-reactjs"
 
 // Default Image
@@ -74,5 +74,5 @@ const renderSwitch = function (slice) {
 
 export default ({ slice }) => {
   if (!slice.primary.image) return null
-  return <Fragment>{renderSwitch(slice)}</Fragment>
+  return renderSwitch(slice)
 }

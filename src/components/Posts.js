@@ -49,7 +49,7 @@ const PostSummary = ({ post }) => {
 
   return (
     // We render a link to a particular post using the linkResolver for the url and its title
-    <div className="column col-4 col-lg-6 col-sm-12" key={post.id}>
+    <div className="column col-4 col-lg-6 col-sm-12">
       <div className="card post-card">
         <Link to={linkResolver(post._meta)}>
           {post.thumbnail && (
@@ -57,7 +57,7 @@ const PostSummary = ({ post }) => {
               <img src={post.thumbnail.url}></img>
             </div>
           )}
-          <div className="card-header" key={post.id}>
+          <div className="card-header">
             <h2 className="card-title h5">
               {RichText.asText(post.title).length !== 0
                 ? RichText.asText(post.title)
