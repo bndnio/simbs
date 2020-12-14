@@ -52,8 +52,8 @@ export default function Team({ slice }) {
       {/* Render slice header */}
       <TeamHead team={slice.primary} />
       {/* Render team members */}
-      {slice.fields.map((member) => (
-        <Member member={member} />
+      {slice.fields.map((member, i) => (
+        <Member member={member} key={i} />
       ))}
     </div>
   )

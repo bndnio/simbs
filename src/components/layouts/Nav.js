@@ -26,8 +26,8 @@ function NavItems({ navItems, list }) {
 
   return (
     <>
-      {navItems.map((navItem) => (
-        <NavItem list={list} navItem={navItem} />
+      {navItems.map((navItem, i) => (
+        <NavItem list={list} navItem={navItem} key={i} />
       ))}
     </>
   )
@@ -148,6 +148,9 @@ export default function (props) {
             allNavigations {
               edges {
                 node {
+                  _meta {
+                    id
+                  }
                   navto {
                     page
                     page_name

@@ -33,7 +33,7 @@ export default function InfoPanel({ slice }) {
   return (
     <div className="info-panel">
       {infoSections.map((section, i) => (
-        <InfoSection section={section} opposite={i % 2} />
+        <InfoSection section={section} opposite={i % 2} key={i} />
       ))}
     </div>
   )

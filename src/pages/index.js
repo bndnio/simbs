@@ -77,8 +77,8 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
     <div className="home-sponsors">
       {title && <h5 className="sponsors-title">{RichText.asText(title)}</h5>}
       <div className="sponsors-row">
-        {sponsors.map((sponsor) => (
-          <HomeSponsor sponsor={sponsor} />
+        {sponsors.map((sponsor, i) => (
+          <HomeSponsor sponsor={sponsor} key={i} />
         ))}
       </div>
     </div>
