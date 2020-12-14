@@ -59,6 +59,7 @@ export default function Slices({ slices }) {
           )
 
         case "text":
+        case "text_with_embed":
           return (
             <div key={index} className="slice-wrapper">
               {<Text slice={slice} />}

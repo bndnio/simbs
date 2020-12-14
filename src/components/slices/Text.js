@@ -8,8 +8,16 @@ export default function Text({ slice }) {
 
   return (
     <div name={slice.primary.anchor} className="text container">
-      {/* Render text section title */}
+      {/* Render text section title if present */}
       {slice.primary.title && <h2>{RichText.asText(slice.primary.title)}</h2>}
+      {/* Render embedded code if present */}
+      {slice.primary.raw_embed && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: RichText.asText(slice.primary.raw_embed),
+          }}
+        />
+      )}
       {/* Render text body */}
       {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}
     </div>

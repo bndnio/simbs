@@ -31,6 +31,16 @@ export const query = graphql`
                   title
                 }
               }
+              ... on PRISMIC_Trails_pageBodyText_with_embed {
+                type
+                label
+                primary {
+                  anchor
+                  text
+                  title
+                  raw_embed
+                }
+              }
             }
           }
         }
