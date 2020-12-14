@@ -34,6 +34,9 @@ export const query = graphql`
               ... on PRISMIC_Advocacy_pageBodyInfo_panel {
                 type
                 label
+                primary {
+                  info_title
+                }
                 fields {
                   info_description
                   info_image
