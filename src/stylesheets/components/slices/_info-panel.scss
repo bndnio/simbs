@@ -4,7 +4,7 @@
   width: 100%;
   background-color: $color-contrary;
   color: $color-text-inverted;
-  padding: 3rem 1rem 0;
+  padding: 2rem 1rem 0;
 
   .info-section {
     display: flex;
@@ -13,14 +13,14 @@
     align-items: flex-start;
     justify-content: center;
 
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     &.opposite {
       flex-direction: row-reverse;
     }
 
     & > * {
-      margin: 0.5rem 1rem;
+      margin: 0.25rem 1rem;
     }
 
     & > img {
@@ -31,6 +31,19 @@
     & > .info-content {
       flex: 1 0 0;
       min-width: 18rem;
+
+      @include for-phone-only {
+        min-width: 10rem;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0.5rem;
     }
 
     p {
