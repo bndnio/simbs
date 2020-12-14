@@ -27,9 +27,8 @@ function InfoSection({ section, opposite }) {
 }
 
 export default function InfoPanel({ slice }) {
-  console.log(slice)
-  const infoSections = slice?.fields
-  if (!infoSections) return null
+  const infoSections = slice?.fields || []
+  if (!infoSections.length) return null
 
   return (
     <div className="info-panel">

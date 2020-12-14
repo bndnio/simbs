@@ -28,6 +28,32 @@
 }
 
 .home-sponsors {
-  height: 5rem;
-  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: 0.5rem 0;
+
+  background-color: $color-contrary;
+  color: $color-text-inverted;
+
+  .sponsors-title {
+    margin-bottom: 0;
+  }
+
+  .sponsors-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-items: center;
+
+    overflow: hidden;
+  }
+
+  img {
+    max-height: 5rem;
+    margin: 1rem;
+  }
 }
