@@ -16,10 +16,10 @@ export function BannerBG({ url, hero, children }) {
 function Banner({ url, hero, title, subtitle }) {
   return (
     <BannerBG url={url} hero={hero}>
-      <div className="container banner-content">
+      <header className="container banner-content">
         {title && <h1>{title}</h1>}
-        {subtitle && <h4>{subtitle}</h4>}
-      </div>
+        {subtitle && <p className="h4">{subtitle}</p>}
+      </header>
     </BannerBG>
   )
 }

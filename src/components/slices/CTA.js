@@ -5,7 +5,7 @@ export default function CTA({ slice }) {
   if (!slice?.primary) return null
 
   return (
-    <div className="cta">
+    <section className="cta">
       <a
         className="cta-button btn btn-lg"
         target={slice.primary.cta_link?.target}
@@ -14,6 +14,6 @@ export default function CTA({ slice }) {
       >
         {RichText.asText(slice.primary.cta_title)}
       </a>
-    </div>
+    </section>
   )
 }

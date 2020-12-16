@@ -31,13 +31,13 @@ export default function InfoPanel({ slice }) {
   if (!infoSections.length) return null
 
   return (
-    <div className="info-panel-wrapper">
+    <section className="info-panel-wrapper">
       <div className="info-panel container">
         {RichText.render(slice.info_title, linkResolver, htmlSerializer)}
         {infoSections.map((section, i) => (
           <InfoSection section={section} opposite={i % 2} key={i} />
         ))}
       </div>
-    </div>
+    </section>
   )
 }

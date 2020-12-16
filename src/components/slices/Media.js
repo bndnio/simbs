@@ -5,7 +5,7 @@ export default function MediaSlice({ slice }) {
   if (!slice?.primary) return null
 
   return (
-    <div className="media container">
+    <section className="media container">
       {/* Optionally render media title */}
       {slice.primary.media_title && (
         <h3 className="media-title">
@@ -23,6 +23,6 @@ export default function MediaSlice({ slice }) {
           {RichText.asText(slice.primary.media_caption)}
         </span>
       ) : null}
-    </div>
+    </section>
   )
 }

@@ -108,8 +108,8 @@ const PostBody = ({ blogPost, acknowledgements }) => {
   return (
     <div className="post">
       {/* Put contents in width controleld box */}
-      <div className="container reading-block">
-        <div className="post-header">
+      <div className="container">
+        <header className="post-header">
           <div className="back">
             <Link to="/blog">back to list</Link>
           </div>
@@ -136,14 +136,14 @@ const PostBody = ({ blogPost, acknowledgements }) => {
               <Categories categories={blogPost.categories} />
             )}
           </div>
-        </div>
+        </header>
       </div>
       {/* Render banner image if available */}
       {blogPost.banner && (
         <img className="post-banner" src={blogPost.banner.url}></img>
       )}
       {/* Put contents back in container */}
-      <div className="container reading-block">
+      <div className="container">
         {/* Go through the slices of the post and render the appropriate one */}
         <Slices slices={blogPost.body} />
         {/* Render acknowledgements */}

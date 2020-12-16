@@ -86,10 +86,10 @@ export default ({ posts }) => {
   if (!posts) return null
 
   return (
-    <div className="columns container blog-posts">
+    <section className="columns container blog-posts">
       {posts.map((post) => {
         return <PostSummary post={post.node} key={post.node._meta.id} />
       })}
-    </div>
+    </section>
   )
 }

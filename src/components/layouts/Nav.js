@@ -89,12 +89,12 @@ function Nav({ clearNav, data }) {
         }`}
       >
         {/* Left nav */}
-        <section className="navbar-section logo hide-md">
+        <div className="navbar-section logo hide-md">
           <a href="/">
             <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
           </a>
-        </section>
-        <section className="navbar-section off-canvas show-md">
+        </div>
+        <div className="navbar-section off-canvas show-md">
           <a
             className="off-canvas-toggle btn"
             onClick={() => setMobileMenu(true)}
@@ -110,30 +110,30 @@ function Nav({ clearNav, data }) {
             className="off-canvas-overlay"
             onClick={() => setMobileMenu(false)}
           ></div>
-        </section>
+        </div>
 
         {/* Center nav */}
-        <section className="navbar-center logo show-md">
+        <div className="navbar-center logo show-md">
           {/* Hide SIMBS middle logo if nav is clear */}
           {clearNav ? null : (
             <a className="img-link" href="/">
               <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
             </a>
           )}
-        </section>
-        <section className="navbar-center hide-md">
+        </div>
+        <div className="navbar-center hide-md">
           <NavItems navItems={doc.node.navto} />
-        </section>
+        </div>
 
         {/* Right nav */}
-        <section className="navbar-section">
+        <div className="navbar-section">
           <a
             className="btn btn-primary"
             href="https://www.joinit.org/o/south-island-mountain-bike-society"
           >
             <span className={"join-button"}>Join</span>
           </a>
-        </section>
+        </div>
       </nav>
     </header>
   )
