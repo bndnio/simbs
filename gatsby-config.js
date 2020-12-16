@@ -4,8 +4,9 @@ var repo = /([^\/]+)\.cdn\.prismic\.io/.exec(apiEndpoint)[1]
 module.exports = {
   siteMetadata: {
     title: `SIMBS`,
+    keywords: `mountain, bike, biking, mtb, south, vancouver, island, riding`,
     description: `Home of the South Island Mountain Bike Society`,
-    author: `@bndnio`,
+    author: `Brendon Earl (@bndnio)`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
