@@ -87,7 +87,7 @@ const HomeHead = ({ home }) => {
         <div className="banner-content">
           <div className="banner-content-unit">
             <h1>{RichText.asText(home.title)}</h1>
-            <h4>{RichText.asText(home.subtitle)}</h4>
+            <p className="h4">{RichText.asText(home.subtitle)}</p>
             <a className="btn btn-primary" href={home.cta_link?.url}>
               {RichText.asText(home.cta_text)}
             </a>
