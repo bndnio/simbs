@@ -60,12 +60,13 @@ const Layout = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
-        <meta name="og:title" content={title} />
+        <meta property="og:title" content={title} />
         <meta name="description" content={descriptionPreview} />
+        <meta property="og:description" content={descriptionPreview} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
-        <meta name="og:url" content={url} />
-        <meta name="og:image" content={image} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
