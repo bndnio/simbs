@@ -163,7 +163,13 @@ export default (props) => {
 
   if (!doc || !doc.node) return null
 
-  const { title, author: postAuthor, seo_keywords, seo_description } = doc.node
+  const {
+    title,
+    author: postAuthor,
+    seo_keywords,
+    seo_description,
+    banner,
+  } = doc.node
   const author = postAuthor
     ? `${postAuthor.first_name} ${postAuthor.last_name}`
     : "SIMBS"
@@ -174,6 +180,7 @@ export default (props) => {
       author={author}
       keywords={seo_keywords}
       description={seo_description}
+      image={banner.url}
     >
       <PostBody blogPost={doc.node} />
     </Layout>

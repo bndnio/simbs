@@ -40,6 +40,7 @@ const Layout = (props) => {
   const keywords = props.keywords || metaKeywords
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
+  const image = props.image || `${window.location.host}/simbs_logo.jpg`
 
   const descriptionPreview = getTextPreview(description, 160)
 
@@ -53,9 +54,11 @@ const Layout = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
+        <meta name="og:title" content={title} />
         <meta name="description" content={descriptionPreview} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
+        <meta name="og:image" content={image} />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
