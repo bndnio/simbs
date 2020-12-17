@@ -19,8 +19,8 @@ module.exports = {
         pages: [
           {
             type: "Post",
-            match: "/blog/:uid",
-            path: "/blog-preview",
+            match: "/news/:uid",
+            path: "/news",
             component: require.resolve("./src/templates/post.js"),
           },
         ],
