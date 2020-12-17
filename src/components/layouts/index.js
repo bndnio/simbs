@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import { navigate, useLocation } from "@reach/router"
 import Nav from "./Nav"
 import Footer from "./Footer"
 import getTextPreview from "../../utils/getTextPreview"
@@ -25,6 +26,8 @@ export default (props) => (
 )
 
 const Layout = (props) => {
+  const location = useLocation()
+
   // Pass along clearNav setting
   const { clearNav } = props
 
@@ -40,8 +43,8 @@ const Layout = (props) => {
   const keywords = props.keywords || metaKeywords
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
-  const image = props.image || `${window.location.host}/simbs_logo.jpg`
-  const url = props.url || window.location.hostname
+  const image = props.image || `${location.host}/simbs_logo.jpg`
+  const url = props.url || location.hostname
 
   const descriptionPreview = getTextPreview(description, 160)
 
