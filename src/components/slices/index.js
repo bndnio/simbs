@@ -18,61 +18,29 @@ export default function Slices({ slices }) {
     const res = (() => {
       switch (slice.type) {
         case "call_to_action":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<CTA slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<CTA slice={slice} />}</section>
 
         case "cta_cards":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<CTACards slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<CTACards slice={slice} />}</section>
 
         case "image_with_caption":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<ImageCaption slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<ImageCaption slice={slice} />}</section>
 
         case "info_panel":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<InfoPanel slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<InfoPanel slice={slice} />}</section>
 
         case "media":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<Media slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<Media slice={slice} />}</section>
 
         case "pull_quote":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<PullQuote slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<PullQuote slice={slice} />}</section>
 
         case "team":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<Team slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<Team slice={slice} />}</section>
 
         case "text":
         case "text_with_embed":
-          return (
-            <div key={index} className="slice-wrapper">
-              {<Text slice={slice} />}
-            </div>
-          )
+          return <section key={index}>{<Text slice={slice} />}</section>
 
         default:
           return

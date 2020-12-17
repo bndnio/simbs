@@ -48,13 +48,13 @@ export default function Team({ slice }) {
   if (!slice) return null
 
   return (
-    <section className="team container column" id="team">
+    <div className="team container column" id="team">
       {/* Render slice header */}
       <TeamHead team={slice.primary} />
       {/* Render team members */}
       {slice.fields.map((member, i) => (
         <Member member={member} key={i} />
       ))}
-    </section>
+    </div>
   )
 }

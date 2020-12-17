@@ -7,9 +7,13 @@ export default function Text({ slice }) {
   if (!slice.primary) return null
 
   return (
-    <section id={slice.primary.anchor} className="text container">
+    <div id={slice.primary.anchor} className="text container">
       {/* Render text section title if present */}
-      {slice.primary.title && <h2>{RichText.asText(slice.primary.title)}</h2>}
+      {slice.primary.title && (
+        <header>
+          {RichText.render(slice.primary.title, linkResolver, htmlSerializer)}
+        </header>
+      )}
       {/* Render embedded code if present */}
       {slice.primary.raw_embed && (
         <div
@@ -20,6 +24,6 @@ export default function Text({ slice }) {
       )}
       {/* Render text body */}
       {RichText.render(slice.primary.text, linkResolver, htmlSerializer)}
-    </section>
+    </div>
   )
 }

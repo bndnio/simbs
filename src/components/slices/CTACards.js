@@ -44,7 +44,7 @@ export default function CTACards({ slice }) {
   if (!slice.primary || !slice.fields.length) return null
 
   return (
-    <section className="container">
+    <div className="container">
       {RichText.render(
         slice.primary.cta_cards_title,
         linkResolver,
@@ -60,6 +60,6 @@ export default function CTACards({ slice }) {
         linkResolver,
         htmlSerializer
       )}
-    </section>
+    </div>
   )
 }
