@@ -81,10 +81,10 @@ export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismic.allAdvocacy_pages.edges.slice(0, 1).pop()
 
-  if (!doc) return null
+  if (!doc || !doc.node) return null
 
   return (
-    <Layout>
+    <Layout title="Advocacy">
       <AdvocacyHead page={doc.node} />
       <Slices slices={doc.node.body} />
     </Layout>
