@@ -122,7 +122,7 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
 
   return (
     <div className="home-sponsors">
-      {title && <h5 className="sponsors-title">{RichText.asText(title)}</h5>}
+      {title && <h2 className="h3 sponsors-title">{RichText.asText(title)}</h2>}
       <div className="sponsors-row">
         {sponsors.map((sponsor, i) => (
           <HomeSponsor sponsor={sponsor} key={i} />

@@ -33,7 +33,7 @@
   align-items: center;
 
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
 
   background-color: $color-contrary;
   color: $color-text-inverted;
@@ -49,7 +49,7 @@
     align-items: center;
     justify-items: center;
 
-    overflow: hidden;
+    overflow-y: scroll;
   }
 
   img {
