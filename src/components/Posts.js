@@ -15,7 +15,7 @@ const firstParagraph = (post) => {
     // Set the character limit for the text we'll show in the homepage
     const textLimit = 160
     const text = RichText.asText(firstTextSlice.primary.text)
-    return <p>{getPreview(text, textLimit)}</p>
+    return <p>{getTextPreview(text, textLimit)}</p>
   } else {
     // If there are no slices of type 'text', return nothing
     return null
