@@ -43,9 +43,9 @@ const PostSummary = ({ post }) => {
     <div className="column col-4 col-lg-6 col-sm-12">
       <div className="card post-card">
         <Link to={linkResolver(post._meta)}>
-          {post.thumbnail && (
+          {post.banner && (
             <div className="card-image">
-              <img src={post.thumbnail.url}></img>
+              <img src={post.banner.url}></img>
             </div>
           )}
           <div className="card-header">

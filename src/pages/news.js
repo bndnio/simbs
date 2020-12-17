@@ -42,7 +42,7 @@ export const query = graphql`
               }
             }
             date
-            thumbnail
+            banner
             categories {
               category {
                 ... on PRISMIC_Blog_post_category {
@@ -135,7 +135,7 @@ export default ({ data }) => {
   const posts = data.prismic.allPosts.edges
   const categories = data.prismic.allBlog_post_categorys.edges
 
-  if (!doc) return null
+  if (!doc || !doc.node) return null
 
   const filteredPosts = posts.filter((post) =>
     postHasCategories(post, getCategoryQueryParams())
