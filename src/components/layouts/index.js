@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Nav from "./Nav"
 import Footer from "./Footer"
+import getTextPreview from "../../utils/getTextPreview"
 import "../../stylesheets/main.scss"
 
 export default (props) => (
@@ -26,12 +27,21 @@ export default (props) => (
 const Layout = (props) => {
   // Pass along clearNav setting
   const { clearNav } = props
+
   // Define the meta title and description
-  const title = props.title || props.data.site.siteMetadata.title
-  const keywords = props.keywords || props.data.site.siteMetadata.keywords
-  const description =
-    props.description || props.data.site.siteMetadata.description
-  const author = props.author || props.data.site.siteMetadata.author
+  const {
+    title: metaTitle,
+    description: metaDescription,
+    keywords: metaKeywords,
+    author: metaAuthor,
+  } = props.data.site.siteMetadata
+
+  const title = `${metaTitle}${props.title ? " - " : ""}${props.title}`
+  const keywords = props.keywords || metaKeywords
+  const description = props.description || metaDescription
+  const author = props.author || metaAuthor
+
+  const descriptionPreview = getPreview(description, 160)
 
   // Load the Prismic edit button
   if (typeof window !== "undefined" && window.prismic) {
@@ -43,7 +53,7 @@ const Layout = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={descriptionPreview} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
         <meta
