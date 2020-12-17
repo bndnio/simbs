@@ -43,7 +43,9 @@ const Layout = (props) => {
   const keywords = props.keywords || metaKeywords
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
-  const image = props.image || `${location.host}/simbs_logo.jpg`
+  const image =
+    props.image ||
+    "https://images.prismic.io/simbs/d26dee7b-2f51-4f04-a717-c4dfcbf615fd_54204008_2569836563087963_7953484940551651328_n.jpg?auto=compress,format"
   const url = props.url || location.hostname
 
   const descriptionPreview = getTextPreview(description, 160)
