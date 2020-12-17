@@ -147,13 +147,15 @@ const HomeSocial = ({ social }) => {
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismic.allHome_pages.edges.slice(0, 1).pop()
+  if (!doc || !doc.node) return null
+
+  const description = RichText.asText(doc.node.subtitle)
+
   let sponsors = data.prismic.allSponsorss.edges.slice(0, 1).pop()
   sponsors = sponsors?.node?.sponsor
 
-  if (!doc) return null
-
   return (
-    <Layout clearNav>
+    <Layout title="Home" description={description} clearNav>
       <HomeHead home={doc.node} />
       <HomeSponsors title={doc.node?.sponsors_title} sponsors={sponsors} />
       <Slices slices={doc.node.body} />

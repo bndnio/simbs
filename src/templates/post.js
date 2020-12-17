@@ -25,6 +25,8 @@ export const query = graphql`
               }
             }
             date
+            seo_keywords
+            seo_description
             banner
             categories {
               category {
@@ -159,10 +161,20 @@ export default (props) => {
   // Define the Post content returned from Prismic
   const doc = props.data.prismic.allPosts.edges.slice(0, 1).pop()
 
-  if (!doc) return null
+  if (!doc || !doc.node) return null
+
+  const { title, author: postAuthor, seo_keywords, seo_description } = doc.node
+  const author = postAuthor
+    ? `${postAuthor.first_name} ${postAuthor.last_name}`
+    : "SIMBS"
 
   return (
-    <Layout>
+    <Layout
+      title={RichText.asText(title)}
+      author={author}
+      keywords={seo_keywords}
+      description={seo_description}
+    >
       <PostBody blogPost={doc.node} />
     </Layout>
   )

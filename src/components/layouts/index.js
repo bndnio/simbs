@@ -41,7 +41,7 @@ const Layout = (props) => {
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
 
-  const descriptionPreview = getPreview(description, 160)
+  const descriptionPreview = getTextPreview(description, 160)
 
   // Load the Prismic edit button
   if (typeof window !== "undefined" && window.prismic) {

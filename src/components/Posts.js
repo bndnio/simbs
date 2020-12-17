@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { RichText, Date } from "prismic-reactjs"
 import { linkResolver } from "../utils/linkResolver"
+import getTextPreview from "../utils/getTextPreview"
 import Categories from "./Categories"
 
 // Function to retrieve a small preview of the post's text
@@ -13,18 +14,8 @@ const firstParagraph = (post) => {
   if (firstTextSlice != null) {
     // Set the character limit for the text we'll show in the homepage
     const textLimit = 160
-    let text = RichText.asText(firstTextSlice.primary.text)
-    let limitedText = text.substring(0, textLimit)
-
-    if (text.length > textLimit) {
-      // Cut only up to the last word and attach '...' for readability
-      return (
-        <p>{limitedText.substring(0, limitedText.lastIndexOf(" ")) + "..."}</p>
-      )
-    } else {
-      // If it's shorter than the limit, just show it normally
-      return <p>{text}</p>
-    }
+    const text = RichText.asText(firstTextSlice.primary.text)
+    return <p>{getPreview(text, textLimit)}</p>
   } else {
     // If there are no slices of type 'text', return nothing
     return null
