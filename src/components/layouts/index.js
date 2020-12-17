@@ -41,6 +41,7 @@ const Layout = (props) => {
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
   const image = props.image || `${window.location.host}/simbs_logo.jpg`
+  const url = props.url || window.location.hostname
 
   const descriptionPreview = getTextPreview(description, 160)
 
@@ -58,6 +59,7 @@ const Layout = (props) => {
         <meta name="description" content={descriptionPreview} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
+        <meta name="og:url" content={url} />
         <meta name="og:image" content={image} />
         <meta
           name="viewport"
