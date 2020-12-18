@@ -113,7 +113,7 @@ const PostBody = ({ blogPost, acknowledgements }) => {
       <div className="container">
         <header className="post-header">
           <div className="back">
-            <Link to="/blog">back to list</Link>
+            <Link to="/news">back to list</Link>
           </div>
           {/* Render the edit button */}
           <h1 data-wio-id={blogPost._meta.id}>
