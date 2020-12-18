@@ -39,7 +39,7 @@ const Layout = (props) => {
     author: metaAuthor,
   } = props.data.site.siteMetadata
 
-  const title = `${metaTitle}${props.title ? " - " : ""}${props.title}`
+  const title = `${metaTitle}${props.title ? " - " : ""}${props.title || ""}`
   const keywords = props.keywords || metaKeywords
   const description = props.description || metaDescription
   const author = props.author || metaAuthor
