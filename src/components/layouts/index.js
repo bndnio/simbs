@@ -96,6 +96,22 @@ const Layout = (props) => {
           }}
         />
         {/* END Global site tag (gtag.js) - Google Analytics */}
+        {/* TEMP Global site tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-R68YC90E2H"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+              
+                gtag('config', 'G-R68YC90E2H');`,
+          }}
+        />
+        {/* END TEMP Global site tag (gtag.js) - Google Analytics */}
       </Helmet>
       <Nav clearNav={clearNav} />
       <main>{props.children}</main>
