@@ -2,7 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { navigate, useLocation } from "@reach/router"
-import Analytics from "./Analytics"
+import Analytics, { tagManagerScript } from "./Analytics"
 import Nav from "./Nav"
 import Footer from "./Footer"
 import getTextPreview from "../../utils/getTextPreview"
@@ -81,8 +81,9 @@ const Layout = (props) => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         ></link>
-        <Analytics />
+        {tagManagerScript}
       </Helmet>
+      <Analytics />
       <Nav clearNav={clearNav} />
       <main>{props.children}</main>
       <Footer />
