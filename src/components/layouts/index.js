@@ -1,7 +1,8 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { navigate, useLocation } from "@reach/router"
+import Analytics from "./Analytics"
 import Nav from "./Nav"
 import Footer from "./Footer"
 import getTextPreview from "../../utils/getTextPreview"
@@ -56,7 +57,7 @@ const Layout = (props) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
@@ -80,42 +81,11 @@ const Layout = (props) => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         ></link>
-        {/* Global site tag (gtag.js) - Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-78BK1EHYQY"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-              
-                gtag('config', 'G-78BK1EHYQY');`,
-          }}
-        />
-        {/* END Global site tag (gtag.js) - Google Analytics */}
-        {/* TEMP Global site tag (gtag.js) - Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-R68YC90E2H"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-              
-                gtag('config', 'G-R68YC90E2H');`,
-          }}
-        />
-        {/* END TEMP Global site tag (gtag.js) - Google Analytics */}
+        <Analytics />
       </Helmet>
       <Nav clearNav={clearNav} />
       <main>{props.children}</main>
       <Footer />
-    </Fragment>
+    </>
   )
 }
