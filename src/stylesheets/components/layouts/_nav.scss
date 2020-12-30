@@ -36,6 +36,16 @@ header {
       }
     }
 
+    &:not(.clear-nav) .btn-clr {
+      color: $color-text-primary;
+      border-color: $color-text-primary;
+
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary;
+      }
+    }
+
     // Shared Nav Item properties
     .nav-item {
       color: $color-text-primary;

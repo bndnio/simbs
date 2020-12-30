@@ -2,3 +2,16 @@ img {
   display: block;
   margin: auto;
 }
+
+.btn-clr.btn-clr {
+  background: transparent;
+  border: 0.15em solid $color-text-inverted;
+  color: $color-text-inverted;
+  font-weight: 700;
+  height: auto;
+
+  &:hover {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+}

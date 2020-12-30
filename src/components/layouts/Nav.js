@@ -130,7 +130,7 @@ function Nav({ clearNav, data }) {
         {/* Right nav */}
         <div className="navbar-section">
           <a
-            className="btn btn-primary"
+            className="btn btn-clr"
             href="https://www.joinit.org/o/south-island-mountain-bike-society"
           >
             <span className="join-button">Join</span>

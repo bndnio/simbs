@@ -19,6 +19,12 @@
       align-items: center;
       margin: 0rem 1rem;
     }
+
+    .btn-clr {
+      // Extends .btn-clr in overrides
+      font-size: 1rem;
+      padding: 0.6em 1em;
+    }
   }
 
   .simbs-crest {
