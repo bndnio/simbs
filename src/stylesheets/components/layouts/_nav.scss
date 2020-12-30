@@ -1,17 +1,8 @@
 header {
+  $navbar-height: 3rem;
+
   .navbar-placeholder {
-    height: 3rem;
-  }
-
-  // Override defaults for spectre navbar content
-  .navbar .nav {
-    margin: 1rem;
-    padding: unset;
-  }
-
-  // Override defaults for spectre navbar-section
-  .navbar .navbar-section {
-    flex: unset;
+    height: $navbar-height;
   }
 
   // Override spacing of mobile menu toggle button
@@ -28,7 +19,7 @@ header {
     width: 100%;
     z-index: 1000;
 
-    height: 3rem;
+    height: $navbar-height;
     padding: 0rem 1rem;
 
     transition: all 0.2s ease-in-out;
@@ -36,7 +27,7 @@ header {
     border-bottom: 1px solid
       change-color($color: $color-background-darkest, $alpha: 1);
 
-    &.clear-nav.docked {
+    &.clear-nav {
       background-color: change-color($color: $color-background, $alpha: 0);
       border-bottom: 1px solid
         change-color($color: $color-background-darkest, $alpha: 0);
@@ -45,39 +36,52 @@ header {
       }
     }
 
+    // Shared Nav Item properties
     .nav-item {
       color: $color-text-primary;
       font-weight: 800;
-      padding: 0.5rem 0.75rem;
 
       &:hover,
-      &:focus {
+      &:focus,
+      .selected {
         color: $color-primary;
       }
     }
 
-    .logo {
-      margin-top: 4px;
-      img {
-        height: 50px;
+    // Mobile Nav Drawer Items
+    li.nav-item {
+      margin: unset;
+      padding: unset;
+
+      a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        width: 100%;
       }
+    }
+
+    // Nav Header Items
+    a.nav-item {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .logo {
+      height: 2rem;
+    }
+    .mobile-logo {
+      display: inline-block;
+      height: 2rem;
     }
 
     .off-canvas-toggle {
       top: 0.6rem;
       left: 0;
     }
-
-    // Fix issue where a tag takes up room below img
-    .img-link {
-      display: block;
-      height: 0;
-    }
   }
 
   .btn {
+    // Fix text alignment (buttons too tall)
     height: unset;
-    line-height: unset;
 
     // Fix Join Button
     &.btn-primary {

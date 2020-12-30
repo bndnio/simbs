@@ -83,15 +83,15 @@ function Nav({ clearNav, data }) {
   return (
     <header>
       <div className="navbar-placeholder"></div>
-      <nav
-        className={`navbar ${clearNav ? "clear-nav" : ""} ${
-          scroll ? "" : "docked"
-        }`}
-      >
+      <nav className={`navbar ${clearNav && !scroll ? "clear-nav" : ""}`}>
         {/* Left nav */}
-        <div className="navbar-section logo hide-md">
+        <div className="navbar-section hide-md">
           <a href="/">
-            <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
+            <img
+              className="logo"
+              src={doc.node.logo.url}
+              alt={doc.node.logo.alt}
+            />
           </a>
         </div>
         <div className="navbar-section off-canvas show-md">
@@ -103,6 +103,15 @@ function Nav({ clearNav, data }) {
           </a>
           <div className={`off-canvas-sidebar ${mobileMenu ? "active" : ""}`}>
             <ul className="nav">
+              <li className="nav-item">
+                <a href="/">
+                  <img
+                    className="mobile-logo"
+                    src={doc.node.logo.url}
+                    alt={doc.node.logo.alt}
+                  />
+                </a>
+              </li>
               <NavItems list navItems={doc.node.navto} />
             </ul>
           </div>
@@ -113,14 +122,7 @@ function Nav({ clearNav, data }) {
         </div>
 
         {/* Center nav */}
-        <div className="navbar-center logo show-md">
-          {/* Hide SIMBS middle logo if nav is clear */}
-          {clearNav ? null : (
-            <a className="img-link" href="/">
-              <img src={doc.node.logo.url} alt={doc.node.logo.alt} />
-            </a>
-          )}
-        </div>
+        {/* Don't show middle section if on small screen */}
         <div className="navbar-center hide-md">
           <NavItems navItems={doc.node.navto} />
         </div>
@@ -131,7 +133,7 @@ function Nav({ clearNav, data }) {
             className="btn btn-primary"
             href="https://www.joinit.org/o/south-island-mountain-bike-society"
           >
-            <span className={"join-button"}>Join</span>
+            <span className="join-button">Join</span>
           </a>
         </div>
       </nav>
