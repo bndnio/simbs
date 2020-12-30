@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
+import SimbsLandscapeLogo from "../../images/simbs-logo-landscape.svg"
 
 // The debounce function receives our function as a parameter
 const debounce = (fn) => {
@@ -87,16 +88,12 @@ function Nav({ clearNav, data }) {
         {/* Left nav */}
         <div className="navbar-section hide-md">
           <a href="/">
-            <img
-              className="logo"
-              src={doc.node.logo.url}
-              alt={doc.node.logo.alt}
-            />
+            <SimbsLandscapeLogo className="logo" />
           </a>
         </div>
         <div className="navbar-section off-canvas show-md">
           <a
-            className="off-canvas-toggle btn"
+            className="off-canvas-toggle btn btn-clr"
             onClick={() => setMobileMenu(true)}
           >
             <i className="icon icon-menu"></i>
@@ -105,11 +102,7 @@ function Nav({ clearNav, data }) {
             <ul className="nav">
               <li className="nav-item">
                 <a href="/">
-                  <img
-                    className="mobile-logo"
-                    src={doc.node.logo.url}
-                    alt={doc.node.logo.alt}
-                  />
+                  <SimbsLandscapeLogo className="logo" />
                 </a>
               </li>
               <NavItems list navItems={doc.node.navto} />
@@ -122,7 +115,11 @@ function Nav({ clearNav, data }) {
         </div>
 
         {/* Center nav */}
-        {/* Don't show middle section if on small screen */}
+        <div className="navbar-center show-md">
+          <a href="/">
+            <SimbsLandscapeLogo className="logo" />
+          </a>
+        </div>
         <div className="navbar-center hide-md">
           <NavItems navItems={doc.node.navto} />
         </div>

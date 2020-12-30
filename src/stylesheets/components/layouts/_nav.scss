@@ -5,13 +5,10 @@ header {
     height: $navbar-height;
   }
 
-  // Override spacing of mobile menu toggle button
-  .navbar-section.off-canvas {
-    width: 34px;
-  }
-
   // Set navbar defaults & positioning (override)
   .navbar {
+    align-items: center; // override
+
     flex-wrap: nowrap;
 
     position: fixed;
@@ -46,6 +43,16 @@ header {
       }
     }
 
+    // Override spacing of web sections
+    .navbar-section {
+      flex: unset;
+    }
+
+    // Override spacing of mobile menu toggle button
+    .navbar-section.off-canvas {
+      width: 34px;
+    }
+
     // Shared Nav Item properties
     .nav-item {
       color: $color-text-primary;
@@ -75,12 +82,21 @@ header {
       padding: 0.5rem 0.75rem;
     }
 
+    &.clear-nav .logo {
+      fill: $color-text-inverted;
+    }
+    &.clear-nav .off-canvas-sidebar .logo {
+      fill: $color-text-primary;
+    }
     .logo {
+      display: block;
       height: 2rem;
+      fill: $color-text-primary;
     }
     .mobile-logo {
       display: inline-block;
       height: 2rem;
+      fill: $color-text-inverted;
     }
 
     .off-canvas-toggle {
