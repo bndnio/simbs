@@ -1,5 +1,5 @@
-const { apiEndpoint } = require("./prismic-config")
-var repo = /([^\/]+)\.cdn\.prismic\.io/.exec(apiEndpoint)[1]
+const { linkResolver } = require("./src/utils/linkResolver")
+const htmlSerializer = require("./src/utils/htmlSerializer")
 
 module.exports = {
   siteMetadata: {
@@ -11,19 +11,29 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `@prismicio/gatsby-source-prismic-graphql`,
+      resolve: "gatsby-source-prismic",
       options: {
-        repositoryName: repo, // Loads the repo name from prismic configuration
-        path: "/preview",
-        previews: true,
-        pages: [
-          {
-            type: "Post",
-            match: "/news/:uid",
-            path: "/news",
-            component: require.resolve("./src/templates/post.js"),
-          },
-        ],
+        repositoryName: "simbs",
+        accessToken: "",
+        linkResolver: ({ node, key, value }) => linkResolver,
+        htmlSerializer: htmlSerializer,
+        schemas: require("./src/schemas/index"),
+        lang: "*",
+        prismicToolbar: false,
+        shouldDownloadImage: ({ node, key, value }) => {
+          // Return true to download the image or false to skip.
+          return false
+        },
+        imageImgixParams: {
+          auto: "compress,format",
+          fit: "max",
+          q: 50,
+        },
+        imagePlaceholderImgixParams: {
+          w: 100,
+          blur: 15,
+          q: 50,
+        },
       },
     },
     `gatsby-plugin-sass`,
