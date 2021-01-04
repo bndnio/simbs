@@ -1,0 +1,133 @@
+{
+  "Main": {
+    "banner": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Banner"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "SIMBS"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "We Do things"
+      }
+    },
+    "cta_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "CTA Text",
+        "placeholder": "Become a Member"
+      }
+    },
+    "cta_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "CTA Link",
+        "placeholder": "https://www.joinit.org/"
+      }
+    },
+    "sponsors_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading5",
+        "label": "Sponsors Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "info_chunk": [],
+          "another": []
+        },
+        "choices": {
+          "cta_cards": {
+            "type": "Slice",
+            "fieldset": "CTA Cards",
+            "description": "Series of CTA Cards",
+            "icon": "filter_none",
+            "display": "list",
+            "non-repeat": {
+              "cta_cards_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "CTA Cards Title"
+                }
+              },
+              "cta_explainer_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "CTA Explainer Text"
+                }
+              }
+            },
+            "repeat": {
+              "cta_background": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "CTA Background"
+                }
+              },
+              "card_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Card Title"
+                }
+              },
+              "card_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Card Description"
+                }
+              },
+              "cta_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "CTA Text"
+                }
+              },
+              "cta_internal_link": {
+                "type": "Text",
+                "config": {
+                  "label": "CTA Internal Link",
+                  "placeholder": "/page"
+                }
+              },
+              "cta_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "CTA Link"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

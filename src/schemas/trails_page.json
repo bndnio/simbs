@@ -1,0 +1,125 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Trails"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "We Ride Trails"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 3072,
+          "height": 700
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em, hyperlink",
+        "allowTargetBlank": true,
+        "label": "Description"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "text1": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich Text Section",
+            "icon": "text_fields",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "text_with_embed": {
+            "type": "Slice",
+            "fieldset": "Text with Embed",
+            "description": "Rich Text Section with Embed Code",
+            "icon": "code",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "raw_embed": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "preformatted",
+                  "label": "Raw Embed",
+                  "placeholder": "<html>..."
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {},
+            "display": "list"
+          }
+        }
+      }
+    }
+  }
+}

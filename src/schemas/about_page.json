@@ -1,0 +1,192 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "About Us"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "We Do Things"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 3072,
+          "height": 700
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em, hyperlink",
+        "allowTargetBlank": true,
+        "label": "Description"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "text_section": [],
+          "info_panel": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich Text Section",
+            "icon": "text_fields",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "team": {
+            "type": "Slice",
+            "fieldset": "Team",
+            "description": "Section for team member information with portrait",
+            "icon": "person_pin",
+            "non-repeat": {
+              "team_section": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Team Section",
+                  "placeholder": "Management"
+                }
+              }
+            },
+            "repeat": {
+              "first_and_lastname": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "First and LastName",
+                  "placeholder": "John Doe"
+                }
+              },
+              "position": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading5",
+                  "label": "Position",
+                  "placeholder": "Trail Director"
+                }
+              },
+              "email": {
+                "type": "Text",
+                "config": {
+                  "label": "email",
+                  "placeholder": "position@simbs.com"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "description",
+                  "placeholder": "Description of position"
+                }
+              },
+              "portrait": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 1000,
+                    "height": 1000
+                  },
+                  "thumbnails": [
+                    {
+                      "name": "Mobile",
+                      "width": 500,
+                      "height": 500
+                    }
+                  ],
+                  "label": "Portrait"
+                }
+              }
+            }
+          },
+          "info_panel": {
+            "type": "Slice",
+            "fieldset": "Info Panel",
+            "description": "Alternating Image + Text Pairs",
+            "icon": "art_track",
+            "display": "list",
+            "non-repeat": {
+              "info_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Info Title"
+                }
+              }
+            },
+            "repeat": {
+              "info_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Info Image"
+                }
+              },
+              "info_slogan": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Info Slogan"
+                }
+              },
+              "info_description": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Info Description"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "Main": {
+    "logo": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": null,
+          "height": null
+        },
+        "thumbnails": [],
+        "label": "logo"
+      }
+    },
+    "navto": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "page_name": {
+            "type": "Text",
+            "config": {
+              "label": "Page Name",
+              "placeholder": "Page"
+            }
+          },
+          "page": {
+            "type": "Text",
+            "config": {
+              "label": "page",
+              "placeholder": "/page"
+            }
+          }
+        },
+        "label": "NavTo"
+      }
+    }
+  }
+}

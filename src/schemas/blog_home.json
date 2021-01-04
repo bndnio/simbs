@@ -1,0 +1,31 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Blog"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "News About Things"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 3072,
+          "height": 700
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    }
+  }
+}

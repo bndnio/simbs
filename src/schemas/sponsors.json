@@ -1,0 +1,33 @@
+{
+  "Main": {
+    "sponsor": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "logo": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Logo"
+            }
+          },
+          "name": {
+            "type": "Text",
+            "config": {
+              "label": "Name"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Link"
+            }
+          }
+        },
+        "label": "Sponsor"
+      }
+    }
+  }
+}

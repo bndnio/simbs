@@ -1,0 +1,234 @@
+{
+  "Blog Post": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Post Slug",
+        "placeholder": "the-coolest-post-in-history"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Post Title"
+      }
+    },
+    "date": {
+      "type": "Date",
+      "config": {
+        "label": "Date"
+      }
+    },
+    "author": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["author"],
+        "label": "Author",
+        "placeholder": "Jane Doe"
+      }
+    },
+    "banner": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1400,
+          "height": 800
+        },
+        "thumbnails": [],
+        "label": "Banner"
+      }
+    },
+    "categories": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "category": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["blog_post_category"],
+              "label": "Category",
+              "placeholder": "News"
+            }
+          }
+        },
+        "label": "Categories"
+      }
+    },
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "SEO Keywords",
+        "placeholder": "SIMBS, mtb, mountain, biking, vancouver, island, ..."
+      }
+    },
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "SEO Description",
+        "placeholder": "160 Character Description for SEO"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "image_with_caption": [
+            {
+              "name": "emphasized",
+              "display": "Emphasized"
+            },
+            {
+              "name": "image-full-width",
+              "display": "Full"
+            }
+          ],
+          "media": [],
+          "call_to_action": []
+        },
+        "choices": {
+          "image_with_caption": {
+            "type": "Slice",
+            "fieldset": "Image with Caption",
+            "description": "An image with an optional caption",
+            "icon": "image",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null
+                  },
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "image_caption": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Image Caption",
+                  "placeholder": "Image Caption..."
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "media": {
+            "type": "Slice",
+            "fieldset": "Media",
+            "description": "Media with an optional title and caption",
+            "icon": "personal_video",
+            "display": "list",
+            "non-repeat": {
+              "media_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Media Title",
+                  "placeholder": "Media Title (optional)"
+                }
+              },
+              "media_link": {
+                "type": "Embed",
+                "config": {
+                  "label": "Media Link"
+                }
+              },
+              "media_caption": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Media Caption",
+                  "placeholder": "Media Caption (optional)"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "call_to_action": {
+            "type": "Slice",
+            "fieldset": "Call to Action",
+            "description": "CTA button",
+            "icon": "info",
+            "display": "list",
+            "non-repeat": {
+              "cta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "CTA Title",
+                  "placeholder": "Go Here for More"
+                }
+              },
+              "cta_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "CTA Link",
+                  "placeholder": "https://my-link-to-a-website.com"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "pull_quote": {
+            "type": "Slice",
+            "fieldset": "Pull Quote",
+            "description": "A Pull Quote section",
+            "icon": "format_quote",
+            "non-repeat": {
+              "quote": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Quote",
+                  "placeholder": "Post Quote..."
+                }
+              }
+            },
+            "repeat": {},
+            "display": "list"
+          },
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich Text Section",
+            "icon": "text_fields",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

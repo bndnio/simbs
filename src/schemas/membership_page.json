@@ -1,0 +1,193 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Membership"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Subtitle",
+        "placeholder": "Memberships Are Cool"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 3072,
+          "height": 700
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em, hyperlink",
+        "allowTargetBlank": true,
+        "label": "Description"
+      }
+    },
+    "disclaimer": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "allowTargetBlank": true,
+        "label": "Disclaimer"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "cta_cards": []
+        },
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich Text Section",
+            "icon": "text_fields",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "media": {
+            "type": "Slice",
+            "fieldset": "Media",
+            "description": "Media with an optional title and caption",
+            "icon": "personal_video",
+            "display": "list",
+            "non-repeat": {
+              "media_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Media Title",
+                  "placeholder": "Media Title (optional)"
+                }
+              },
+              "media_link": {
+                "type": "Embed",
+                "config": {
+                  "label": "Media Link"
+                }
+              },
+              "media_caption": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Media Caption",
+                  "placeholder": "Media Caption (optional)"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "cta_cards": {
+            "type": "Slice",
+            "fieldset": "CTA Cards",
+            "description": "Series of CTA Cards",
+            "icon": "filter_none",
+            "display": "list",
+            "non-repeat": {
+              "cta_cards_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "CTA Cards Title"
+                }
+              },
+              "cta_explainer_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "CTA Explainer Text"
+                }
+              }
+            },
+            "repeat": {
+              "cta_background": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "CTA Background"
+                }
+              },
+              "card_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Card Title"
+                }
+              },
+              "card_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, strong, em, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Card Description"
+                }
+              },
+              "cta_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "CTA Text"
+                }
+              },
+              "cta_internal_link": {
+                "type": "Text",
+                "config": {
+                  "label": "CTA Internal Link",
+                  "placeholder": "/page"
+                }
+              },
+              "cta_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "CTA Link"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
