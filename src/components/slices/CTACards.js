@@ -13,7 +13,7 @@ function CTACard({ card }) {
       }
     : {}
 
-  const url = card.cta_internal_link || card.cta_link?.target
+  const url = card.cta_internal_link || card.cta_link?.url
 
   return (
     <a
