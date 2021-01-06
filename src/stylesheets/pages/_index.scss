@@ -34,6 +34,7 @@
 }
 
 .home-sponsors {
+  margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +56,7 @@
     align-items: center;
     justify-content: center;
 
-    overflow-y: scroll;
+    overflow-x: scroll;
     width: 100%;
   }
 
@@ -64,6 +65,14 @@
     max-width: 8rem;
     margin: 1rem;
   }
+}
+
+.cta-cards {
+  margin-bottom: 4rem;
+}
+
+.home-news {
+  margin-bottom: 4rem;
 }
 
 .home-social {
