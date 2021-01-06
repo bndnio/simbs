@@ -128,7 +128,8 @@ function Nav({ clearNav, data }) {
         <div className="navbar-section">
           <a
             className="btn btn-clr"
-            href="https://www.joinit.org/o/south-island-mountain-bike-society"
+            href="https://www.joinit.org/o/simbs"
+            target="_blank"
           >
             <span className="join-button">Join</span>
           </a>

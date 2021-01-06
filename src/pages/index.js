@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
+import Posts from "../components/Posts"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
@@ -94,6 +95,64 @@ export const query = graphql`
         }
       }
     }
+    allPrismicPost(limit: 3, sort: { order: DESC, fields: data___date }) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              raw
+            }
+            banner {
+              url
+              alt
+            }
+            author {
+              document {
+                ... on PrismicAuthor {
+                  data {
+                    first_name
+                    last_name
+                  }
+                }
+              }
+              uid
+            }
+            date
+            seo_keywords
+            seo_description
+            categories {
+              category {
+                document {
+                  ... on PrismicBlogPostCategory {
+                    uid
+                    data {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+            body {
+              __typename
+              ... on PrismicPostBodyText {
+                slice_type
+                slice_label
+                primary {
+                  anchor
+                  title {
+                    raw
+                  }
+                  text {
+                    raw
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
 
@@ -156,8 +215,8 @@ const HomeHighlights = ({ highlights }) => {
   return null
 }
 
-const HomeNews = ({ news }) => {
-  return null
+const HomeNews = ({ posts }) => {
+  return <Posts posts={posts} />
 }
 
 const HomeSocial = ({ social }) => {
@@ -169,8 +228,8 @@ const HomeSocial = ({ social }) => {
         height="500"
         style={{ border: "none", overflow: "hidden" }}
         scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
+        frameBorder="0"
+        allowFullScreen="true"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
       ></iframe>
     </div>
@@ -181,6 +240,8 @@ export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.allPrismicHomePage.edges.slice(0, 1).pop()
   if (!doc || !doc.node) return null
+
+  const posts = data.allPrismicPost.edges
 
   const description = RichText.asText(doc.node.data.subtitle.raw)
 
@@ -193,7 +254,7 @@ export default ({ data }) => {
       <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
       <Slices slices={doc.node.data.body} />
       <HomeHighlights />
-      <HomeNews />
+      <HomeNews posts={posts} />
       <HomeSocial />
     </Layout>
   )
