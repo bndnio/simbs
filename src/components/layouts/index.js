@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import Analytics, { tagManagerScript } from "./Analytics"
-import Facebook from "./Facebook"
 import Nav from "./Nav"
 import Footer from "./Footer"
 import getTextPreview from "../../utils/getTextPreview"
@@ -84,7 +83,6 @@ const Layout = (props) => {
         ></link>
         {tagManagerScript}
       </Helmet>
-      <Facebook />
       <Analytics />
       <Nav clearNav={clearNav} />
       <main>{props.children}</main>
