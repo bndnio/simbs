@@ -20,20 +20,16 @@ export const query = graphql`
               url
             }
             sponsors_title {
-              html
-              text
+              raw
             }
             subtitle {
-              html
-              text
+              raw
             }
             cta_text {
-              html
-              text
+              raw
             }
             title {
-              html
-              text
+              raw
             }
             banner {
               url
@@ -45,30 +41,25 @@ export const query = graphql`
                 slice_label
                 primary {
                   cta_cards_title {
-                    html
-                    text
+                    raw
                   }
                   cta_explainer_text {
-                    html
-                    text
+                    raw
                   }
                 }
                 items {
                   card_description {
-                    html
-                    text
+                    raw
                   }
                   cta_background {
                     url
                     alt
                   }
                   card_title {
-                    html
-                    text
+                    raw
                   }
                   cta_text {
-                    html
-                    text
+                    raw
                   }
                   cta_internal_link
                   cta_link {
@@ -109,14 +100,14 @@ export const query = graphql`
 // Using the queried Blog Home document data, we render the top section
 const HomeHead = ({ home }) => {
   return (
-    <div className="home-header" data-wio-id={home._meta.id}>
-      <BannerBG hero url={home.banner.url}>
+    <div className="home-header" data-wio-id={home.id}>
+      <BannerBG hero url={home.data.banner.url}>
         <div className="banner-content">
           <div className="banner-content-unit">
-            <h1>{RichText.asText(home.title)}</h1>
-            <p className="h4">{RichText.asText(home.subtitle)}</p>
-            <a className="btn btn-clr" href={home.cta_link?.url}>
-              {RichText.asText(home.cta_text)}
+            <h1>{RichText.asText(home.data.title.raw)}</h1>
+            <p className="h4">{RichText.asText(home.data.subtitle.raw)}</p>
+            <a className="btn btn-clr" href={home.data.cta_link?.url}>
+              {RichText.asText(home.data.cta_text.raw)}
             </a>
           </div>
         </div>
@@ -149,7 +140,9 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
 
   return (
     <div className="home-sponsors">
-      {title && <h2 className="h3 sponsors-title">{RichText.asText(title)}</h2>}
+      {title && (
+        <h2 className="h3 sponsors-title">{RichText.asText(title.raw)}</h2>
+      )}
       <div className="sponsors-row">
         {sponsors.map((sponsor, i) => (
           <HomeSponsor sponsor={sponsor} key={i} />
@@ -173,19 +166,19 @@ const HomeSocial = ({ social }) => {
 
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allHome_pages.edges.slice(0, 1).pop()
+  const doc = data.allPrismicHomePage.edges.slice(0, 1).pop()
   if (!doc || !doc.node) return null
 
-  const description = RichText.asText(doc.node.subtitle)
+  const description = RichText.asText(doc.node.data.subtitle.raw)
 
-  let sponsors = data.prismic.allSponsorss.edges.slice(0, 1).pop()
-  sponsors = sponsors?.node?.sponsor
+  let sponsors = data.allPrismicSponsors.edges.slice(0, 1).pop()
+  sponsors = sponsors?.node?.data?.sponsor
 
   return (
     <Layout title="Home" description={description} clearNav>
       <HomeHead home={doc.node} />
-      <HomeSponsors title={doc.node?.sponsors_title} sponsors={sponsors} />
-      <Slices slices={doc.node.body} />
+      <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
+      <Slices slices={doc.node.data.body} />
       <HomeHighlights />
       <HomeNews />
       <HomeSocial />

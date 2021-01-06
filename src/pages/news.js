@@ -19,12 +19,10 @@ export const query = graphql`
           type
           data {
             title {
-              html
-              text
+              raw
             }
             subtitle {
-              html
-              text
+              raw
             }
             image {
               url
@@ -42,8 +40,7 @@ export const query = graphql`
           type
           data {
             title {
-              html
-              text
+              raw
             }
             author {
               document {
@@ -77,12 +74,10 @@ export const query = graphql`
                 primary {
                   anchor
                   title {
-                    html
-                    text
+                    raw
                   }
                   text {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -98,8 +93,7 @@ export const query = graphql`
           data {
             name
             description {
-              html
-              text
+              raw
             }
           }
         }
@@ -114,10 +108,10 @@ function postHasCategories(post, categories) {
   if (categories.length == 0) return true
 
   // If post doesn't have category, disallow
-  if (!post.node.categories) return false
+  if (!post.node.data.categories) return false
 
-  const postCategoryUids = post.node.categories.map(
-    (category) => category?.category?._meta.uid
+  const postCategoryUids = post.node.data.categories.map(
+    (c) => c?.category?.document?.uid
   )
 
   for (let postCategory of postCategoryUids) {
@@ -129,11 +123,11 @@ function postHasCategories(post, categories) {
 // Using the queried News Home document data, we render the top section
 const NewsHead = ({ page, categories }) => {
   return (
-    <div className="news-header" data-wio-id={page._meta.id}>
+    <div className="news-header" data-wio-id={page.id}>
       <Banner
-        url={page.image?.url}
-        title={page.title && RichText.asText(page.title)}
-        subtitle={page.subtitle && RichText.asText(page.subtitle)}
+        url={page.data.image?.url}
+        title={page.data.title && RichText.asText(page.data.title.raw)}
+        subtitle={page.data.subtitle && RichText.asText(page.data.subtitle.raw)}
       />
 
       <div className="container">
@@ -157,9 +151,9 @@ export default ({ data }) => {
   }
 
   // Define the News Home & News Post content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
-  const posts = data.prismic.allPosts.edges
-  const categories = data.prismic.allBlog_post_categorys.edges
+  const doc = data.allPrismicBlogHome.edges.slice(0, 1).pop()
+  const posts = data.allPrismicPost.edges
+  const categories = data.allPrismicBlogPostCategory.edges
 
   if (!doc || !doc.node) return null
 

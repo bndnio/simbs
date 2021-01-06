@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
-import { linkResolver } from "../utils/linkResolver"
+import linkResolver from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
 
 // Query for the Blog Home content in Prismic
@@ -16,20 +16,17 @@ export const query = graphql`
           id
           data {
             title {
-              html
-              text
+              raw
             }
             subtitle {
-              html
-              text
+              raw
             }
             image {
               url
               alt
             }
             description {
-              html
-              text
+              raw
             }
             body {
               ... on PrismicMembershipPageBodyText {
@@ -38,12 +35,10 @@ export const query = graphql`
                 primary {
                   anchor
                   text {
-                    html
-                    text
+                    raw
                   }
                   title {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -52,16 +47,14 @@ export const query = graphql`
                 slice_label
                 primary {
                   media_caption {
-                    html
-                    text
+                    raw
                   }
                   media_link {
                     type
                     embed_url
                   }
                   media_title {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -70,30 +63,25 @@ export const query = graphql`
                 slice_label
                 primary {
                   cta_cards_title {
-                    html
-                    text
+                    raw
                   }
                   cta_explainer_text {
-                    html
-                    text
+                    raw
                   }
                 }
                 items {
                   card_description {
-                    html
-                    text
+                    raw
                   }
                   cta_background {
                     url
                     alt
                   }
                   card_title {
-                    html
-                    text
+                    raw
                   }
                   cta_text {
-                    html
-                    text
+                    raw
                   }
                   cta_internal_link
                   cta_link {
@@ -114,16 +102,20 @@ export const query = graphql`
 // Using the queried Membership Page document data, we render the top section
 const MembershipHead = ({ page }) => {
   return (
-    <div className="membership-header" data-wio-id={page._meta.id}>
+    <div className="membership-header" data-wio-id={page.id}>
       <Banner
-        url={page.image?.url}
-        title={page.title && RichText.asText(page.title)}
-        subtitle={page.subtitle && RichText.asText(page.subtitle)}
+        url={page.data.image?.url}
+        title={page.data.title && RichText.asText(page.data.title.raw)}
+        subtitle={page.data.subtitle && RichText.asText(page.data.subtitle.raw)}
       />
 
-      {page.description && (
+      {page.data.description && (
         <div className="container">
-          {RichText.render(page.description, linkResolver, htmlSerializer)}
+          {RichText.render(
+            page.data.description.raw,
+            linkResolver,
+            htmlSerializer
+          )}
         </div>
       )}
     </div>
@@ -132,14 +124,14 @@ const MembershipHead = ({ page }) => {
 
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allMembership_pages.edges.slice(0, 1).pop()
+  const doc = data.allPrismicMembershipPage.edges.slice(0, 1).pop()
 
   if (!doc || !doc.node) return null
 
   return (
     <Layout title="Membership">
       <MembershipHead page={doc.node} />
-      <Slices slices={doc.node.body} />
+      <Slices slices={doc.node.data.body} />
     </Layout>
   )
 }

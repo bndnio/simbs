@@ -10,9 +10,9 @@ function DefaultImage({ slice }) {
       <figcaption className="block-img">
         <img src={slice.primary.image?.url} alt={slice.primary.image?.alt} />
         {slice.primary.caption &&
-        RichText.asText(slice.primary.caption) !== "" ? (
+        RichText.asText(slice.primary.caption.raw) !== "" ? (
           <figcaption className="image-label">
-            {RichText.asText(slice.primary.caption)}
+            {RichText.asText(slice.primary.caption.raw)}
           </figcaption>
         ) : null}
       </figcaption>
@@ -29,9 +29,9 @@ function EmphasizedImage({ slice }) {
       <figcaption className="block-img emphasized">
         <img src={slice.primary.image?.url} alt={slice.primary.image?.alt} />
         {slice.primary.caption &&
-        RichText.asText(slice.primary.caption) !== "" ? (
+        RichText.asText(slice.primary.caption.raw) !== "" ? (
           <figcaption className="image-label">
-            {RichText.asText(slice.primary.caption)}
+            {RichText.asText(slice.primary.caption.raw)}
           </figcaption>
         ) : null}
       </figcaption>
@@ -50,9 +50,9 @@ function FullWidthImage({ slice }) {
     >
       <div className="wrapper">
         {slice.primary.caption &&
-        RichText.asText(slice.primary.caption) !== "" ? (
+        RichText.asText(slice.primary.caption.raw) !== "" ? (
           <span className="image-label">
-            {RichText.asText(slice.primary.caption)}
+            {RichText.asText(slice.primary.caption.raw)}
           </span>
         ) : null}
       </div>

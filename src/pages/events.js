@@ -1,7 +1,7 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
 import { graphql } from "gatsby"
-import { linkResolver } from "../utils/linkResolver"
+import linkResolver from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
@@ -16,20 +16,17 @@ export const query = graphql`
           id
           data {
             title {
-              html
-              text
+              raw
             }
             subtitle {
-              html
-              text
+              raw
             }
             image {
               url
               alt
             }
             description {
-              html
-              text
+              raw
             }
             body {
               ... on PrismicEventsPageBodyText {
@@ -38,12 +35,10 @@ export const query = graphql`
                 primary {
                   anchor
                   text {
-                    html
-                    text
+                    raw
                   }
                   title {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -53,16 +48,13 @@ export const query = graphql`
                 primary {
                   anchor
                   text {
-                    html
-                    text
+                    raw
                   }
                   title {
-                    html
-                    text
+                    raw
                   }
                   raw_embed {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -77,16 +69,20 @@ export const query = graphql`
 // Using the queried Events Page document data, we render the top section
 const EventsHead = ({ page }) => {
   return (
-    <div className="events-header" data-wio-id={page._meta.id}>
+    <div className="events-header" data-wio-id={page.id}>
       <Banner
-        url={page.image?.url}
-        title={page.title && RichText.asText(page.title)}
-        subtitle={page.subtitle && RichText.asText(page.subtitle)}
+        url={page.data.image?.url}
+        title={page.data.title && RichText.asText(page.data.title.raw)}
+        subtitle={page.data.subtitle && RichText.asText(page.data.subtitle.raw)}
       />
 
-      {page.description && (
+      {page.data.description && (
         <div className="container">
-          {RichText.render(page.description, linkResolver, htmlSerializer)}
+          {RichText.render(
+            page.data.description.raw,
+            linkResolver,
+            htmlSerializer
+          )}
         </div>
       )}
     </div>
@@ -95,14 +91,14 @@ const EventsHead = ({ page }) => {
 
 export default ({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allEvents_pages.edges.slice(0, 1).pop()
+  const doc = data.allPrismicEventsPage.edges.slice(0, 1).pop()
 
   if (!doc || !doc.node) return null
 
   return (
     <Layout title="Events">
       <EventsHead page={doc.node} />
-      <Slices slices={doc.node.body} />
+      <Slices slices={doc.node.data.body} />
     </Layout>
   )
 }

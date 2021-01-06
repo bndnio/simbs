@@ -19,7 +19,7 @@ function Category({ category, enableToggle }) {
   // Is current category in url query parameters
   const isInUrl = () => {
     const queryCategories = getCategoryQueryParams()
-    return queryCategories.includes(category._meta.uid)
+    return queryCategories.includes(category.uid)
   }
 
   // Set initial state by looking at url state
@@ -30,7 +30,7 @@ function Category({ category, enableToggle }) {
     const queryCategories = getCategoryQueryParams()
 
     // If this category is selected
-    if (queryCategories.includes(category._meta.uid)) {
+    if (queryCategories.includes(category.uid)) {
       setSelected(true)
       // If the category is not selected
     } else {
@@ -45,7 +45,7 @@ function Category({ category, enableToggle }) {
 
     // Setup & stop other click events
     event.stopPropagation()
-    const uid = category._meta.uid
+    const uid = category.uid
 
     // Parse query params and get array of 'category' ones
     const queryParams = queryString.parse(location.search)
@@ -85,7 +85,7 @@ function Category({ category, enableToggle }) {
         className={`btn btn-lg ${selected ? "btn-primary" : ""}`}
         onClick={toggleCategory}
       >
-        {category.name}
+        {category.data.name}
       </button>
     )
   }
@@ -95,7 +95,7 @@ function Category({ category, enableToggle }) {
       className={`label ${selected ? "label-secondary" : ""}`}
       onClick={toggleCategory}
     >
-      {category.name}
+      {category.data.name}
     </span>
   )
 }
@@ -182,9 +182,9 @@ export default function Categories({
   return (
     <div className={`categories ${enableToggle ? "btn-group" : ""}`}>
       {displayAll && <AllCategory enableToggle={enableToggle} />}
-      {categories.map((category) => {
+      {categories.map((c) => {
         // Get category object despite hows it's passe din
-        category = category.node || category.category
+        const category = c.node || c.category.document
         // Return if category object not found
         if (!category) return null
 
@@ -193,7 +193,7 @@ export default function Categories({
             category={category}
             defaultSelected={displayAll}
             enableToggle={enableToggle}
-            key={category._meta.uid}
+            key={category.uid}
           />
         )
       })}

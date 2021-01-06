@@ -9,7 +9,7 @@ export default function MediaSlice({ slice }) {
       {/* Optionally render media title */}
       {slice.primary.media_title && (
         <h3 className="media-title">
-          {RichText.asText(slice.primary.media_title)}
+          {RichText.asText(slice.primary.media_title.raw)}
         </h3>
       )}
       <div
@@ -18,9 +18,9 @@ export default function MediaSlice({ slice }) {
       />
       {/* Optionally render media caption */}
       {slice.primary.media_caption &&
-      RichText.asText(slice.primary.media_caption) !== "" ? (
+      RichText.asText(slice.primary.media_caption.raw) !== "" ? (
         <span className="media-caption">
-          {RichText.asText(slice.primary.media_caption)}
+          {RichText.asText(slice.primary.media_caption.raw)}
         </span>
       ) : null}
     </div>

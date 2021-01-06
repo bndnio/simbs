@@ -16,7 +16,7 @@ export default function Slices({ slices }) {
 
   return slices.map((slice, index) => {
     const res = (() => {
-      switch (slice.type) {
+      switch (slice.slice_type) {
         case "call_to_action":
           return <section key={index}>{<CTA slice={slice} />}</section>
 

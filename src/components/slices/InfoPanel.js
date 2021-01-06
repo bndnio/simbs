@@ -1,6 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
-import { linkResolver } from "../../utils/linkResolver"
+import linkResolver from "../../utils/linkResolver"
 import htmlSerializer from "../../utils/htmlSerializer"
 
 function InfoImage({ image }) {
@@ -15,9 +15,9 @@ function InfoSection({ section, opposite }) {
     <div className={`info-section ${opposite ? "opposite" : ""}`}>
       <InfoImage image={section.info_image} />
       <div className="info-content">
-        {RichText.render(section.info_slogan, linkResolver, htmlSerializer)}
+        {RichText.render(section.info_slogan.raw, linkResolver, htmlSerializer)}
         {RichText.render(
-          section.info_description,
+          section.info_description.raw,
           linkResolver,
           htmlSerializer
         )}
@@ -27,13 +27,17 @@ function InfoSection({ section, opposite }) {
 }
 
 export default function InfoPanel({ slice }) {
-  const infoSections = slice?.fields || []
+  const infoSections = slice?.items || []
   if (!infoSections.length) return null
 
   return (
     <div className="info-panel-wrapper">
       <div className="info-panel container">
-        {RichText.render(slice.info_title, linkResolver, htmlSerializer)}
+        {RichText.render(
+          slice.primary.info_title.raw,
+          linkResolver,
+          htmlSerializer
+        )}
         {infoSections.map((section, i) => (
           <InfoSection section={section} opposite={i % 2} key={i} />
         ))}

@@ -1,6 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
-import { linkResolver } from "../../utils/linkResolver"
+import linkResolver from "../../utils/linkResolver"
 import htmlSerializer from "../../utils/htmlSerializer"
 
 function Member({ member }) {
@@ -18,10 +18,10 @@ function Member({ member }) {
         {/* Member summary header section */}
         <div className="team-member-head">
           {/* Render member name */}
-          <h3>{RichText.asText(member.first_and_lastname)}</h3>
+          <h3>{RichText.asText(member.first_and_lastname.raw)}</h3>
           {/* Render position title */}
           <h4 className="team-member-position">
-            {RichText.asText(member.position)}
+            {RichText.asText(member.position.raw)}
           </h4>
           {/* Render member name */}
           <a href={`mailto:${member.email}`} target="_blank">
@@ -29,7 +29,7 @@ function Member({ member }) {
           </a>
         </div>
         {/* Render description <p> from prismic */}
-        {RichText.render(member.description, linkResolver, htmlSerializer)}
+        {RichText.render(member.description.raw, linkResolver, htmlSerializer)}
       </div>
     </div>
   )
@@ -40,7 +40,7 @@ function TeamHead({ team }) {
   if (!team?.team_section) return null
 
   // Render team section header
-  return <h2>{RichText.asText(team?.team_section)}</h2>
+  return <h2>{RichText.asText(team?.team_section.raw)}</h2>
 }
 
 export default function Team({ slice }) {
@@ -52,7 +52,7 @@ export default function Team({ slice }) {
       {/* Render slice header */}
       <TeamHead team={slice.primary} />
       {/* Render team members */}
-      {slice.fields.map((member, i) => (
+      {slice.items.map((member, i) => (
         <Member member={member} key={i} />
       ))}
     </div>

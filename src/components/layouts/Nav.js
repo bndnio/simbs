@@ -79,7 +79,7 @@ function Nav({ clearNav, data }) {
     }
   }, [])
 
-  const doc = data.prismic.allNavigations.edges.slice(0, 1).pop()
+  const doc = data.allPrismicNavigation.edges.slice(0, 1).pop()
 
   return (
     <header>
@@ -105,7 +105,7 @@ function Nav({ clearNav, data }) {
                   <SimbsLandscapeLogo className="logo" />
                 </a>
               </li>
-              <NavItems list navItems={doc.node.navto} />
+              <NavItems list navItems={doc.node.data.navto} />
             </ul>
           </div>
           <div
@@ -121,7 +121,7 @@ function Nav({ clearNav, data }) {
           </a>
         </div>
         <div className="navbar-center hide-md">
-          <NavItems navItems={doc.node.navto} />
+          <NavItems navItems={doc.node.data.navto} />
         </div>
 
         {/* Right nav */}

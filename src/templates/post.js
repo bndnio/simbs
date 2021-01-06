@@ -16,8 +16,7 @@ export const query = graphql`
           type
           data {
             title {
-              html
-              text
+              raw
             }
             author {
               document {
@@ -56,12 +55,10 @@ export const query = graphql`
                 primary {
                   anchor
                   title {
-                    html
-                    text
+                    raw
                   }
                   text {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -70,8 +67,7 @@ export const query = graphql`
                 slice_label
                 primary {
                   quote {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -84,8 +80,7 @@ export const query = graphql`
                     alt
                   }
                   image_caption {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -94,16 +89,14 @@ export const query = graphql`
                 slice_label
                 primary {
                   media_caption {
-                    html
-                    text
+                    raw
                   }
                   media_link {
                     type
                     embed_url
                   }
                   media_title {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -117,8 +110,7 @@ export const query = graphql`
                     url
                   }
                   cta_title {
-                    html
-                    text
+                    raw
                   }
                 }
               }
@@ -132,9 +124,9 @@ export const query = graphql`
 
 // Display the title, date, and content of the Post
 const PostBody = ({ blogPost, acknowledgements }) => {
-  const titled = blogPost.title.length !== 0
+  const titled = blogPost.data.title.length !== 0
   // Store and format the blog post's publication date
-  let postDate = blogPost.date ? new Date(blogPost.date) : null
+  let postDate = blogPost.data.date ? new Date(blogPost.data.date) : null
   postDate = postDate
     ? new Intl.DateTimeFormat("en-CA", {
         month: "short",
@@ -152,8 +144,8 @@ const PostBody = ({ blogPost, acknowledgements }) => {
             <Link to="/news">back to list</Link>
           </div>
           {/* Render the edit button */}
-          <h1 data-wio-id={blogPost._meta.id}>
-            {titled ? RichText.asText(blogPost.title) : "Untitled"}
+          <h1 data-wio-id={blogPost.id}>
+            {titled ? RichText.asText(blogPost.data.title.raw) : "Untitled"}
           </h1>
           <div className="post-meta">
             {/* Render post date */}
@@ -164,29 +156,30 @@ const PostBody = ({ blogPost, acknowledgements }) => {
             )}
             {" // "}
             {/* Render author if present */}
-            {blogPost.author && (
+            {blogPost.data.author && (
               <span>
-                By {blogPost.author.first_name} {blogPost.author.last_name}
+                By {blogPost.data.author.first_name}{" "}
+                {blogPost.data.author.last_name}
               </span>
             )}
             {/* Render categories if present */}
-            {blogPost.categories && (
-              <Categories categories={blogPost.categories} />
+            {blogPost.data.categories && (
+              <Categories categories={blogPost.data.categories} />
             )}
           </div>
         </header>
       </div>
       {/* Render banner image if available */}
-      {blogPost.banner && (
-        <img className="post-banner" src={blogPost.banner.url}></img>
+      {blogPost.data.banner && (
+        <img className="post-banner" src={blogPost.data.banner.url}></img>
       )}
       {/* Put contents back in container */}
       <div className="container">
         {/* Go through the slices of the post and render the appropriate one */}
-        <Slices slices={blogPost.body} />
+        <Slices slices={blogPost.data.body} />
         {/* Render acknowledgements */}
         {acknowledgements && (
-          <p>{RichText.asText(blogPost.acknowledgements)}</p>
+          <p>{RichText.asText(blogPost.data.acknowledgements.raw)}</p>
         )}
       </div>
     </div>
@@ -195,7 +188,7 @@ const PostBody = ({ blogPost, acknowledgements }) => {
 
 export default (props) => {
   // Define the Post content returned from Prismic
-  const doc = props.data.prismic.allPosts.edges.slice(0, 1).pop()
+  const doc = props.allPrismicPost.edges.slice(0, 1).pop()
 
   if (!doc || !doc.node) return null
 
@@ -205,14 +198,14 @@ export default (props) => {
     seo_keywords,
     seo_description,
     banner,
-  } = doc.node
+  } = doc.node.data
   const author = postAuthor
     ? `${postAuthor.first_name} ${postAuthor.last_name}`
     : "SIMBS"
 
   return (
     <Layout
-      title={RichText.asText(title)}
+      title={RichText.asText(title.raw)}
       author={author}
       keywords={seo_keywords}
       description={seo_description}

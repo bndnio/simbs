@@ -12,7 +12,7 @@ export default function CTA({ slice }) {
         rel="noopener"
         href={slice.primary.cta_link?.url}
       >
-        {RichText.asText(slice.primary.cta_title)}
+        {RichText.asText(slice.primary.cta_title.raw)}
       </a>
     </div>
   )
