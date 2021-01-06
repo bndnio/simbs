@@ -18,7 +18,7 @@ function CTACard({ card }) {
   return (
     <a
       className="card-wrapper"
-      target={card.cta_link?.target || "_blank"}
+      target={card.cta_link?.target || ""}
       rel="noopener"
       href={url}
     >
