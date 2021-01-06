@@ -94,6 +94,7 @@ export const query = graphql`
                   media_link {
                     type
                     embed_url
+                    html
                   }
                   media_title {
                     raw
