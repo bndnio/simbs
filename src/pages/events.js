@@ -10,35 +10,60 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allEvents_pages {
-        edges {
-          node {
-            _meta {
-              id
+    allPrismicEventsPage {
+      edges {
+        node {
+          id
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
-            description
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
+            description {
+              html
+              text
+            }
             body {
-              ... on PRISMIC_Events_pageBodyText {
-                type
-                label
+              ... on PrismicEventsPageBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Events_pageBodyText_with_embed {
-                type
-                label
+              ... on PrismicEventsPageBodyTextWithEmbed {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
-                  raw_embed
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
+                  raw_embed {
+                    html
+                    text
+                  }
                 }
               }
             }

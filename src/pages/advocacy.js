@@ -10,44 +10,76 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allAdvocacy_pages {
-        edges {
-          node {
-            _meta {
-              id
+    allPrismicAdvocacyPage {
+      edges {
+        node {
+          id
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
-            description
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
+            description {
+              html
+              text
+            }
+
             body {
-              ... on PRISMIC_Advocacy_pageBodyText {
-                type
-                label
+              ... on PrismicAdvocacyPageBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Advocacy_pageBodyInfo_panel {
-                type
-                label
+              ... on PrismicAdvocacyPageBodyInfoPanel {
+                slice_type
+                slice_label
                 primary {
-                  info_title
+                  info_title {
+                    html
+                    text
+                  }
                 }
-                fields {
-                  info_description
-                  info_image
-                  info_slogan
+                items {
+                  info_description {
+                    html
+                    text
+                  }
+                  info_image {
+                    url
+                    alt
+                  }
+                  info_slogan {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Advocacy_pageBodyPull_quote {
-                type
-                label
+              ... on PrismicAdvocacyPageBodyPullQuote {
+                slice_type
+                slice_label
                 primary {
-                  quote
+                  quote {
+                    html
+                    text
+                  }
                 }
               }
             }

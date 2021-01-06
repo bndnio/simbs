@@ -10,35 +10,60 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allTrails_pages {
-        edges {
-          node {
-            _meta {
-              id
+    allPrismicTrailsPage {
+      edges {
+        node {
+          id
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
-            description
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
+            description {
+              html
+              text
+            }
             body {
-              ... on PRISMIC_Trails_pageBodyText {
-                type
-                label
+              ... on PrismicTrailsPageBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Trails_pageBodyText_with_embed {
-                type
-                label
+              ... on PrismicTrailsPageBodyTextWithEmbed {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
-                  raw_embed
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
+                  raw_embed {
+                    html
+                    text
+                  }
                 }
               }
             }

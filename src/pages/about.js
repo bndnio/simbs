@@ -10,51 +10,94 @@ import htmlSerializer from "../utils/htmlSerializer"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allAbout_pages {
-        edges {
-          node {
-            _meta {
-              id
+    allPrismicAboutPage {
+      edges {
+        node {
+          id
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
-            description
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
+            description {
+              html
+              text
+            }
             body {
-              ... on PRISMIC_About_pageBodyText {
-                type
-                label
+              ... on PrismicAboutPageBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_About_pageBodyTeam {
-                type
-                label
+              ... on PrismicAboutPageBodyTeam {
+                slice_type
+                slice_label
                 primary {
-                  team_section
+                  team_section {
+                    html
+                    text
+                  }
                 }
-                fields {
-                  position
-                  portrait
-                  first_and_lastname
-                  description
+                items {
+                  position {
+                    html
+                    text
+                  }
+                  portrait {
+                    url
+                    alt
+                  }
+                  first_and_lastname {
+                    html
+                    text
+                  }
+                  description {
+                    html
+                    text
+                  }
                   email
                 }
               }
-              ... on PRISMIC_About_pageBodyInfo_panel {
-                type
-                label
+              ... on PrismicAboutPageBodyInfoPanel {
+                slice_type
+                slice_label
                 primary {
-                  info_title
+                  info_title {
+                    html
+                    text
+                  }
                 }
-                fields {
-                  info_description
-                  info_image
-                  info_slogan
+                items {
+                  info_description {
+                    html
+                    text
+                  }
+                  info_image {
+                    url
+                    alt
+                  }
+                  info_slogan {
+                    html
+                    text
+                  }
                 }
               }
             }

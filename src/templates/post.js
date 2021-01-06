@@ -8,82 +8,118 @@ import Slices from "../components/slices"
 // Query for the Blog Post content in Prismic
 export const query = graphql`
   query BlogPostQuery($uid: String) {
-    prismic {
-      allPosts(uid: $uid) {
-        edges {
-          node {
-            _meta {
-              id
-              uid
-              type
+    allPrismicPost(filter: { uid: { eq: $uid } }) {
+      edges {
+        node {
+          id
+          uid
+          type
+          data {
+            title {
+              html
+              text
             }
-            title
             author {
-              ... on PRISMIC_Author {
-                first_name
-                last_name
+              document {
+                ... on PrismicAuthor {
+                  data {
+                    first_name
+                    last_name
+                  }
+                }
               }
             }
             date
             seo_keywords
             seo_description
-            banner
+            banner {
+              url
+              alt
+            }
             categories {
               category {
-                ... on PRISMIC_Blog_post_category {
-                  name
-                  _meta {
+                document {
+                  ... on PrismicBlogPostCategory {
                     uid
+                    data {
+                      name
+                    }
                   }
                 }
               }
             }
             body {
               __typename
-              ... on PRISMIC_PostBodyText {
-                type
-                label
+              ... on PrismicPostBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  title
-                  text
+                  title {
+                    html
+                    text
+                  }
+                  text {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_PostBodyPull_quote {
-                type
-                label
+              ... on PrismicPostBodyPullQuote {
+                slice_type
+                slice_label
                 primary {
-                  quote
+                  quote {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_PostBodyImage_with_caption {
-                type
-                label
+              ... on PrismicPostBodyImageWithCaption {
+                slice_type
+                slice_label
                 primary {
-                  image
-                  image_caption
+                  image {
+                    url
+                    alt
+                  }
+                  image_caption {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_PostBodyMedia {
-                type
-                label
+              ... on PrismicPostBodyMedia {
+                slice_type
+                slice_label
                 primary {
-                  media_caption
-                  media_link
-                  media_title
+                  media_caption {
+                    html
+                    text
+                  }
+                  media_link {
+                    type
+                    embed_url
+                  }
+                  media_title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_PostBodyCall_to_action {
-                type
-                label
+              ... on PrismicPostBodyCallToAction {
+                slice_type
+                slice_label
                 primary {
                   cta_link {
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      url
-                    }
+                    target
+                    link_type
+                    url
                   }
-                  cta_title
+                  cta_title {
+                    html
+                    text
+                  }
                 }
               }
             }

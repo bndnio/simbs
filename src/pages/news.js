@@ -12,69 +12,95 @@ import toArray from "../utils/toArray"
 // Query for the News Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allBlog_homes(uid: null) {
-        edges {
-          node {
-            _meta {
-              id
-              type
+    allPrismicBlogHome {
+      edges {
+        node {
+          id
+          type
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
           }
         }
       }
-      allPosts(sortBy: date_DESC) {
-        edges {
-          node {
-            _meta {
-              id
-              uid
-              type
+    }
+    allPrismicPost(sort: { order: DESC, fields: data___date }) {
+      edges {
+        node {
+          id
+          uid
+          type
+          data {
+            title {
+              html
+              text
             }
-            title
             author {
-              ... on PRISMIC_Author {
-                first_name
-                last_name
+              document {
+                ... on PrismicAuthor {
+                  data {
+                    first_name
+                    last_name
+                  }
+                }
               }
             }
             date
-            banner
+            banner {
+              url
+              alt
+            }
             categories {
               category {
-                ... on PRISMIC_Blog_post_category {
-                  _meta {
+                document {
+                  ... on PrismicBlogPostCategory {
                     uid
+                    data {
+                      name
+                    }
                   }
-                  name
                 }
               }
             }
             body {
-              ... on PRISMIC_PostBodyText {
-                type
-                label
+              ... on PrismicPostBodyText {
                 primary {
                   anchor
-                  title
-                  text
+                  title {
+                    html
+                    text
+                  }
+                  text {
+                    html
+                    text
+                  }
                 }
               }
             }
           }
         }
       }
-      allBlog_post_categorys {
-        edges {
-          node {
-            _meta {
-              uid
-            }
+    }
+    allPrismicBlogPostCategory {
+      edges {
+        node {
+          uid
+          data {
             name
-            description
+            description {
+              html
+              text
+            }
           }
         }
       }

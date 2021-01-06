@@ -143,18 +143,19 @@ export default function (props) {
     <StaticQuery
       query={graphql`
         query NavQuery {
-          prismic {
-            allNavigations {
-              edges {
-                node {
-                  _meta {
-                    id
-                  }
+          allPrismicNavigation {
+            edges {
+              node {
+                id
+                data {
                   navto {
                     page
                     page_name
                   }
-                  logo
+                  logo {
+                    url
+                    alt
+                  }
                 }
               }
             }

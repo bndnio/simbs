@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { navigate, useLocation } from "@reach/router"
+import { useLocation } from "@reach/router"
 import Analytics, { tagManagerScript } from "./Analytics"
 import Nav from "./Nav"
 import Footer from "./Footer"

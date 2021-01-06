@@ -8,48 +8,73 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allHome_pages {
-        edges {
-          node {
-            _meta {
-              id
-              uid
-              type
-            }
+    allPrismicHomePage {
+      edges {
+        node {
+          id
+          type
+          data {
             cta_link {
-              ... on PRISMIC__ExternalLink {
-                target
-                _linkType
-                url
-              }
+              target
+              link_type
+              url
             }
-            sponsors_title
-            subtitle
-            cta_text
-            title
-            banner
+            sponsors_title {
+              html
+              text
+            }
+            subtitle {
+              html
+              text
+            }
+            cta_text {
+              html
+              text
+            }
+            title {
+              html
+              text
+            }
+            banner {
+              url
+              alt
+            }
             body {
-              ... on PRISMIC_Home_pageBodyCta_cards {
-                type
-                label
+              ... on PrismicHomePageBodyCtaCards {
+                slice_type
+                slice_label
                 primary {
-                  cta_cards_title
-                  cta_explainer_text
+                  cta_cards_title {
+                    html
+                    text
+                  }
+                  cta_explainer_text {
+                    html
+                    text
+                  }
                 }
-                fields {
-                  card_description
-                  cta_background
-                  card_title
-                  cta_text
+                items {
+                  card_description {
+                    html
+                    text
+                  }
+                  cta_background {
+                    url
+                    alt
+                  }
+                  card_title {
+                    html
+                    text
+                  }
+                  cta_text {
+                    html
+                    text
+                  }
                   cta_internal_link
                   cta_link {
-                    _linkType
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      _linkType
-                      url
-                    }
+                    target
+                    link_type
+                    url
                   }
                 }
               }
@@ -57,19 +82,21 @@ export const query = graphql`
           }
         }
       }
-      allSponsorss {
-        edges {
-          node {
+    }
+    allPrismicSponsors {
+      edges {
+        node {
+          data {
             sponsor {
-              logo
+              logo {
+                url
+                alt
+              }
               name
               link {
-                _linkType
-                ... on PRISMIC__ExternalLink {
-                  target
-                  _linkType
-                  url
-                }
+                target
+                link_type
+                url
               }
             }
           }
@@ -102,7 +129,7 @@ const HomeSponsor = ({ sponsor }) => {
   if (!sponsor?.logo) return null
   const SponsorImg = () => <img src={sponsor.logo.url} alt={sponsor.logo.alt} />
 
-  if (sponsor.link?._linkType === "Link.web") {
+  if (sponsor.link?.link_type === "Link.web") {
     return (
       <a
         href={Link.url(sponsor.link)}

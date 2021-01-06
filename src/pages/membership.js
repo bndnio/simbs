@@ -10,56 +10,96 @@ import htmlSerializer from "../utils/htmlSerializer"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    prismic {
-      allMembership_pages {
-        edges {
-          node {
-            _meta {
-              id
+    allPrismicMembershipPage {
+      edges {
+        node {
+          id
+          data {
+            title {
+              html
+              text
             }
-            title
-            subtitle
-            image
-            description
+            subtitle {
+              html
+              text
+            }
+            image {
+              url
+              alt
+            }
+            description {
+              html
+              text
+            }
             body {
-              ... on PRISMIC_Membership_pageBodyText {
-                type
-                label
+              ... on PrismicMembershipPageBodyText {
+                slice_type
+                slice_label
                 primary {
                   anchor
-                  text
-                  title
+                  text {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Membership_pageBodyMedia {
-                type
-                label
+              ... on PrismicMembershipPageBodyMedia {
+                slice_type
+                slice_label
                 primary {
-                  media_caption
-                  media_link
-                  media_title
+                  media_caption {
+                    html
+                    text
+                  }
+                  media_link {
+                    type
+                    embed_url
+                  }
+                  media_title {
+                    html
+                    text
+                  }
                 }
               }
-              ... on PRISMIC_Membership_pageBodyCta_cards {
-                type
-                label
+              ... on PrismicMembershipPageBodyCtaCards {
+                slice_type
+                slice_label
                 primary {
-                  cta_cards_title
-                  cta_explainer_text
+                  cta_cards_title {
+                    html
+                    text
+                  }
+                  cta_explainer_text {
+                    html
+                    text
+                  }
                 }
-                fields {
-                  card_description
-                  cta_background
-                  card_title
-                  cta_text
+                items {
+                  card_description {
+                    html
+                    text
+                  }
+                  cta_background {
+                    url
+                    alt
+                  }
+                  card_title {
+                    html
+                    text
+                  }
+                  cta_text {
+                    html
+                    text
+                  }
                   cta_internal_link
                   cta_link {
-                    _linkType
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      _linkType
-                      url
-                    }
+                    link_type
+                    target
+                    url
                   }
                 }
               }
