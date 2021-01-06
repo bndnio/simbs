@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
+import { Link } from "@reach/router"
 import SimbsLandscapeLogo from "../../images/simbs-logo-landscape.svg"
 
 // The debounce function receives our function as a parameter
@@ -40,15 +41,34 @@ function NavItem({ navItem, list }) {
   if (list) {
     return (
       <li className="nav-item">
-        <a href={navItem.page}>{navItem.page_name}</a>
+        <Link
+          to={navItem.page}
+          getProps={({ isCurrent, isPartiallyCurrent }) => {
+            if (isCurrent && isPartiallyCurrent)
+              return {
+                className: "nav-item selected",
+              }
+          }}
+        >
+          {navItem.page_name}
+        </Link>
       </li>
     )
   }
 
   return (
-    <a className="nav-item btn btn-link" href={navItem.page}>
+    <Link
+      className="nav-item btn btn-link"
+      to={navItem.page}
+      getProps={({ isCurrent, isPartiallyCurrent }) => {
+        if (isCurrent && isPartiallyCurrent)
+          return {
+            className: "nav-item btn btn-link selected",
+          }
+      }}
+    >
       {navItem.page_name}
-    </a>
+    </Link>
   )
 }
 

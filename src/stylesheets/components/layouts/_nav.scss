@@ -60,7 +60,7 @@ header {
 
       &:hover,
       &:focus,
-      .selected {
+      &.selected {
         color: $color-primary;
       }
     }
