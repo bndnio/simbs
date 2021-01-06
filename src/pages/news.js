@@ -71,6 +71,7 @@ export const query = graphql`
             }
             body {
               ... on PrismicPostBodyText {
+                slice_type
                 primary {
                   anchor
                   title {

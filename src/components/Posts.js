@@ -9,7 +9,7 @@ import Categories from "./Categories"
 const firstParagraph = (post) => {
   // Find the first text slice of post's body
   let firstTextSlice = post.data.body
-    ? post.data.body.find((slice) => slice.type === "text")
+    ? post.data.body.find((slice) => slice.slice_type === "text")
     : null
   if (firstTextSlice != null) {
     // Set the character limit for the text we'll show in the homepage
@@ -59,8 +59,8 @@ const PostSummary = ({ post }) => {
                 <time>{postDate}</time>
               </strong>
               {`${postDate && "  "}// `}
-              {post.data.author
-                ? `By ${post.data.author.first_name} ${post.data.author.last_name}`
+              {post.data.author?.document
+                ? `By ${post.data.author.document?.data?.first_name} ${post.data.author.document?.data?.last_name}`
                 : defaultAuthor}
             </div>
             <Categories categories={post.data.categories} />
