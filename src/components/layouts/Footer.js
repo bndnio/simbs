@@ -4,7 +4,7 @@ export default () => (
   <footer>
     <div className="container">
       <p>
-        Made by{" "}
+        Made with 🖤 by{" "}
         <a
           href="https://github.io/bndnio"
           target="_blank"

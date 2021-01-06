@@ -230,7 +230,7 @@ const HomeSocial = ({ social }) => {
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsouthislandmtb%2F&tabs=timeline&width=450&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId=291997394173672"
         width="450"
         height="500"
-        style={{ border: "none", overflow: "hidden", width: "100%" }}
+        style={{ border: "none", overflow: "hidden" }}
         scrolling="no"
         frameBorder="0"
         allowFullScreen="true"

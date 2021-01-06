@@ -35,7 +35,7 @@ a {
 
     padding: 1rem;
     min-width: 10rem;
-    min-height: 8rem;
+    min-height: 10rem;
     @include for-phone-only {
       width: 100%;
     }

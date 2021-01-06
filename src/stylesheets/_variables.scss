@@ -1,7 +1,7 @@
 // Spectre variables: https://github.com/picturepan2/spectre/blob/master/src/_variables.scss
 
 $color-background: #fafafa;
-$color-background-darker: scale-color($color-background, $lightness: -10%);
+$color-background-darker: scale-color($color-background, $lightness: -5%);
 $color-background-lighter: scale-color($color-background, $lightness: +10%);
 $color-background-gradient: linear-gradient(
   145deg,
@@ -12,7 +12,7 @@ $color-background-darkest: scale-color($color-background, $lightness: -30%);
 $color-background-lightest: scale-color($color-background, $lightness: +30%);
 
 $color-text-primary: #333;
-$color-text-secondary: #808080;
+$color-text-secondary: #5c5757;
 $color-text-inverted: #fafafa;
 
 $color-primary: scale-color(#60bd60, $lightness: -20%);
