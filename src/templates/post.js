@@ -154,13 +154,15 @@ const PostBody = ({ blogPost, acknowledgements }) => {
                 Published <time>{postDate}</time>
               </span>
             )}
-            {" // "}
             {/* Render author if present */}
-            {blogPost.data.author && (
-              <span>
-                By {blogPost.data.author.first_name}{" "}
-                {blogPost.data.author.last_name}
-              </span>
+            {blogPost.data.author?.document && (
+              <strong>
+                {" // "}
+                <span>
+                  By {blogPost.data.author.document?.data?.first_name}{" "}
+                  {blogPost.data.author.document?.data?.last_name}
+                </span>
+              </strong>
             )}
             {/* Render categories if present */}
             {blogPost.data.categories && (
@@ -188,7 +190,7 @@ const PostBody = ({ blogPost, acknowledgements }) => {
 
 export default (props) => {
   // Define the Post content returned from Prismic
-  const doc = props.allPrismicPost.edges.slice(0, 1).pop()
+  const doc = props.data.allPrismicPost.edges.slice(0, 1).pop()
 
   if (!doc || !doc.node) return null
 
