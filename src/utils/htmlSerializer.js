@@ -1,10 +1,13 @@
 // -- The HTML Serializer
 // This function will be used to modify the way that a Rich Text or Title field is rendered.
 
-var PrismicDOM = require("prismic-dom")
-var Elements = PrismicDOM.RichText.Elements
+const PrismicDOM = require("prismic-dom")
+const Elements = PrismicDOM.RichText.Elements
+const linkResolver = require("./linkResolver")
 
 module.exports = function htmlSerializer(type, element, content, children) {
+  return null
+
   switch (type) {
     // Don't wrap images in a <p> tag
     case Elements.image:
@@ -20,10 +23,10 @@ module.exports = function htmlSerializer(type, element, content, children) {
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
-      var target = element.data.target
+      const target = element.data.target
         ? 'target="' + element.data.target + '" rel="noopener"'
         : ""
-      var linkUrl = PrismicDOM.Link.url(element.data, linkResolver)
+      const linkUrl = PrismicDOM.Link.url(element.data, linkResolver)
       return (
         '<a class="link"' +
         target +
@@ -44,7 +47,7 @@ module.exports = function htmlSerializer(type, element, content, children) {
 // import React from "react"
 // import { Link as PrismicLink } from "prismic-reactjs"
 // import { Elements } from "prismic-richtext"
-// import { linkResolver } from "./linkResolver"
+// import linkResolver from "./linkResolver"
 // import { Link } from "gatsby"
 
 // export default function (type, element, content, children, index) {
