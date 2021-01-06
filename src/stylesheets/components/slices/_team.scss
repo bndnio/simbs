@@ -6,6 +6,7 @@
       display: block;
       max-width: 250px;
       width: 100%;
+      background: $color-background-darker;
 
       @include rounded();
 
