@@ -98,7 +98,9 @@ export const query = graphql`
     allPrismicPost(limit: 3, sort: { order: DESC, fields: data___date }) {
       edges {
         node {
+          id
           uid
+          type
           data {
             title {
               raw
