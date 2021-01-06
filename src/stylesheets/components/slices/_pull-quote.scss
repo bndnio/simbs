@@ -8,7 +8,6 @@
     text-align: center;
 
     @include for-tablet-landscape-up {
-      width: 100%;
       margin: 0 0 2rem;
       font-size: 30px;
       padding: 0;
