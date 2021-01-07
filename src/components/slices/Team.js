@@ -6,12 +6,24 @@ import htmlSerializer from "../../utils/htmlSerializer"
 function Member({ member }) {
   if (!member) return null
 
+  const Headshot = ({ url }) => {
+    if (url)
+      return (
+        <img className="team-member-portrait" src={member.portrait?.url}></img>
+      )
+    return (
+      <div className="team-member-portrait">
+        <i className="icon icon-4x icon-people"></i>
+      </div>
+    )
+  }
+
   return (
     // Member section
     <div className="team-member columns">
       {/* Member portrait image */}
       <div className="column col-3 col-md-4 col-sm-12">
-        <img className="team-member-portrait" src={member.portrait?.url}></img>
+        <Headshot url={member.portrait?.url} />
       </div>
       {/* Member summary section */}
       <div className="team-member-summary column col-9 col-md-8 col-sm-12">

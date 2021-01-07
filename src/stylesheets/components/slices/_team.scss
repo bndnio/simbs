@@ -3,10 +3,13 @@
     margin: 0rem 0rem 2rem;
 
     .team-member-portrait {
-      display: block;
+      display: flex;
       max-width: 250px;
+      min-height: 150px;
       width: 100%;
       background: $color-background-darker;
+      justify-content: space-around;
+      align-items: center;
 
       @include rounded();
 
