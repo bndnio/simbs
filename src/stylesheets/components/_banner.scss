@@ -16,11 +16,34 @@
   .banner-content {
     display: flex;
 
+    flex-wrap: wrap;
+    @include for-small-desktop-up {
+      flex-direction: row;
+    }
+
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     padding-top: 3rem;
     padding-bottom: 3rem;
+
+    .banner-content-unit {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      width: 100%;
+
+      * {
+        max-width: 800px;
+      }
+
+      & > :last-child {
+        margin-bottom: 0;
+      }
+    }
 
     @include for-small-desktop-up() {
       padding-top: 5rem;

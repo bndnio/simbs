@@ -2,22 +2,11 @@
   // Extends _banner.scss
   .banner {
     .banner-content {
-      flex-wrap: wrap;
-      flex-direction: column;
-      @include for-small-desktop-up {
-        flex-direction: row;
-      }
-
       justify-content: space-evenly;
-      align-items: center;
     }
 
     .banner-content-unit {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0rem 1rem;
+      background-color: change-color($color: #222, $alpha: 0.5);
     }
 
     .btn {

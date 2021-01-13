@@ -6,7 +6,7 @@ import htmlSerializer from "../../utils/htmlSerializer"
 function CTACard({ card }) {
   if (!card) return null
 
-  const ctaBGOpacity = 0.2
+  const ctaBGOpacity = 0.3
   const ctaBG = card.cta_background?.url
     ? {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, ${ctaBGOpacity}), rgba(0, 0, 0, ${ctaBGOpacity})), url('${card.cta_background.url}')`,

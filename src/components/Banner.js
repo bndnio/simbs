@@ -1,7 +1,7 @@
 import React from "react"
 
 export function BannerBG({ url, hero, children }) {
-  const bannerOpacity = 0.2
+  const bannerOpacity = hero ? 0.2 : 0.4
   const banner = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, ${bannerOpacity}), rgba(0, 0, 0, ${bannerOpacity})), url('${url}')`,
   }
@@ -16,9 +16,11 @@ export function BannerBG({ url, hero, children }) {
 function Banner({ url, hero, title, subtitle }) {
   return (
     <BannerBG url={url} hero={hero}>
-      <header className="container banner-content">
-        {title && <h1>{title}</h1>}
-        {subtitle && <p className="h4">{subtitle}</p>}
+      <header className="banner-content">
+        <div className="banner-content-unit">
+          {title && <h1>{title}</h1>}
+          {subtitle && <p className="h4">{subtitle}</p>}
+        </div>
       </header>
     </BannerBG>
   )

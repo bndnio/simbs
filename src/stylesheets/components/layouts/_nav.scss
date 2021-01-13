@@ -25,7 +25,7 @@ header {
       change-color($color: $color-background-darkest, $alpha: 1);
 
     &.clear-nav {
-      background-color: change-color($color: $color-background, $alpha: 0);
+      background-color: change-color($color: #222, $alpha: 0.4);
       border-bottom: 1px solid
         change-color($color: $color-background-darkest, $alpha: 0);
       .nav-item {
