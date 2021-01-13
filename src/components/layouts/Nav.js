@@ -148,10 +148,10 @@ function Nav({ clearNav, data }) {
         <div className="navbar-section">
           <a
             className="btn btn-clr"
-            href="https://www.joinit.org/o/simbs"
+            href="https://www.trailforks.com/region/victoria/karma/?did=185"
             target="_blank"
           >
-            <span className="join-button">Join</span>
+            Donate
           </a>
         </div>
       </nav>
