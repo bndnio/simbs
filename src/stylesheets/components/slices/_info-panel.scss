@@ -26,6 +26,7 @@
     }
 
     & > img {
+      @include rounded();
       max-width: 30rem;
       max-height: 10rem;
     }
