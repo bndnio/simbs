@@ -6,7 +6,7 @@ export default () => (
       <p>
         Made with 🖤 by{" "}
         <a
-          href="https://github.io/bndnio"
+          href="https://github.com/bndnio"
           target="_blank"
           rel="noopener noreferrer"
         >

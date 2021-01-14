@@ -167,7 +167,11 @@ const HomeHead = ({ home }) => {
           <div className="banner-content-unit">
             <h1>{RichText.asText(home.data.title.raw)}</h1>
             <p className="h4">{RichText.asText(home.data.subtitle.raw)}</p>
-            <a className="btn btn-clr" href={home.data.cta_link?.url}>
+            <a
+              className="btn btn-clr"
+              href={home.data.cta_link?.url}
+              target="_blank"
+            >
               {RichText.asText(home.data.cta_text.raw)}
             </a>
           </div>
@@ -220,6 +224,7 @@ const HomeHighlights = ({ highlights }) => {
 const HomeNews = ({ posts }) => {
   return (
     <div className="home-news">
+      <h2>Latest News</h2>
       <Posts posts={posts} />
     </div>
   )
