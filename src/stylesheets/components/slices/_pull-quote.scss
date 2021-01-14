@@ -1,9 +1,12 @@
 .pull-quote {
+  max-width: 800px;
+
   blockquote {
     margin-bottom: 2rem;
     display: inline-block;
     font-style: italic;
     font-size: 24px;
+    font-weight: 100;
     color: $color-text-secondary;
     text-align: center;
 
