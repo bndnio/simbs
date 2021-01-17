@@ -1,2 +1,7 @@
 .events {
 }
+
+#calendar > div {
+  width: 100%;
+  overflow-x: scroll;
+}
