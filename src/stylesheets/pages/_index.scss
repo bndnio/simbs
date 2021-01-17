@@ -69,4 +69,9 @@
 .home-social {
   width: 100%;
   overflow-x: scroll;
+
+  iframe {
+    display: block;
+    margin: auto;
+  }
 }
