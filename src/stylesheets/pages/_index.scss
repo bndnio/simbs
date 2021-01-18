@@ -22,6 +22,17 @@
   }
 }
 
+.home {
+  & > div:last-of-type() {
+    margin-bottom: 0;
+  }
+  @include for-phone-only() {
+    & > div:nth-last-of-type(2) {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .home-sponsors {
   margin-bottom: 5rem;
   display: flex;
@@ -60,14 +71,39 @@
   margin-bottom: 4rem;
 }
 
-.home-news {
-  margin-bottom: 4rem;
+.home-highlights {
+  @include for-phone-only() {
+    display: none;
+    visibility: hidden;
+  }
+  .membership-graph {
+    path {
+      stroke: $color-text-primary;
+      stroke-linecap: round;
 
+      &:last-of-type() {
+        stroke: $color-primary;
+      }
+    }
+    text {
+      font-weight: 900;
+      text-anchor: middle;
+
+      &:last-of-type() {
+        fill: $color-primary;
+      }
+    }
+  }
+}
+
+.home-news,
+.home-highlights,
+.home-social {
+  margin-bottom: 4rem;
   text-align: center;
 }
 
 .home-social {
-  width: 100%;
   overflow-x: scroll;
 
   iframe {

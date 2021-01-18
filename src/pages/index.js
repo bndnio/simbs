@@ -1,4 +1,5 @@
 import React from "react"
+import * as d3 from "d3"
 import { RichText, Link } from "prismic-reactjs"
 import { graphql } from "gatsby"
 import { BannerBG } from "../components/Banner"
@@ -217,8 +218,116 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
   )
 }
 
+const MembershipGraph = ({ membership, width, height }) => {
+  const mobile = width < 800
+  const strokeWidth = 8
+  const fontSize = 20
+  const offset = strokeWidth
+  const [points, setPoints] = React.useState([])
+
+  React.useEffect(() => {
+    const years = membership.map((m) => m.year)
+    const nums = membership.map((m) => m.num)
+
+    const xScale = d3
+      .scaleLinear()
+      .domain([Math.min(...years), Math.max(...years)])
+      .range([0, width - offset * 4])
+    const yScale = d3
+      .scaleLinear()
+      .domain([Math.max(...nums), Math.min(...nums)])
+      .range([0 + offset, height - offset])
+
+    const xPoints = years.map((x) => xScale(x))
+    const yPoints = nums.map((y) => yScale(y))
+
+    setPoints(d3.zip(xPoints, yPoints))
+  }, [width])
+
+  return (
+    <svg className="membership-graph" width={width} height={height}>
+      <path
+        className="line"
+        fill="none"
+        strokeWidth={strokeWidth}
+        d={d3.line().curve(d3.curveMonotoneX)(points)}
+      ></path>
+      {points.length &&
+        membership.map((m, i) => {
+          const xOffset = 50
+          const yOffset = height / 4
+
+          let [x, y] = points[i]
+          const above = y + yOffset * 2 < height
+
+          let line0X = x
+          let line0Y = above ? y + strokeWidth * 2 : y - strokeWidth * 2
+          let line1X = above ? x - xOffset : x + xOffset
+          let line1Y = above
+            ? y + yOffset - fontSize / 2
+            : y - yOffset + fontSize / 2
+          let textX = above ? x - xOffset : x + xOffset
+          let textY = above ? y + yOffset + fontSize : y - yOffset
+          return (
+            <>
+              <path
+                fill="none"
+                strokeWidth={strokeWidth / 2}
+                d={d3.line().curve(d3.curveMonotoneX)([
+                  [line0X, line0Y],
+                  [
+                    (line0X + line1X) / 2 +
+                      Math.abs(line0X - line1X) * (!above ? -0.2 : 0.2),
+                    (line0Y + line1Y) * 0.5,
+                  ],
+                  [line1X, line1Y],
+                ])}
+              ></path>
+              <text
+                alignmentBaseline={above ? "bottom" : "top"}
+                textAnchor="middle"
+                fontSize={fontSize}
+                x={textX}
+                y={textY}
+              >
+                {m.year}: {m.num}
+              </text>
+            </>
+          )
+        })}
+    </svg>
+  )
+}
+
 const HomeHighlights = ({ highlights }) => {
-  return null
+  const ref = React.useRef(null)
+  const [width, setWidth] = React.useState(0)
+  const height = 400
+
+  highlights = {
+    membership: [
+      { year: 2016, num: 64 },
+      { year: 2017, num: 85 },
+      { year: 2018, num: 156 },
+      { year: 2019, num: 245 },
+      { year: 2020, num: 366 },
+    ],
+  }
+
+  React.useEffect(() => {
+    if (ref.current?.offsetWidth) setWidth(ref.current.offsetWidth)
+  }, [ref.current])
+
+  return (
+    <div ref={ref} className="home-highlights">
+      <h2>Memberships</h2>
+      <MembershipGraph
+        membership={highlights.membership}
+        height={height}
+        width={width}
+      />
+    </div>
+  )
 }
 
 const HomeNews = ({ posts }) => {
@@ -260,13 +369,13 @@ export default ({ data }) => {
   sponsors = sponsors?.node?.data?.sponsor
 
   return (
-    <Layout title="Home" description={description} clearNav>
+    <Layout className="home" title="Home" description={description} clearNav>
       <HomeHead home={doc.node} />
       <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
       <Slices slices={doc.node.data.body} />
-      <HomeHighlights />
       <HomeNews posts={posts} />
-      <HomeSocial />
+      <HomeHighlights />
+      {/* <HomeSocial /> */}
     </Layout>
   )
 }
