@@ -1,2 +1,15 @@
-# Redirects from what the browser requests to what we serve
-/news              /
+# Standard Redirects
+/home                       /
+
+# Platform Redirects
+/join                       https://www.joinit.org/o/simbs
+/join-single                https://www.joinit.org/o/simbs/XhiD2MKdKvTDMYKsR
+/join-family                https://www.joinit.org/o/simbs/88zNjPAfe4TbbPTiv
+/donate                     https://www.trailforks.com/region/victoria/karma/?did=185
+
+# Legacy Site Redirects
+/simbs-membership           /membership
+/where-to-ride              /trails
+/about-simbs                /about
+/contact-us                 /about
+/trail-maintenance-days     /events
