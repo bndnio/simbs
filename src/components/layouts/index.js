@@ -85,7 +85,7 @@ const Layout = (props) => {
       </Helmet>
       <Analytics />
       <Nav clearNav={clearNav} />
-      <main>{props.children}</main>
+      <main className={props.className}>{props.children}</main>
       <Footer />
     </>
   )
