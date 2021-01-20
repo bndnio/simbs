@@ -10,6 +10,7 @@
 # Legacy Site Redirects
 /simbs-membership           /membership
 /where-to-ride              /trails
+/where-to-ride/*            /trails
 /about-simbs                /about
 /contact-us                 /about
 /trail-maintenance-days     /events
