@@ -70,6 +70,19 @@ export const query = graphql`
                   }
                 }
               }
+              ... on PrismicHomePageBodyText {
+                slice_type
+                slice_label
+                primary {
+                  text {
+                    raw
+                  }
+                  title {
+                    raw
+                  }
+                  anchor
+                }
+              }
             }
           }
         }
@@ -262,8 +275,8 @@ export default ({ data }) => {
   return (
     <Layout title="Home" description={description} clearNav>
       <HomeHead home={doc.node} />
-      <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
       <Slices slices={doc.node.data.body} />
+      <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
       <HomeHighlights />
       <HomeNews posts={posts} />
       <HomeSocial />
