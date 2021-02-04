@@ -273,7 +273,7 @@ export default ({ data }) => {
   sponsors = sponsors?.node?.data?.sponsor
 
   return (
-    <Layout title="Home" description={description} clearNav>
+    <Layout title="Home" description={description} className="home" clearNav>
       <HomeHead home={doc.node} />
       <Slices slices={doc.node.data.body} />
       <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
