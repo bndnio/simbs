@@ -71,31 +71,6 @@
   margin-bottom: 4rem;
 }
 
-.home-highlights {
-  @include for-phone-only() {
-    display: none;
-    visibility: hidden;
-  }
-  .membership-graph {
-    path {
-      stroke: $color-text-primary;
-      stroke-linecap: round;
-
-      &:last-of-type() {
-        stroke: $color-primary;
-      }
-    }
-    text {
-      font-weight: 900;
-      text-anchor: middle;
-
-      &:last-of-type() {
-        fill: $color-primary;
-      }
-    }
-  }
-}
-
 .home-news,
 .home-highlights,
 .home-social {
