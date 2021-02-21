@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import linkResolver from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
@@ -104,7 +105,7 @@ const AdvocacyHead = ({ page }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.allPrismicAdvocacyPage.edges.slice(0, 1).pop()
 
@@ -116,4 +117,4 @@ export default ({ data }) => {
       <Slices slices={doc.node.data.body} />
     </Layout>
   )
-}
+})

@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText, Link } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
@@ -260,7 +261,7 @@ const HomeSocial = ({ social }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.allPrismicHomePage.edges.slice(0, 1).pop()
   if (!doc || !doc.node) return null
@@ -282,4 +283,4 @@ export default ({ data }) => {
       <HomeSocial />
     </Layout>
   )
-}
+})

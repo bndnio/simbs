@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
@@ -119,7 +120,7 @@ const AboutHead = ({ page }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.allPrismicAboutPage.edges.slice(0, 1).pop()
 
@@ -131,4 +132,4 @@ export default ({ data }) => {
       <Slices slices={doc.node.data.body} />
     </Layout>
   )
-}
+})

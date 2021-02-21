@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 import queryString from "query-string"
@@ -138,7 +139,7 @@ const NewsHead = ({ page, categories }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Get router location hook
   const location = useLocation()
 
@@ -168,4 +169,4 @@ export default ({ data }) => {
       <Posts posts={filteredPosts} />
     </Layout>
   )
-}
+})
