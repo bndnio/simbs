@@ -124,8 +124,7 @@ const MembershipHead = ({ page }) => {
 }
 
 const MembershipGraph = ({ membership, width, height }) => {
-  const mobile = width < 800
-  const strokeWidth = 8
+  const strokeWidth = 6
   const fontSize = 20
   const offset = strokeWidth
   const [points, setPoints] = React.useState([])
