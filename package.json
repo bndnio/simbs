@@ -63,5 +63,9 @@
   },
   "bugs": {
     "url": "https://github.com/bndnio/simbs/issues"
+  },
+  "volta": {
+    "node": "14.15.5",
+    "yarn": "1.22.10"
   }
 }
