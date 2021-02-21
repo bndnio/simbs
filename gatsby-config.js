@@ -1,4 +1,4 @@
-const { linkResolver } = require("./src/utils/linkResolver")
+const linkResolver = require("./src/utils/linkResolver")
 const htmlSerializer = require("./src/utils/htmlSerializer")
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
       resolve: "gatsby-source-prismic",
       options: {
         repositoryName: "simbs",
-        accessToken: "",
+        accessToken: process.env.API_KEY || "",
         linkResolver: ({ node, key, value }) => linkResolver,
         htmlSerializer: htmlSerializer,
         schemas: require("./src/schemas/index"),
