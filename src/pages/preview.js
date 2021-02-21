@@ -19,5 +19,5 @@ const PreviewPage = ({ isPreview, isLoading }) => {
 
 export default withPreviewResolver(PreviewPage, {
   repositoryName: "simbs",
-  linkResolver,
+  linkResolver: () => linkResolver,
 })
