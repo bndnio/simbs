@@ -28,7 +28,7 @@ module.exports = function htmlSerializer(type, element, content, children) {
         : ""
       const linkUrl = PrismicDOM.Link.url(element.data, linkResolver)
       return (
-        '<a class="link"' +
+        '<a className="link"' +
         target +
         ' href="' +
         linkUrl +
