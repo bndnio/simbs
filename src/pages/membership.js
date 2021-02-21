@@ -130,9 +130,9 @@ const MembershipHighlights = ({ highlights }) => {
 
   highlights = {
     membership: [
-      { year: 2016, num: 64 },
-      // { year: 2017, num: 85 },
-      { year: 2017, num: 91 },
+      // { year: 2016, num: 64 },
+      // // { year: 2017, num: 85 },
+      // { year: 2017, num: 91 },
       // { year: 2018, num: 156 },
       { year: 2018, num: 171 },
       // { year: 2019, num: 245 },

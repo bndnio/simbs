@@ -19,7 +19,7 @@ const MembershipGraph = ({ membership, width, height }) => {
     const yScale = d3
       .scaleLinear()
       .domain([Math.max(...nums), Math.min(...nums)])
-      .range([0 + offset, height - offset])
+      .range([0 + offset, height - 2 * offset])
 
     const xPoints = years.map((x) => xScale(x))
     const yPoints = nums.map((y) => yScale(y))
