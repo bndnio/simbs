@@ -163,7 +163,7 @@ export default ({ data }) => {
   )
 
   return (
-    <Layout>
+    <Layout title="News">
       <NewsHead page={doc.node} categories={categories} />
       <Posts posts={filteredPosts} />
     </Layout>

@@ -49,11 +49,11 @@ const PostSummary = ({ post }) => {
             </div>
           )}
           <div className="card-header">
-            <h2 className="card-title h5">
+            <h3 className="card-title h5">
               {RichText.asText(post.data.title.raw).length !== 0
                 ? RichText.asText(post.data.title.raw)
                 : defaultTitle}
-            </h2>
+            </h3>
             <div className="card-subtitle text-gray">
               <strong>
                 <time>{postDate}</time>
