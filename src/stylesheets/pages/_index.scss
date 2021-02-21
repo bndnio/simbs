@@ -98,7 +98,7 @@
   }
 
   path {
-    stroke-width: 1rem;
+    stroke-width: 0.5rem;
     stroke-linecap: round;
   }
   .dial-line {
@@ -123,6 +123,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+
+  max-width: 1400px;
+  margin: auto;
 
   .highlight-info {
     min-width: 300px;
