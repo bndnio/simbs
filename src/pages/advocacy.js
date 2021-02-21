@@ -11,68 +11,64 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicAdvocacyPage {
-      edges {
-        node {
-          id
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-            description {
-              raw
-            }
+    prismicAdvocacyPage {
+      id
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
+        }
+        description {
+          raw
+        }
 
-            body {
-              ... on PrismicAdvocacyPageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
+        body {
+          ... on PrismicAdvocacyPageBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
               }
-              ... on PrismicAdvocacyPageBodyInfoPanel {
-                slice_type
-                slice_label
-                primary {
-                  info_title {
-                    raw
-                  }
-                }
-                items {
-                  info_description {
-                    raw
-                  }
-                  info_image {
-                    url
-                    alt
-                  }
-                  info_slogan {
-                    raw
-                  }
-                }
+              title {
+                raw
               }
-              ... on PrismicAdvocacyPageBodyPullQuote {
-                slice_type
-                slice_label
-                primary {
-                  quote {
-                    raw
-                  }
-                }
+            }
+          }
+          ... on PrismicAdvocacyPageBodyInfoPanel {
+            slice_type
+            slice_label
+            primary {
+              info_title {
+                raw
+              }
+            }
+            items {
+              info_description {
+                raw
+              }
+              info_image {
+                url
+                alt
+              }
+              info_slogan {
+                raw
+              }
+            }
+          }
+          ... on PrismicAdvocacyPageBodyPullQuote {
+            slice_type
+            slice_label
+            primary {
+              quote {
+                raw
               }
             }
           }
@@ -107,14 +103,13 @@ const AdvocacyHead = ({ page }) => {
 
 export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicAdvocacyPage.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicAdvocacyPage
+  if (!doc) return null
 
   return (
     <Layout title="Advocacy">
-      <AdvocacyHead page={doc.node} />
-      <Slices slices={doc.node.data.body} />
+      <AdvocacyHead page={doc} />
+      <Slices slices={doc.data.body} />
     </Layout>
   )
 })

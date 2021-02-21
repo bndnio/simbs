@@ -10,158 +10,148 @@ import Posts from "../components/Posts"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicHomePage {
-      edges {
-        node {
-          id
-          type
-          data {
-            cta_link {
-              target
-              link_type
-              url
-            }
-            sponsors_title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            cta_text {
-              raw
-            }
-            title {
-              raw
-            }
-            banner {
-              url
-              alt
-            }
-            body {
-              ... on PrismicHomePageBodyCtaCards {
-                slice_type
-                slice_label
-                primary {
-                  cta_cards_title {
-                    raw
-                  }
-                  cta_explainer_text {
-                    raw
-                  }
-                }
-                items {
-                  card_description {
-                    raw
-                  }
-                  cta_background {
-                    url
-                    alt
-                  }
-                  card_title {
-                    raw
-                  }
-                  cta_text {
-                    raw
-                  }
-                  cta_internal_link
-                  cta_link {
-                    target
-                    link_type
-                    url
-                  }
-                }
-              }
-              ... on PrismicHomePageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                  anchor
-                }
-              }
-            }
-          }
+    prismicHomePage {
+      id
+      type
+      data {
+        cta_link {
+          target
+          link_type
+          url
         }
-      }
-    }
-    allPrismicSponsors {
-      edges {
-        node {
-          data {
-            sponsor {
-              logo {
+        sponsors_title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        cta_text {
+          raw
+        }
+        title {
+          raw
+        }
+        banner {
+          url
+          alt
+        }
+        body {
+          ... on PrismicHomePageBodyCtaCards {
+            slice_type
+            slice_label
+            primary {
+              cta_cards_title {
+                raw
+              }
+              cta_explainer_text {
+                raw
+              }
+            }
+            items {
+              card_description {
+                raw
+              }
+              cta_background {
                 url
                 alt
               }
-              name
-              link {
+              card_title {
+                raw
+              }
+              cta_text {
+                raw
+              }
+              cta_internal_link
+              cta_link {
                 target
                 link_type
                 url
               }
             }
           }
+          ... on PrismicHomePageBodyText {
+            slice_type
+            slice_label
+            primary {
+              text {
+                raw
+              }
+              title {
+                raw
+              }
+              anchor
+            }
+          }
+        }
+      }
+    }
+    prismicSponsors {
+      data {
+        sponsor {
+          logo {
+            url
+            alt
+          }
+          name
+          link {
+            target
+            link_type
+            url
+          }
         }
       }
     }
     allPrismicPost(limit: 3, sort: { order: DESC, fields: data___date }) {
-      edges {
-        node {
-          id
-          uid
-          type
-          data {
-            title {
-              raw
+      nodes {
+        id
+        uid
+        type
+        data {
+          title {
+            raw
+          }
+          banner {
+            url
+            alt
+          }
+          author {
+            document {
+              ... on PrismicAuthor {
+                data {
+                  first_name
+                  last_name
+                }
+              }
             }
-            banner {
-              url
-              alt
-            }
-            author {
+            uid
+          }
+          date
+          seo_keywords
+          seo_description
+          categories {
+            category {
               document {
-                ... on PrismicAuthor {
+                ... on PrismicBlogPostCategory {
+                  uid
                   data {
-                    first_name
-                    last_name
-                  }
-                }
-              }
-              uid
-            }
-            date
-            seo_keywords
-            seo_description
-            categories {
-              category {
-                document {
-                  ... on PrismicBlogPostCategory {
-                    uid
-                    data {
-                      name
-                    }
+                    name
                   }
                 }
               }
             }
-            body {
-              __typename
-              ... on PrismicPostBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  title {
-                    raw
-                  }
-                  text {
-                    raw
-                  }
+          }
+          body {
+            __typename
+            ... on PrismicPostBodyText {
+              slice_type
+              slice_label
+              primary {
+                anchor
+                title {
+                  raw
+                }
+                text {
+                  raw
                 }
               }
             }
@@ -235,7 +225,9 @@ const HomeHighlights = ({ highlights }) => {
   return null
 }
 
-const HomeNews = ({ posts }) => {
+const HomeNews = ({ posts = [] }) => {
+  if (!posts.length) return null
+
   return (
     <div className="home-news">
       <h2>Latest News</h2>
@@ -263,21 +255,19 @@ const HomeSocial = ({ social }) => {
 
 export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicHomePage.edges.slice(0, 1).pop()
-  if (!doc || !doc.node) return null
+  const doc = data.prismicHomePage
+  if (!doc) return null
 
-  const posts = data.allPrismicPost.edges
+  const posts = data.allPrismicPost?.nodes
+  const sponsors = data.prismicSponsors?.data?.sponsor
 
-  const description = RichText.asText(doc.node.data.subtitle.raw)
-
-  let sponsors = data.allPrismicSponsors.edges.slice(0, 1).pop()
-  sponsors = sponsors?.node?.data?.sponsor
+  const description = RichText.asText(doc.data.subtitle.raw)
 
   return (
     <Layout title="Home" description={description} className="home" clearNav>
-      <HomeHead home={doc.node} />
-      <Slices slices={doc.node.data.body} />
-      <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
+      <HomeHead home={doc} />
+      <Slices slices={doc.data.body} />
+      <HomeSponsors title={doc.data.sponsors_title} sponsors={sponsors} />
       <HomeHighlights />
       <HomeNews posts={posts} />
       <HomeSocial />

@@ -13,74 +13,68 @@ import toArray from "../utils/toArray"
 // Query for the News Home content in Prismic
 export const query = graphql`
   {
-    allPrismicBlogHome {
-      edges {
-        node {
-          id
-          type
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-          }
+    prismicBlogHome {
+      id
+      type
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
         }
       }
     }
     allPrismicPost(sort: { order: DESC, fields: data___date }) {
-      edges {
-        node {
-          id
-          uid
-          type
-          data {
-            title {
-              raw
+      nodes {
+        id
+        uid
+        type
+        data {
+          title {
+            raw
+          }
+          author {
+            document {
+              ... on PrismicAuthor {
+                data {
+                  first_name
+                  last_name
+                }
+              }
             }
-            author {
+          }
+          date
+          banner {
+            url
+            alt
+          }
+          categories {
+            category {
               document {
-                ... on PrismicAuthor {
+                ... on PrismicBlogPostCategory {
+                  uid
                   data {
-                    first_name
-                    last_name
+                    name
                   }
                 }
               }
             }
-            date
-            banner {
-              url
-              alt
-            }
-            categories {
-              category {
-                document {
-                  ... on PrismicBlogPostCategory {
-                    uid
-                    data {
-                      name
-                    }
-                  }
+          }
+          body {
+            ... on PrismicPostBodyText {
+              slice_type
+              primary {
+                anchor
+                title {
+                  raw
                 }
-              }
-            }
-            body {
-              ... on PrismicPostBodyText {
-                slice_type
-                primary {
-                  anchor
-                  title {
-                    raw
-                  }
-                  text {
-                    raw
-                  }
+                text {
+                  raw
                 }
               }
             }
@@ -89,14 +83,12 @@ export const query = graphql`
       }
     }
     allPrismicBlogPostCategory {
-      edges {
-        node {
-          uid
-          data {
-            name
-            description {
-              raw
-            }
+      nodes {
+        uid
+        data {
+          name
+          description {
+            raw
           }
         }
       }
@@ -153,11 +145,11 @@ export default withPreview(({ data }) => {
   }
 
   // Define the News Home & News Post content returned from Prismic
-  const doc = data.allPrismicBlogHome.edges.slice(0, 1).pop()
-  const posts = data.allPrismicPost.edges
-  const categories = data.allPrismicBlogPostCategory.edges
+  const doc = data.prismicBlogHome
+  if (!doc) return null
 
-  if (!doc || !doc.node) return null
+  const posts = data.allPrismicPost.nodes
+  const categories = data.allPrismicBlogPostCategory.nodes
 
   const filteredPosts = posts.filter((post) =>
     postHasCategories(post, getCategoryQueryParams())
@@ -165,7 +157,7 @@ export default withPreview(({ data }) => {
 
   return (
     <Layout title="News">
-      <NewsHead page={doc.node} categories={categories} />
+      <NewsHead page={doc} categories={categories} />
       <Posts posts={filteredPosts} />
     </Layout>
   )

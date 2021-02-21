@@ -73,13 +73,14 @@ const PostSummary = ({ post }) => {
   )
 }
 
-export default ({ posts }) => {
-  if (!posts) return null
+export default ({ posts = [] }) => {
+  // Don't render section w/o posts
+  if (posts.length === 0) return null
 
   return (
     <section className="columns container blog-posts">
       {posts.map((post) => {
-        return <PostSummary post={post.node} key={post.node.id} />
+        return <PostSummary post={post} key={post.id} />
       })}
     </section>
   )

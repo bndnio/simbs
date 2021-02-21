@@ -11,83 +11,79 @@ import htmlSerializer from "../utils/htmlSerializer"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicAboutPage {
-      edges {
-        node {
-          id
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-            description {
-              raw
-            }
-            body {
-              ... on PrismicAboutPageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
+    prismicAboutPage {
+      id
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
+        }
+        description {
+          raw
+        }
+        body {
+          ... on PrismicAboutPageBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
               }
-              ... on PrismicAboutPageBodyTeam {
-                slice_type
-                slice_label
-                primary {
-                  team_section {
-                    raw
-                  }
-                }
-                items {
-                  position {
-                    raw
-                  }
-                  portrait {
-                    url
-                    alt
-                  }
-                  first_and_lastname {
-                    raw
-                  }
-                  description {
-                    raw
-                  }
-                  email
-                }
+              title {
+                raw
               }
-              ... on PrismicAboutPageBodyInfoPanel {
-                slice_type
-                slice_label
-                primary {
-                  info_title {
-                    raw
-                  }
-                }
-                items {
-                  info_description {
-                    raw
-                  }
-                  info_image {
-                    url
-                    alt
-                  }
-                  info_slogan {
-                    raw
-                  }
-                }
+            }
+          }
+          ... on PrismicAboutPageBodyTeam {
+            slice_type
+            slice_label
+            primary {
+              team_section {
+                raw
+              }
+            }
+            items {
+              position {
+                raw
+              }
+              portrait {
+                url
+                alt
+              }
+              first_and_lastname {
+                raw
+              }
+              description {
+                raw
+              }
+              email
+            }
+          }
+          ... on PrismicAboutPageBodyInfoPanel {
+            slice_type
+            slice_label
+            primary {
+              info_title {
+                raw
+              }
+            }
+            items {
+              info_description {
+                raw
+              }
+              info_image {
+                url
+                alt
+              }
+              info_slogan {
+                raw
               }
             }
           }
@@ -122,14 +118,13 @@ const AboutHead = ({ page }) => {
 
 export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicAboutPage.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicAboutPage
+  if (!doc) return null
 
   return (
     <Layout title="About">
-      <AboutHead page={doc.node} />
-      <Slices slices={doc.node.data.body} />
+      <AboutHead page={doc} />
+      <Slices slices={doc.data.body} />
     </Layout>
   )
 })

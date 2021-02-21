@@ -11,53 +11,49 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicEventsPage {
-      edges {
-        node {
-          id
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-            description {
-              raw
-            }
-            body {
-              ... on PrismicEventsPageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
+    prismicEventsPage {
+      id
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
+        }
+        description {
+          raw
+        }
+        body {
+          ... on PrismicEventsPageBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
               }
-              ... on PrismicEventsPageBodyTextWithEmbed {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                  raw_embed {
-                    raw
-                  }
-                }
+              title {
+                raw
+              }
+            }
+          }
+          ... on PrismicEventsPageBodyTextWithEmbed {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
+              }
+              title {
+                raw
+              }
+              raw_embed {
+                raw
               }
             }
           }
@@ -92,14 +88,13 @@ const EventsHead = ({ page }) => {
 
 export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicEventsPage.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicEventsPage
+  if (!doc) return null
 
   return (
     <Layout title="Events">
-      <EventsHead page={doc.node} />
-      <Slices slices={doc.node.data.body} />
+      <EventsHead page={doc} />
+      <Slices slices={doc.data.body} />
     </Layout>
   )
 })
