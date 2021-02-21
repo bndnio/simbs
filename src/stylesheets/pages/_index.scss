@@ -78,6 +78,9 @@
 }
 
 .home-highlights {
+  h3 {
+    margin-top: 1rem;
+  }
   h4 {
     margin-bottom: 0;
   }
@@ -87,8 +90,10 @@
     margin: 0;
 
     &.lrg {
-      font-weight: 700;
       font-size: 3rem;
+    }
+    &.sml {
+      font-size: 1.5rem;
     }
   }
 
@@ -97,7 +102,7 @@
     stroke-linecap: round;
   }
   .dial-line {
-    stroke: $color-background-darkest;
+    stroke: $color-background-darker;
   }
   .value-line {
     stroke: $color-primary;
@@ -121,7 +126,7 @@
 
   .highlight-info {
     min-width: 300px;
-    margin: 2rem 1rem 0;
+    margin: 2rem 1rem;
   }
 
   .h4,

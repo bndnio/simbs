@@ -243,14 +243,18 @@ const HomeHighlights = ({ highlights }) => {
 
   highlights = {
     membership: {
-      current: 420,
+      current: 441,
       goal: 650,
+    },
+    trailwork: {
+      current: 412,
+      goal: 2000,
     },
   }
 
   return (
     <div ref={ref} className="home-highlights">
-      {/* <h2>Highlights</h2> */}
+      <h2>2021 Goals &amp; Highlights</h2>
       <div className="highlight-content">
         <div className="highlight-info">
           <Dial
@@ -258,20 +262,21 @@ const HomeHighlights = ({ highlights }) => {
             max={highlights.membership.goal}
             value={highlights.membership.current}
           />
-          <h3 className="">2021 Membership Goal</h3>
+          <h3>Registered Members</h3>
         </div>
         <div className="highlight-info">
-          <h3>Recently Rebuilt</h3>
           <p className="highlight-feature">Organ Donar</p>
           <p className="highlight-feature">Sofa King</p>
           <p className="highlight-feature">Heads Up</p>
+          <h3>Recently Rebuilt</h3>
         </div>
         <div className="highlight-info">
-          {/* <h3>Trail Sweat</h3> */}
-          <h4>2020 Work Hours</h4>
-          <p className="highlight-feature">42069</p>
-          <h4>2021 Work Hours</h4>
-          <p className="highlight-feature">420</p>
+          <Dial
+            min={0}
+            max={highlights.trailwork.goal}
+            value={highlights.trailwork.current}
+          />
+          <h3>Trail Work Hours</h3>
         </div>
       </div>
     </div>
@@ -355,7 +360,7 @@ function Dial(props) {
     const intervalNum = value / 50
 
     const nextValue = Math.min(valueNum + intervalNum, value)
-    if (nextValue >= value || !visible) return
+    if (nextValue > value || !visible) return
 
     setTimeout(() => {
       setValueNum(nextValue)
@@ -369,7 +374,7 @@ function Dial(props) {
   }, [dialIsVisible])
 
   return (
-    <svg width={width} height={height} onClick={() => setVisible(!visible)}>
+    <svg width={width} height={height}>
       <path
         className="dial-line"
         fill="none"
@@ -383,15 +388,20 @@ function Dial(props) {
         ref={valuePath}
       ></path>
 
-      <text textAnchor="middle" fontSize={30} x={width / 2} y={height / 2 + 30}>
-        of {max}
+      <text
+        className="highlight-feature sml"
+        textAnchor="middle"
+        fontSize={30}
+        x={width / 2}
+        y={height / 2 + 40}
+      >
+        / {max}
       </text>
       <text
         textAnchor="middle"
-        // fontSize={60}
         className="highlight-feature lrg"
         x={width / 2}
-        y={height / 2}
+        y={height / 2 + 10}
       >
         {valueNum.toFixed(0)}
       </text>
@@ -442,8 +452,8 @@ export default ({ data }) => {
       <HomeHead home={doc.node} />
       <Slices slices={doc.node.data.body} />
       <HomeSponsors title={doc.node?.data.sponsors_title} sponsors={sponsors} />
-      <HomeHighlights />
       <HomeNews posts={posts} />
+      <HomeHighlights />
       {/* <HomeSocial /> */}
     </Layout>
   )
