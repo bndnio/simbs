@@ -44,7 +44,7 @@ const MembershipGraph = ({ membership, width, height }) => {
         d={d3.line().curve(d3.curveMonotoneX)([prePoint, ...points])}
       ></path>
       {points.length &&
-        membership.map((m, i) => {
+        membership.map((m, i, arr) => {
           const xOffset = 35
           const yOffset = height / 5
 
@@ -82,6 +82,7 @@ const MembershipGraph = ({ membership, width, height }) => {
                 y={textY}
               >
                 {m.year}: {m.num}
+                {i === arr.length - 1 ? "*" : ""}
               </text>
             </>
           )

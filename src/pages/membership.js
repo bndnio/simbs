@@ -131,10 +131,14 @@ const MembershipHighlights = ({ highlights }) => {
   highlights = {
     membership: [
       { year: 2016, num: 64 },
-      { year: 2017, num: 85 },
-      { year: 2018, num: 156 },
-      { year: 2019, num: 245 },
-      { year: 2020, num: 366 },
+      // { year: 2017, num: 85 },
+      { year: 2017, num: 91 },
+      // { year: 2018, num: 156 },
+      { year: 2018, num: 171 },
+      // { year: 2019, num: 245 },
+      { year: 2019, num: 262 },
+      // { year: 2020, num: 366 },
+      { year: 2020, num: 404 },
       { year: 2021, num: 650 },
     ],
   }
@@ -146,13 +150,14 @@ const MembershipHighlights = ({ highlights }) => {
   return (
     <div ref={ref} className="membership-highlights">
       <div className="text container">
-        <h2>Memberships</h2>
+        <h2>Membership Growth</h2>
       </div>
       <MembershipGraph
         membership={highlights.membership}
         height={height}
         width={width}
       />
+      <p className="container">* Goal membership</p>
     </div>
   )
 }
