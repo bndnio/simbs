@@ -1,2 +1,33 @@
 .membership {
 }
+
+.membership-highlights {
+  h2 {
+    margin-bottom: -2rem;
+  }
+  @include for-phone-only() {
+    display: none;
+    visibility: hidden;
+  }
+  .membership-graph {
+    path {
+      stroke: $color-text-primary;
+      stroke-linecap: round;
+
+      &:last-of-type() {
+        stroke: $color-primary;
+      }
+    }
+    text {
+      font-weight: 900;
+      text-anchor: middle;
+
+      &:last-of-type() {
+        fill: $color-primary;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+}

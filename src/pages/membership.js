@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
+import MembershipGraph from "../components/MembershipGraph"
 import linkResolver from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
 
@@ -119,6 +120,68 @@ const MembershipHead = ({ page }) => {
   )
 }
 
+const MembershipHighlights = ({ highlights }) => {
+  // TODO: Remove return null once approved by the board
+  return null
+
+  const ref = React.useRef(null)
+  const [width, setWidth] = React.useState(0)
+  const height = 400
+
+  highlights = {
+    membership: [
+      // pessimistic: { year: 2016, num: 64 },
+      // optimistic & family x2
+      // { year: 2016, num: 73 },
+
+      // pessimistic: { year: 2017, num: 85 },
+      // optimistic: { year: 2017, num: 91 },
+      // optimistic & family x2
+      { year: 2017, num: 121 },
+
+      // pessimistic: { year: 2018, num: 156 },
+      // optimistic: { year: 2018, num: 171 },
+      // optimistic & family x2
+      { year: 2018, num: 229 },
+
+      // pessimistic: { year: 2019, num: 245 },
+      // optimistic: { year: 2019, num: 262 },
+      // optimistic & family x2
+      { year: 2019, num: 262 },
+
+      // pessimistic: { year: 2020, num: 366 },
+      // optimistic: { year: 2020, num: 404 },
+      // optimistic & family x2
+      { year: 2020, num: 539 },
+
+      // optimistic: { year: 2021, num: 650 },
+      // optimistic & family x2
+      { year: 2021, num: 800 },
+    ],
+  }
+
+  React.useEffect(() => {
+    if (ref.current?.offsetWidth) setWidth(ref.current.offsetWidth)
+  }, [ref.current])
+
+  return (
+    <div ref={ref} className="membership-highlights">
+      <div className="text container">
+        <h2>Membership Growth</h2>
+      </div>
+      <MembershipGraph
+        membership={highlights.membership}
+        height={height}
+        width={width}
+      />
+      <p className="container">* Membership goal</p>
+      <p className="container">
+        ** Digitally recorded members, many were still on paper at this time
+      </p>
+    </div>
+  )
+}
+
 export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
   const doc = data.prismicMembershipPage
@@ -128,6 +191,7 @@ export default withPreview(({ data }) => {
     <Layout title="Membership">
       <MembershipHead page={doc} />
       <Slices slices={doc.data.body} />
+      <MembershipHighlights />
     </Layout>
   )
 })

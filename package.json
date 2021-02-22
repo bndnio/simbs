@@ -6,6 +6,7 @@
   "author": "Brendon",
   "dependencies": {
     "@reach/router": "^1.3.4",
+    "d3": "^6.3.1",
     "gatsby": "^2.29.3",
     "gatsby-plugin-manifest": "^2.9.0",
     "gatsby-plugin-offline": "^3.7.0",
@@ -24,6 +25,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.1",
+    "react-is-visible": "^1.1.2",
     "spectre.css": "^0.5.9"
   },
   "devDependencies": {

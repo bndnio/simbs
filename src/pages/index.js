@@ -6,6 +6,7 @@ import { BannerBG } from "../components/Banner"
 import Layout from "../components/layouts"
 import Slices from "../components/slices"
 import Posts from "../components/Posts"
+import Dial from "../components/Dial"
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
@@ -222,7 +223,49 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
 }
 
 const HomeHighlights = ({ highlights }) => {
+  // TODO: Remove return null once approved by the board
   return null
+
+  highlights = {
+    membership: {
+      current: 591,
+      goal: 800,
+    },
+    trailwork: {
+      current: 412,
+      goal: 2000,
+    },
+  }
+
+  return (
+    <div className="home-highlights">
+      <h2>2021 Goals &amp; Highlights</h2>
+      <div className="highlight-content">
+        <div className="highlight-info">
+          <Dial
+            min={0}
+            max={highlights.membership.goal}
+            value={highlights.membership.current}
+          />
+          <h3>Registered Members</h3>
+        </div>
+        <div className="highlight-info">
+          <p className="highlight-feature">Organ Donar</p>
+          <p className="highlight-feature">Sofa King</p>
+          <p className="highlight-feature">Heads Up</p>
+          <h3>Recently Rebuilt</h3>
+        </div>
+        <div className="highlight-info">
+          <Dial
+            min={0}
+            max={highlights.trailwork.goal}
+            value={highlights.trailwork.current}
+          />
+          <h3>Trail Work Hours</h3>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 const HomeNews = ({ posts = [] }) => {
@@ -268,8 +311,8 @@ export default withPreview(({ data }) => {
       <HomeHead home={doc} />
       <Slices slices={doc.data.body} />
       <HomeSponsors title={doc.data.sponsors_title} sponsors={sponsors} />
-      <HomeHighlights />
       <HomeNews posts={posts} />
+      <HomeHighlights />
       <HomeSocial />
     </Layout>
   )
