@@ -82,6 +82,7 @@ const MembershipGraph = ({ membership, width, height }) => {
                 y={textY}
               >
                 {m.year}: {m.num}
+                {i === 0 ? "**" : ""}
                 {i === arr.length - 1 ? "*" : ""}
               </text>
             </>

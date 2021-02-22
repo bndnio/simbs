@@ -234,8 +234,8 @@ const HomeSponsors = ({ title, sponsors = [] }) => {
 const HomeHighlights = ({ highlights }) => {
   highlights = {
     membership: {
-      current: 441,
-      goal: 650,
+      current: 591,
+      goal: 800,
     },
     trailwork: {
       current: 412,

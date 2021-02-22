@@ -130,16 +130,33 @@ const MembershipHighlights = ({ highlights }) => {
 
   highlights = {
     membership: [
-      // { year: 2016, num: 64 },
-      // // { year: 2017, num: 85 },
-      // { year: 2017, num: 91 },
-      // { year: 2018, num: 156 },
-      { year: 2018, num: 171 },
-      // { year: 2019, num: 245 },
+      // pessimistic: { year: 2016, num: 64 },
+      // optimistic & family x2
+      // { year: 2016, num: 73 },
+
+      // pessimistic: { year: 2017, num: 85 },
+      // optimistic: { year: 2017, num: 91 },
+      // optimistic & family x2
+      { year: 2017, num: 121 },
+
+      // pessimistic: { year: 2018, num: 156 },
+      // optimistic: { year: 2018, num: 171 },
+      // optimistic & family x2
+      { year: 2018, num: 229 },
+
+      // pessimistic: { year: 2019, num: 245 },
+      // optimistic: { year: 2019, num: 262 },
+      // optimistic & family x2
       { year: 2019, num: 262 },
-      // { year: 2020, num: 366 },
-      { year: 2020, num: 404 },
-      { year: 2021, num: 650 },
+
+      // pessimistic: { year: 2020, num: 366 },
+      // optimistic: { year: 2020, num: 404 },
+      // optimistic & family x2
+      { year: 2020, num: 539 },
+
+      // optimistic: { year: 2021, num: 650 },
+      // optimistic & family x2
+      { year: 2021, num: 800 },
     ],
   }
 
@@ -157,7 +174,10 @@ const MembershipHighlights = ({ highlights }) => {
         height={height}
         width={width}
       />
-      <p className="container">* Goal membership</p>
+      <p className="container">* Membership goal</p>
+      <p className="container">
+        ** Digitally recorded members, many were still on paper at this time
+      </p>
     </div>
   )
 }
