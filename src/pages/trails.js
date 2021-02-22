@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import { linkResolver } from "../utils/linkResolver"
 import htmlSerializer from "../utils/htmlSerializer"
@@ -10,55 +11,51 @@ import Slices from "../components/slices"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicTrailsPage {
-      edges {
-        node {
-          id
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-            description {
-              raw
-            }
-            body {
-              ... on PrismicTrailsPageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                    html
-                  }
-                  title {
-                    raw
-                  }
-                }
+    prismicTrailsPage {
+      id
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
+        }
+        description {
+          raw
+        }
+        body {
+          ... on PrismicTrailsPageBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
+                html
               }
-              ... on PrismicTrailsPageBodyTextWithEmbed {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                    html
-                  }
-                  title {
-                    raw
-                  }
-                  raw_embed {
-                    raw
-                  }
-                }
+              title {
+                raw
+              }
+            }
+          }
+          ... on PrismicTrailsPageBodyTextWithEmbed {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
+                html
+              }
+              title {
+                raw
+              }
+              raw_embed {
+                raw
               }
             }
           }
@@ -91,16 +88,15 @@ const TrailsHead = ({ page }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicTrailsPage.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicTrailsPage
+  if (!doc) return null
 
   return (
     <Layout title="Trails">
-      <TrailsHead page={doc.node} />
-      <Slices slices={doc.node.data.body} />
+      <TrailsHead page={doc} />
+      <Slices slices={doc.data.body} />
     </Layout>
   )
-}
+})

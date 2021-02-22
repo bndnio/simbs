@@ -172,19 +172,20 @@ function AllCategory({ enableToggle = false }) {
 }
 
 export default function Categories({
-  categories,
+  categories = [],
   displayAll = false,
   enableToggle = false,
 }) {
-  // Return if no categories passed in
-  if (!categories) return null
+  // Don't render section w/o categories
+  if (categories.length === 0) return null
 
   return (
     <div className={`categories ${enableToggle ? "btn-group" : ""}`}>
       {displayAll && <AllCategory enableToggle={enableToggle} />}
       {categories.map((c) => {
-        // Get category object despite hows it's passe din
-        const category = c.node || c.category.document
+        // Get category object despite hows it's passed in
+        const category = "category" in c ? c.category.document : c
+
         // Return if category object not found
         if (!category) return null
 

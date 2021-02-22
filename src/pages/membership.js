@@ -1,5 +1,6 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import { withPreview } from "gatsby-source-prismic"
 import { graphql } from "gatsby"
 import Banner from "../components/Banner"
 import Layout from "../components/layouts"
@@ -11,86 +12,82 @@ import htmlSerializer from "../utils/htmlSerializer"
 // Query for the Blog Home content in Prismic
 export const query = graphql`
   {
-    allPrismicMembershipPage {
-      edges {
-        node {
-          id
-          data {
-            title {
-              raw
-            }
-            subtitle {
-              raw
-            }
-            image {
-              url
-              alt
-            }
-            description {
-              raw
-            }
-            body {
-              ... on PrismicMembershipPageBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  text {
-                    raw
-                  }
-                  title {
-                    raw
-                  }
-                }
+    prismicMembershipPage {
+      id
+      data {
+        title {
+          raw
+        }
+        subtitle {
+          raw
+        }
+        image {
+          url
+          alt
+        }
+        description {
+          raw
+        }
+        body {
+          ... on PrismicMembershipPageBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
               }
-              ... on PrismicMembershipPageBodyMedia {
-                slice_type
-                slice_label
-                primary {
-                  media_caption {
-                    raw
-                  }
-                  media_link {
-                    type
-                    embed_url
-                  }
-                  media_title {
-                    raw
-                  }
-                }
+              title {
+                raw
               }
-              ... on PrismicMembershipPageBodyCtaCards {
-                slice_type
-                slice_label
-                primary {
-                  cta_cards_title {
-                    raw
-                  }
-                  cta_explainer_text {
-                    raw
-                  }
-                }
-                items {
-                  card_description {
-                    raw
-                  }
-                  cta_background {
-                    url
-                    alt
-                  }
-                  card_title {
-                    raw
-                  }
-                  cta_text {
-                    raw
-                  }
-                  cta_internal_link
-                  cta_link {
-                    link_type
-                    target
-                    url
-                  }
-                }
+            }
+          }
+          ... on PrismicMembershipPageBodyMedia {
+            slice_type
+            slice_label
+            primary {
+              media_caption {
+                raw
+              }
+              media_link {
+                type
+                embed_url
+              }
+              media_title {
+                raw
+              }
+            }
+          }
+          ... on PrismicMembershipPageBodyCtaCards {
+            slice_type
+            slice_label
+            primary {
+              cta_cards_title {
+                raw
+              }
+              cta_explainer_text {
+                raw
+              }
+            }
+            items {
+              card_description {
+                raw
+              }
+              cta_background {
+                url
+                alt
+              }
+              card_title {
+                raw
+              }
+              cta_text {
+                raw
+              }
+              cta_internal_link
+              cta_link {
+                link_type
+                target
+                url
               }
             }
           }
@@ -124,6 +121,9 @@ const MembershipHead = ({ page }) => {
 }
 
 const MembershipHighlights = ({ highlights }) => {
+  // TODO: Remove return null once approved by the board
+  return null
+
   const ref = React.useRef(null)
   const [width, setWidth] = React.useState(0)
   const height = 400
@@ -182,17 +182,16 @@ const MembershipHighlights = ({ highlights }) => {
   )
 }
 
-export default ({ data }) => {
+export default withPreview(({ data }) => {
   // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.allPrismicMembershipPage.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicMembershipPage
+  if (!doc) return null
 
   return (
     <Layout title="Membership">
-      <MembershipHead page={doc.node} />
-      <Slices slices={doc.node.data.body} />
+      <MembershipHead page={doc} />
+      <Slices slices={doc.data.body} />
       <MembershipHighlights />
     </Layout>
   )
-}
+})

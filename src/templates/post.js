@@ -8,112 +8,108 @@ import Slices from "../components/slices"
 // Query for the Blog Post content in Prismic
 export const query = graphql`
   query BlogPostQuery($uid: String) {
-    allPrismicPost(filter: { uid: { eq: $uid } }) {
-      edges {
-        node {
-          id
-          uid
-          type
-          data {
-            title {
-              raw
-            }
-            author {
-              document {
-                ... on PrismicAuthor {
-                  data {
-                    first_name
-                    last_name
-                  }
-                }
+    prismicPost(uid: { eq: $uid }) {
+      id
+      uid
+      type
+      data {
+        title {
+          raw
+        }
+        author {
+          document {
+            ... on PrismicAuthor {
+              data {
+                first_name
+                last_name
               }
             }
-            date
-            seo_keywords
-            seo_description
-            banner {
-              url
-              alt
-            }
-            categories {
-              category {
-                document {
-                  ... on PrismicBlogPostCategory {
-                    uid
-                    data {
-                      name
-                    }
-                  }
+          }
+        }
+        date
+        seo_keywords
+        seo_description
+        banner {
+          url
+          alt
+        }
+        categories {
+          category {
+            document {
+              ... on PrismicBlogPostCategory {
+                uid
+                data {
+                  name
                 }
               }
             }
-            body {
-              __typename
-              ... on PrismicPostBodyText {
-                slice_type
-                slice_label
-                primary {
-                  anchor
-                  title {
-                    raw
-                  }
-                  text {
-                    raw
-                  }
-                }
+          }
+        }
+        body {
+          __typename
+          ... on PrismicPostBodyText {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              title {
+                raw
               }
-              ... on PrismicPostBodyPullQuote {
-                slice_type
-                slice_label
-                primary {
-                  quote {
-                    raw
-                  }
-                }
+              text {
+                raw
               }
-              ... on PrismicPostBodyImageWithCaption {
-                slice_type
-                slice_label
-                primary {
-                  image {
-                    url
-                    alt
-                  }
-                  image_caption {
-                    raw
-                  }
-                }
+            }
+          }
+          ... on PrismicPostBodyPullQuote {
+            slice_type
+            slice_label
+            primary {
+              quote {
+                raw
               }
-              ... on PrismicPostBodyMedia {
-                slice_type
-                slice_label
-                primary {
-                  media_caption {
-                    raw
-                  }
-                  media_link {
-                    type
-                    embed_url
-                    html
-                  }
-                  media_title {
-                    raw
-                  }
-                }
+            }
+          }
+          ... on PrismicPostBodyImageWithCaption {
+            slice_type
+            slice_label
+            primary {
+              image {
+                url
+                alt
               }
-              ... on PrismicPostBodyCallToAction {
-                slice_type
-                slice_label
-                primary {
-                  cta_link {
-                    target
-                    link_type
-                    url
-                  }
-                  cta_title {
-                    raw
-                  }
-                }
+              image_caption {
+                raw
+              }
+            }
+          }
+          ... on PrismicPostBodyMedia {
+            slice_type
+            slice_label
+            primary {
+              media_caption {
+                raw
+              }
+              media_link {
+                type
+                embed_url
+                html
+              }
+              media_title {
+                raw
+              }
+            }
+          }
+          ... on PrismicPostBodyCallToAction {
+            slice_type
+            slice_label
+            primary {
+              cta_link {
+                target
+                link_type
+                url
+              }
+              cta_title {
+                raw
               }
             }
           }
@@ -189,11 +185,10 @@ const PostBody = ({ blogPost, acknowledgements }) => {
   )
 }
 
-export default (props) => {
+export default ({ data }) => {
   // Define the Post content returned from Prismic
-  const doc = props.data.allPrismicPost.edges.slice(0, 1).pop()
-
-  if (!doc || !doc.node) return null
+  const doc = data.prismicPost
+  if (!doc) return null
 
   const {
     title,
@@ -201,7 +196,7 @@ export default (props) => {
     seo_keywords,
     seo_description,
     banner,
-  } = doc.node.data
+  } = doc.data
   const author = postAuthor
     ? `${postAuthor.first_name} ${postAuthor.last_name}`
     : "SIMBS"
@@ -214,7 +209,7 @@ export default (props) => {
       description={seo_description}
       image={banner.url}
     >
-      <PostBody blogPost={doc.node} />
+      <PostBody blogPost={doc} />
     </Layout>
   )
 }
