@@ -190,7 +190,7 @@ const HomeSponsor = ({ sponsor }) => {
   if (!sponsor?.logo) return null
   const SponsorImg = () => <img src={sponsor.logo.url} alt={sponsor.logo.alt} />
 
-  if (sponsor.link?.link_type === "Link.web") {
+  if (sponsor.link?.link_type === "Web") {
     return (
       <a
         href={Link.url(sponsor.link)}
