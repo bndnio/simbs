@@ -112,7 +112,7 @@ export const query = graphql`
             raw
           }
           banner {
-            url
+            url(imgixParams: { ar: "16:9", fit: "crop" })
             alt
           }
           author {

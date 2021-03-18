@@ -50,7 +50,7 @@ export const query = graphql`
           }
           date
           banner {
-            url
+            url(imgixParams: { ar: "16:9", fit: "crop" })
             alt
           }
           categories {
