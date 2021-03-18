@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const pageTemplates = {
-    post: path.resolve(__dirname, "src/templates/post.js"),
+    post: path.resolve(__dirname, "src/templates/post.jsx"),
   }
 
   // Create pages for each Post in Prismic
