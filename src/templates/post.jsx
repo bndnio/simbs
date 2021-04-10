@@ -60,6 +60,24 @@ export const query = graphql`
               }
             }
           }
+          ... on PrismicPostBodyTextWithEmbed {
+            slice_type
+            slice_label
+            primary {
+              anchor
+              text {
+                raw
+                html
+              }
+              title {
+                raw
+              }
+              raw_embed {
+                raw
+              }
+            }
+          }
+
           ... on PrismicPostBodyPullQuote {
             slice_type
             slice_label

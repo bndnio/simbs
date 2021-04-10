@@ -34,7 +34,7 @@
       "type": "Image",
       "config": {
         "constraint": {
-          "width": 1400,
+          "width": 1800,
           "height": 800
         },
         "thumbnails": [],
@@ -51,7 +51,7 @@
               "select": "document",
               "customtypes": ["blog_post_category"],
               "label": "Category",
-              "placeholder": "News"
+              "placeholder": "Category"
             }
           }
         },
@@ -68,8 +68,8 @@
     "seo_description": {
       "type": "Text",
       "config": {
-        "label": "SEO Description",
-        "placeholder": "160 Character Description for SEO"
+        "label": "Short Description",
+        "placeholder": "160 Character Description for Social Media and SEO"
       }
     },
     "body": {
@@ -226,6 +226,48 @@
               }
             },
             "repeat": {}
+          },
+          "text_with_embed": {
+            "type": "Slice",
+            "fieldset": "Text with Embed",
+            "description": "Rich Text Section with Embed Code",
+            "icon": "code",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "anchor",
+                  "placeholder": "anchor"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "title",
+                  "placeholder": "Title"
+                }
+              },
+              "raw_embed": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "preformatted",
+                  "label": "Raw Embed",
+                  "placeholder": "<html>..."
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "text",
+                  "placeholder": "Text content here"
+                }
+              }
+            },
+            "repeat": {},
+            "display": "list"
           }
         }
       }
