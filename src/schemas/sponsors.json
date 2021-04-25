@@ -24,6 +24,18 @@
               "allowTargetBlank": true,
               "label": "Link"
             }
+          },
+          "tier": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "Black Diamond",
+                "Blue Square",
+                "Green Circle",
+                "Purple Triangle"
+              ],
+              "label": "Tier"
+            }
           }
         },
         "label": "Sponsor"
