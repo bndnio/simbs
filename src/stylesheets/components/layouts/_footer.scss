@@ -6,11 +6,34 @@ footer {
   background-color: $color-background-darker;
 
   p {
-    padding: 2rem 0;
     margin-bottom: 0 !important;
   }
 
   a {
     font-weight: bold;
+  }
+
+  .sponsors-row-title {
+    margin: 0;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .sponsors-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin: 0 0 1rem;
+  }
+
+  .sponsor {
+    max-height: 5rem;
+    max-width: 8rem;
+    margin: 0.5rem;
   }
 }
