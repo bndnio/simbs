@@ -2,13 +2,13 @@
   .cta-button {
     display: block;
     margin: 2rem auto;
-    .disabled,
-    .disabled:hover,
-    .disabled:active,
-    .disabled:focus {
-      color: grey;
-      border-color: grey;
-      background-color: rgb(231, 230, 230);
-    }
+  }
+  .disabled,
+  .disabled:hover,
+  .disabled:active,
+  .disabled:focus {
+    color: grey;
+    border-color: grey;
+    background-color: rgb(231, 230, 230);
   }
 }
