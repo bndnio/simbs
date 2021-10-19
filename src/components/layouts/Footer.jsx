@@ -68,6 +68,8 @@ function Sponsors({ sponsors, hideTopTierSponsors }) {
 
 function Footer(props) {
   const { hideTopTierSponsors } = props
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer>
       <div className="container">
@@ -76,7 +78,7 @@ function Footer(props) {
           hideTopTierSponsors={hideTopTierSponsors}
         />
         <p>
-          Made with 🖤 by{" "}
+          ©{currentYear} South Island Mountain Bike Society | Made with 🖤 by{" "}
           <a
             href="https://github.com/bndnio"
             target="_blank"
