@@ -131,6 +131,31 @@ export const query = graphql`
               }
             }
           }
+          ... on PrismicPostBodyTeam {
+            slice_type
+            slice_label
+            primary {
+              team_section {
+                raw
+              }
+            }
+            items {
+              position {
+                raw
+              }
+              portrait {
+                url
+                alt
+              }
+              first_and_lastname {
+                raw
+              }
+              description {
+                raw
+              }
+              email
+            }
+          }
         }
       }
     }
