@@ -3,8 +3,10 @@
 
 # Platform Redirects
 /join                       https://www.joinit.org/o/simbs
-/join-single                https://www.joinit.org/o/simbs/XhiD2MKdKvTDMYKsR
-/join-family                https://www.joinit.org/o/simbs/88zNjPAfe4TbbPTiv
+/join-single                /join-adult
+/join-adult                 https://www.joinit.org/o/simbs/XhiD2MKdKvTDMYKsR
+/join-family                /join
+/join-youth-child           https://www.joinit.org/o/simbs/yrDFfL6W6iqBG6F8A
 /donate                     https://www.trailforks.com/region/victoria/karma/?did=185
 /roses                      https://checkout.square.site/buy/JHBSYUGHMLMVQCIXUHQP7U7B
 
