@@ -102,9 +102,9 @@ function postHasCategories(post, categories) {
   if (categories.length == 0) return true
 
   // If post doesn't have category, disallow
-  if (!post.node.data.categories) return false
+  if (!post.data.categories) return false
 
-  const postCategoryUids = post.node.data.categories.map(
+  const postCategoryUids = post.data.categories.map(
     (c) => c?.category?.document?.uid
   )
 
