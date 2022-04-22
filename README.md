@@ -9,8 +9,8 @@ This application is built using [Gatsby](https://www.gatsbyjs.org/) and [React](
 Run the following commands:
 
 ```bash
-npm install
-npm start
+yarn
+yarn start
 ```
 
 Then you can access it at [http://localhost:8000](http://localhost:8000).
@@ -20,11 +20,11 @@ Then you can access it at [http://localhost:8000](http://localhost:8000).
 Run the following commands to compile the project and launch the server for production:
 
 ```bash
-npm run build
+yarn run build
 ```
 
 Then deploy to a static hosting service. 
-If testing the production build locally, use `npm run serve`.
+If testing the production build locally, use `yarn run serve`.
 
 ## Resources
 
