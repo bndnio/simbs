@@ -2,13 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c52d7f93-80d5-44c5-ad4f-3bbb2ea02def/deploy-status)](https://app.netlify.com/sites/simbs/deploys)
 
-# Prismic Gatsby Example Blog
-
-> [Gatsby](https://www.gatsbyjs.org/) example blog project with content managed in [Prismic](https://prismic.io)
-
-## Check out our article for a step by step guide to getting this project up and running
-
-> [Prismic project guide](https://intercom.help/prismicio/examples/gatsby-js-samples/sample-blog-with-api-based-cms-gatsbyjs)
+This application is built using [Gatsby](https://www.gatsbyjs.org/) and [React](https://reactjs.org/), backed by a [Prismic](https://prismic.io) CMS, and hosted on [Netlify](https://www.netlify.com/).
 
 ## Launch this project in your local environment
 
@@ -27,14 +21,22 @@ Run the following commands to compile the project and launch the server for prod
 
 ```bash
 npm run build
-npm run serve
 ```
 
-## Learn more about using Prismic with Gatsby.js
+Then deploy to a static hosting service. 
+If testing the production build locally, use `npm run serve`.
+
+## Resources
+
+### See the project boilerplate guide
+
+> [Prismic project guide](https://intercom.help/prismicio/examples/gatsby-js-samples/sample-blog-with-api-based-cms-gatsbyjs)
+
+### Learn more about using Prismic with Gatsby.js
 
 > [Prismic Gatsby.js Documentation](https://prismic.io/docs/reactjs/getting-started/prismic-gatsby)
 
-## License
+## (Inherited) License
 
 This software is licensed under the Apache 2 license, quoted below.
 
