@@ -1,6 +1,9 @@
 import React from "react"
 import { Link } from "prismic-reactjs"
 import { StaticQuery, graphql } from "gatsby"
+import FacebookLogo  from "../../images/facebook-logo.svg"
+import InstagramLogo  from "../../images/instagram-logo.svg"
+import YoutubeLogo  from "../../images/youtube-logo.svg"
 
 const sponsorQuery = graphql`
   query MyQuery {
@@ -77,6 +80,17 @@ function Footer(props) {
           sponsors={props.prismicSponsors.data.sponsor}
           hideTopTierSponsors={hideTopTierSponsors}
         />
+        <ul className="socials-row">
+      <li className="social-item">
+        <a href="https://www.facebook.com/southislandmtb" title="Facebook"><FacebookLogo /></a>
+      </li>
+      <li className="social-item">      
+        <a href="https://www.instagram.com/southislandmountainbikesociety"><InstagramLogo /></a>
+      </li>
+      <li className="social-item">        
+        <a href="https://www.youtube.com/channel/UCxGs25cRWX2hlSaqcCkE2KQ"title="Youtube"><YoutubeLogo /></a>
+      </li>
+      </ul>
         <p>
           ©{currentYear} South Island Mountain Bike Society | Made with 🖤 by{" "}
           <a
