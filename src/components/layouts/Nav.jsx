@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { Link } from "@reach/router"
+import { Link } from "gatsby"
 import SimbsLandscapeLogo from "../../images/simbs-logo-landscape.svg"
 
 // The debounce function receives our function as a parameter

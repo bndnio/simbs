@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "prismic-reactjs"
+import { Link as PrismicLink } from "prismic-reactjs"
 import { StaticQuery, graphql } from "gatsby"
 import FacebookLogo from "../../images/facebook-logo.svg"
 import InstagramLogo from "../../images/instagram-logo.svg"
@@ -30,7 +30,7 @@ const sponsorQuery = graphql`
 function Sponsor({ sponsor }) {
   return (
     <a
-      href={Link.url(sponsor.link)}
+      href={PrismicLink.url(sponsor.link)}
       rel="noopener"
       target={sponsor.link?.target}
     >
