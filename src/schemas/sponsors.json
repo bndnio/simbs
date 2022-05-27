@@ -29,10 +29,10 @@
             "type": "Select",
             "config": {
               "options": [
+                "Double Black Diamond",
                 "Black Diamond",
                 "Blue Square",
-                "Green Circle",
-                "Purple Triangle"
+                "Green Circle"
               ],
               "label": "Tier"
             }
