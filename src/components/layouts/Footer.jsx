@@ -24,6 +24,13 @@ const sponsorQuery = graphql`
         }
       }
     }
+    prismicTerritorialAcknowledgement{
+      data {
+        text{
+          text
+        }
+      }
+    }
   }
 `
 
@@ -76,6 +83,7 @@ function Footer(props) {
   return (
     <footer>
       <div className="container">
+        {props.prismicTerritorialAcknowledgement.data.text[0].text}
         <Sponsors
           sponsors={props.prismicSponsors.data.sponsor}
           hideTopTierSponsors={hideTopTierSponsors}
