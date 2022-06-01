@@ -40,6 +40,9 @@ function Sponsor({ sponsor }) {
 }
 
 function Sponsors({ sponsors, hideTopTierSponsors }) {
+  const doubleBlackSponsors = sponsors.filter(
+    (sponsor) => sponsor.tier === "Double Black Diamond"
+  )
   const blackSponsors = sponsors.filter(
     (sponsor) => sponsor.tier === "Black Diamond"
   )
@@ -49,6 +52,16 @@ function Sponsors({ sponsors, hideTopTierSponsors }) {
 
   return (
     <>
+      {!hideTopTierSponsors && (
+        <>
+          <h5 className="sponsors-row-title">Double Black Diamond Sponsors</h5>
+          <div className="sponsors-row">
+            {doubleBlackSponsors.map((sponsor) => (
+              <Sponsor sponsor={sponsor} />
+            ))}
+          </div>
+        </>
+      )}
       {!hideTopTierSponsors && (
         <>
           <h5 className="sponsors-row-title">Black Diamond Sponsors</h5>
