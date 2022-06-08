@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "prismic-reactjs"
+import React, { Children } from "react"
+import { Link, RichText } from "prismic-reactjs"
 import { StaticQuery, graphql } from "gatsby"
 import FacebookLogo  from "../../images/facebook-logo.svg"
 import InstagramLogo  from "../../images/instagram-logo.svg"
@@ -25,9 +25,15 @@ const sponsorQuery = graphql`
       }
     }
     prismicTerritorialAcknowledgement{
-      data {
+      dataRaw {
         text{
+          type
           text
+          spans {
+            end
+            type
+            start
+          }
         }
       }
     }
@@ -80,10 +86,20 @@ function Footer(props) {
   const { hideTopTierSponsors } = props
   const currentYear = new Date().getFullYear()
 
+const tempArray = props.prismicTerritorialAcknowledgement.dataRaw.text;
+
+
+// const Acknowledgement = (tempArray) => (
+//   <div className="acknowledge-text">
+//       {RichText.render(tempArray.text)}
+//   </div>
+// );
   return (
     <footer>
       <div className="container">
-        {props.prismicTerritorialAcknowledgement.data.text[0].text}
+      <div className="acknowledge-text">
+        {RichText.render(tempArray)}
+      </div>
         <Sponsors
           sponsors={props.prismicSponsors.data.sponsor}
           hideTopTierSponsors={hideTopTierSponsors}
