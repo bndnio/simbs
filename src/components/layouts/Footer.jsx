@@ -24,6 +24,19 @@ const sponsorQuery = graphql`
         }
       }
     }
+    prismicTerritorialAcknowledgement{
+      dataRaw {
+        text{
+          type
+          text
+          spans {
+            end
+            type
+            start
+          }
+        }
+      }
+    }
   }
 `
 
@@ -86,9 +99,14 @@ function Footer(props) {
   const { hideTopTierSponsors } = props
   const currentYear = new Date().getFullYear()
 
+const ackText = props.prismicTerritorialAcknowledgement.dataRaw.text;
+
   return (
     <footer>
       <div className="container">
+        <div className="acknowledge-text">
+          {RichText.render(ackText)}
+        </div>
         <Sponsors
           sponsors={props.prismicSponsors.data.sponsor}
           hideTopTierSponsors={hideTopTierSponsors}
