@@ -23,7 +23,7 @@ Run the following commands to compile the project and launch the server for prod
 yarn run build
 ```
 
-Then deploy to a static hosting service. 
+Then deploy to a static hosting service.
 If testing the production build locally, use `yarn run serve`.
 
 ## Resources
