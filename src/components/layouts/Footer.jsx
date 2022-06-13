@@ -1,5 +1,5 @@
 import React from "react"
-import { Link as PrismicLink } from "prismic-reactjs"
+import { Link as PrismicLink, RichText } from "prismic-reactjs"
 import { StaticQuery, graphql } from "gatsby"
 import FacebookLogo from "../../images/facebook-logo.svg"
 import InstagramLogo from "../../images/instagram-logo.svg"
