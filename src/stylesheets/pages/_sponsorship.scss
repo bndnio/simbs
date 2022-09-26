@@ -1,0 +1,93 @@
+.sponsors-page {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.sponsors-body {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem 0rem;
+  @include for-phone-only {
+    margin: 1rem 1rem;
+  }
+}
+
+.sponsors-entry {
+  display: flex;
+  margin: 2rem 0rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 1rem 0rem;
+  @include for-phone-only {
+    flex-direction: column;
+    margin: 0rem 1rem;
+  }
+}
+
+.sponsors-description {
+  margin: 0rem 1rem;
+}
+
+.sponsors-image {
+  width: 30vw;
+  max-width: 300px;
+  min-height: 150px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0.25rem 1rem rgba(48, 55, 66, 0.5);
+  background-color: white;
+  padding: 15px;
+  margin: 0rem 2rem;
+  align-content: center;
+
+  @include for-phone-only {
+    width: 100%;
+    margin: 1rem 0rem;
+  }
+}
+
+.sponsor-buttons {
+  display: flex;
+  align-items: center;
+  margin: 0rem 1.5rem;
+  @include for-phone-only {
+    flex-direction: column;
+    margin: 0rem;
+  }
+}
+
+.tier-button {
+  padding: 2rem;
+  text-align: center;
+  width: 75%;
+  min-height: 200px;
+  margin: 0rem 1rem;
+  background-color: white;
+  transition: box-shadow 200ms ease-in-out;
+  @include box-shadow(0 0.25rem 1rem rgba(48, 55, 66, 0.15));
+  &:hover {
+    @include box-shadow(0 0.25rem 1rem rgba(48, 55, 66, 0.5));
+  }
+
+  .btn {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: unset;
+      border-color: unset;
+    }
+  }
+
+  @include for-phone-only {
+    width: 80%;
+    margin: 1rem 1rem;
+  }
+}
+
+.sponsors-title {
+  margin: 0rem 1rem;
+}
