@@ -1,0 +1,25 @@
+{
+  "Main": {
+    "show_banner": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Show banner"
+      }
+    },
+    "message": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,strong,em",
+        "label": "Message"
+      }
+    },
+    "link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Link"
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+$announcement-banner-height: 2.5rem;
+
+html.announcement-banner-active {
+  --announcement-banner-height: #{$announcement-banner-height};
+}
+
+html.announcement-banner-dismissed {
+  --announcement-banner-height: 0;
+
+  .announcement-banner {
+    display: none;
+  }
+}
+
+.announcement-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $announcement-banner-height;
+  min-height: $announcement-banner-height;
+  overflow: hidden;
+  background-color: $color-primary;
+  color: $color-text-inverted;
+  z-index: 1001;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.announcement-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  padding: 0 2.75rem 0 1rem;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.92;
+  }
+}
+
+.announcement-banner-message {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  p {
+    margin: 0;
+    display: inline;
+  }
+}
+
+.announcement-banner-dismiss {
+  position: absolute;
+  top: 50%;
+  right: 0.25rem;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0;
+  color: $color-text-inverted;
+  opacity: 0.85;
+
+  &:hover,
+  &:focus {
+    color: $color-text-inverted;
+    opacity: 1;
+    background-color: transparent;
+  }
+
+  .icon {
+    font-size: 0.75rem;
+  }
+}

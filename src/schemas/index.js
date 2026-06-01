@@ -1,4 +1,5 @@
 module.exports = {
+  announcement_banner: require("./announcement_banner.json"),
   about_page: require("./about_page.json"),
   advocacy_page: require("./advocacy_page.json"),
   author: require("./author.json"),

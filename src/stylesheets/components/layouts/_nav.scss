@@ -2,7 +2,7 @@ header {
   $navbar-height: 3rem;
 
   .navbar-placeholder {
-    height: $navbar-height;
+    height: calc(#{$navbar-height} + var(--announcement-banner-height, 0px));
   }
 
   // Set navbar defaults & positioning (override)
@@ -12,7 +12,7 @@ header {
     flex-wrap: nowrap;
 
     position: fixed;
-    top: 0;
+    top: var(--announcement-banner-height, 0px);
     width: 100%;
     z-index: 1000;
 
