@@ -72,8 +72,9 @@ const Layout = (props) => {
   const descriptionPreview = getTextPreview(description, 160)
 
   const announcementBanner = props.data.prismicAnnouncementBanner
-  const announcementBannerActive =
-    isAnnouncementBannerEnabled(announcementBanner)
+  const announcementBannerActive = isAnnouncementBannerEnabled(
+    announcementBanner
+  )
 
   // Load the Prismic edit button
   if (typeof window !== "undefined" && window.prismic) {
