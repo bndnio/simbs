@@ -48,9 +48,46 @@
       "fieldset": "Slice zone",
       "config": {
         "labels": {
+          "image_with_caption": [
+            {
+              "name": "emphasized",
+              "display": "Emphasized"
+            },
+            {
+              "name": "image-full-width",
+              "display": "Full"
+            }
+          ],
           "cta_cards": []
         },
         "choices": {
+          "image_with_caption": {
+            "type": "Slice",
+            "fieldset": "Image with Caption",
+            "description": "An image with an optional caption",
+            "icon": "image",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null
+                  },
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "image_caption": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Image Caption",
+                  "placeholder": "Image Caption..."
+                }
+              }
+            },
+            "repeat": {}
+          },
           "text": {
             "type": "Slice",
             "fieldset": "Text",

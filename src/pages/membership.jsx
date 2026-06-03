@@ -42,6 +42,19 @@ export const query = graphql`
               }
             }
           }
+          ... on PrismicMembershipPageBodyImageWithCaption {
+            slice_type
+            slice_label
+            primary {
+              image {
+                url
+                alt
+              }
+              image_caption {
+                raw
+              }
+            }
+          }
           ... on PrismicMembershipPageBodyMedia {
             slice_type
             slice_label
