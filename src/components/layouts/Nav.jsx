@@ -72,39 +72,39 @@ function NavItem({ navItem, list }) {
   )
 }
 
-function Nav({ clearNav, data }) {
+function Nav({ clearNav, data, navbarTop }) {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
-  const [navRef, setNavRef] = useState(null)
 
-  // Hook to watch scroll position for styling
   useEffect(() => {
     const checkScroll = () => {
-      // Look at scroll position
       const scrollAtTop = window.scrollY < 10
-      if (scrollAtTop !== scroll) {
-        setScroll(!scrollAtTop)
-      }
+      setScroll((wasScrolled) => {
+        const isScrolled = !scrollAtTop
+        return wasScrolled === isScrolled ? wasScrolled : isScrolled
+      })
     }
-    // Call on initial render
     checkScroll()
     const debouncedCheckScroll = debounce(checkScroll)
-    // Bind the event listener
     document.addEventListener("scroll", debouncedCheckScroll, {
       passive: true,
     })
-    // Unbind the event listener on clean up
     return () => {
-      document.removeEventListener("click", debouncedCheckScroll)
+      document.removeEventListener("scroll", debouncedCheckScroll)
     }
   }, [])
+
+  const navbarStyle = navbarTop != null ? { top: `${navbarTop}px` } : undefined
 
   const doc = data.allPrismicNavigation.edges.slice(0, 1).pop()
 
   return (
     <header>
-      <div className="navbar-placeholder"></div>
-      <nav className={`navbar ${clearNav && !scroll ? "clear-nav" : ""}`}>
+      <div className="navbar-placeholder" />
+      <nav
+        className={`navbar ${clearNav && !scroll ? "clear-nav" : ""}`}
+        style={navbarStyle}
+      >
         {/* Left nav */}
         <div className="navbar-section hide-md">
           <a href="/">

@@ -2,7 +2,7 @@ header {
   $navbar-height: 3rem;
 
   .navbar-placeholder {
-    height: calc(#{$navbar-height} + var(--announcement-banner-height, 0px));
+    height: $navbar-height;
   }
 
   // Set navbar defaults & positioning (override)
@@ -12,14 +12,15 @@ header {
     flex-wrap: nowrap;
 
     position: fixed;
-    top: var(--announcement-banner-height, 0px);
+    top: 0;
     width: 100%;
     z-index: 1000;
 
     height: $navbar-height;
     padding: 0rem 1rem;
 
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out,
+      border-bottom-color 0.2s ease-in-out;
     background-color: change-color($color: $color-background, $alpha: 1);
     border-bottom: 1px solid
       change-color($color: $color-background-darkest, $alpha: 1);

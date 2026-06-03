@@ -1,0 +1,17 @@
+$announcement-banner-height: 2.5rem;
+
+.site-chrome--banner-active {
+  --announcement-banner-height: #{$announcement-banner-height};
+
+  &:not(.site-chrome--banner-dismissed) header .navbar {
+    top: var(--announcement-banner-height);
+  }
+}
+
+.site-chrome--banner-dismissed {
+  --announcement-banner-height: 0;
+
+  .announcement-banner {
+    display: none;
+  }
+}

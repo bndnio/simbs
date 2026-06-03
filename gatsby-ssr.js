@@ -7,12 +7,12 @@ export const wrapRootElement = ({ element }) => (
 
 const announcementBannerDismissScript = `
 (function () {
-  var html = document.documentElement;
-  var version = html.getAttribute("data-announcement-version");
-  if (!version) return;
+  var chrome = document.querySelector(".site-chrome[data-announcement-version]");
+  if (!chrome) return;
+  var version = chrome.getAttribute("data-announcement-version");
   try {
     if (sessionStorage.getItem("announcement-banner-dismissed") === version) {
-      html.classList.add("announcement-banner-dismissed");
+      chrome.classList.add("site-chrome--banner-dismissed");
     }
   } catch (e) {}
 })();

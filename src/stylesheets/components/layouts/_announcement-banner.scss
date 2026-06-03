@@ -1,16 +1,5 @@
 $announcement-banner-height: 2.5rem;
-
-html.announcement-banner-active {
-  --announcement-banner-height: #{$announcement-banner-height};
-}
-
-html.announcement-banner-dismissed {
-  --announcement-banner-height: 0;
-
-  .announcement-banner {
-    display: none;
-  }
-}
+$announcement-banner-hover-bg: scale-color($color-primary, $lightness: -8%);
 
 .announcement-banner {
   position: relative;
@@ -37,15 +26,18 @@ html.announcement-banner-dismissed {
   flex: 1;
   height: 100%;
   padding: 0 2.75rem 0 1rem;
-  color: inherit;
+  color: $color-text-inverted;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
 
+  // Override Spectre's global `a:hover { color: $link-color-dark }`.
   &:hover,
-  &:focus {
-    color: inherit;
+  &:focus,
+  &:active {
+    color: $color-text-inverted;
     text-decoration: none;
-    opacity: 0.92;
+    background-color: $announcement-banner-hover-bg;
   }
 }
 

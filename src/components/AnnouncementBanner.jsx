@@ -1,49 +1,15 @@
-import React, { useState } from "react"
+import React, { forwardRef } from "react"
 import { Link as PrismicLink, RichText } from "prismic-reactjs"
 import linkResolver from "../utils/linkResolver"
+import {
+  getAnnouncementBannerVersion,
+  isAnnouncementBannerEnabled,
+} from "../utils/announcementBanner"
 
-export const STORAGE_KEY = "announcement-banner-dismissed"
-export const DISMISS_CLASS = "announcement-banner-dismissed"
-export const ACTIVE_CLASS = "announcement-banner-active"
-
-export function getAnnouncementBannerVersion(banner) {
-  if (!banner?.id) return null
-  return `${banner.id}:${banner.last_publication_date}`
-}
-
-export function isAnnouncementBannerEnabled(banner) {
-  if (!banner?.data?.show_banner) return false
-  const message = banner.data.message?.raw
-  const link = banner.data.link
-  const href = PrismicLink.url(link, linkResolver)
-  if (!message || !href) return false
-  const text = RichText.asText(message)
-  return Boolean(text?.trim())
-}
-
-function isDismissed(versionKey) {
-  if (!versionKey) return true
-  if (typeof window === "undefined") return false
-  try {
-    if (document.documentElement.classList.contains(DISMISS_CLASS)) {
-      return true
-    }
-    return sessionStorage.getItem(STORAGE_KEY) === versionKey
-  } catch {
-    return false
-  }
-}
-
-function dismissAnnouncement(versionKey) {
-  try {
-    sessionStorage.setItem(STORAGE_KEY, versionKey)
-  } catch {
-    // sessionStorage unavailable
-  }
-  document.documentElement.classList.add(DISMISS_CLASS)
-}
-
-export default function AnnouncementBanner({ banner }) {
+const AnnouncementBanner = forwardRef(function AnnouncementBanner(
+  { banner, dismissed, onDismiss },
+  ref
+) {
   const versionKey = getAnnouncementBannerVersion(banner)
 
   if (!isAnnouncementBannerEnabled(banner)) {
@@ -52,11 +18,17 @@ export default function AnnouncementBanner({ banner }) {
 
   const { message, link } = banner.data
   const href = PrismicLink.url(link, linkResolver)
-  const [dismissed, setDismissed] = useState(() => isDismissed(versionKey))
+
+  const handleDismiss = (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    onDismiss()
+  }
 
   if (dismissed) {
     return (
       <div
+        ref={ref}
         id="announcement-banner"
         className="announcement-banner"
         data-version={versionKey}
@@ -66,15 +38,9 @@ export default function AnnouncementBanner({ banner }) {
     )
   }
 
-  const handleDismiss = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-    dismissAnnouncement(versionKey)
-    setDismissed(true)
-  }
-
   return (
     <div
+      ref={ref}
       id="announcement-banner"
       className="announcement-banner"
       data-version={versionKey}
@@ -99,4 +65,6 @@ export default function AnnouncementBanner({ banner }) {
       </button>
     </div>
   )
-}
+})
+
+export default AnnouncementBanner

@@ -3,13 +3,8 @@ import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import Analytics, { tagManagerScript } from "./Analytics"
-import Nav from "./Nav"
 import Footer from "./Footer"
-import AnnouncementBanner, {
-  ACTIVE_CLASS,
-  getAnnouncementBannerVersion,
-  isAnnouncementBannerEnabled,
-} from "../AnnouncementBanner"
+import SiteChrome from "./SiteChrome"
 import getTextPreview from "../../utils/getTextPreview"
 import "../../stylesheets/main.scss"
 
@@ -72,10 +67,6 @@ const Layout = (props) => {
   const descriptionPreview = getTextPreview(description, 160)
 
   const announcementBanner = props.data.prismicAnnouncementBanner
-  const announcementBannerActive = isAnnouncementBannerEnabled(
-    announcementBanner
-  )
-
   // Load the Prismic edit button
   if (typeof window !== "undefined" && window.prismic) {
     window.prismic.setupEditButton()
@@ -83,18 +74,7 @@ const Layout = (props) => {
 
   return (
     <>
-      <Helmet
-        htmlAttributes={
-          announcementBannerActive
-            ? {
-                class: ACTIVE_CLASS,
-                "data-announcement-version": getAnnouncementBannerVersion(
-                  announcementBanner
-                ),
-              }
-            : undefined
-        }
-      >
+      <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
         <meta property="og:title" content={title} />
@@ -120,8 +100,7 @@ const Layout = (props) => {
         {tagManagerScript}
       </Helmet>
       <Analytics />
-      <AnnouncementBanner banner={announcementBanner} />
-      <Nav clearNav={clearNav} />
+      <SiteChrome banner={announcementBanner} clearNav={clearNav} />
       <main className={props.className}>{props.children}</main>
       <Footer />
     </>
