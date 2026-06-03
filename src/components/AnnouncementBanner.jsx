@@ -57,11 +57,11 @@ const AnnouncementBanner = forwardRef(function AnnouncementBanner(
       </a>
       <button
         type="button"
-        className="announcement-banner-dismiss btn btn-clear"
+        className="announcement-banner-dismiss"
         aria-label="Dismiss announcement"
         onClick={handleDismiss}
       >
-        <i className="icon icon-cross" />
+        <i className="icon icon-cross" aria-hidden="true" />
       </button>
     </div>
   )

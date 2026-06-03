@@ -1,4 +1,9 @@
 $announcement-banner-height: 2.5rem;
+$navbar-height: 3rem;
+
+.site-chrome {
+  --navbar-height: #{$navbar-height};
+}
 
 .site-chrome--banner-active {
   --announcement-banner-height: #{$announcement-banner-height};
@@ -13,5 +18,13 @@ $announcement-banner-height: 2.5rem;
 
   .announcement-banner {
     display: none;
+  }
+}
+
+// Mobile drawer aligns with the top of the fixed navbar (banner offset when visible).
+@media (max-width: 959px) {
+  .site-chrome header .off-canvas-sidebar,
+  .site-chrome header .off-canvas-overlay {
+    top: var(--navbar-offset-top, 0px);
   }
 }

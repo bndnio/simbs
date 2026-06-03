@@ -52,7 +52,11 @@ function useNavbarBannerOffset(bannerVisible, bannerRef) {
 
     updateOffset()
     window.addEventListener("scroll", updateOffset, { passive: true })
-    return () => window.removeEventListener("scroll", updateOffset)
+    window.addEventListener("resize", updateOffset, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", updateOffset)
+      window.removeEventListener("resize", updateOffset)
+    }
   }, [bannerVisible, bannerRef])
 
   return navbarTop

@@ -14,6 +14,7 @@ export default function SiteChrome({ banner, clearNav }) {
     dismissed,
     dismissBanner,
     bannerRef,
+    bannerVisible,
     navbarTop,
   } = useSiteChrome(banner)
   const className = [
@@ -24,9 +25,15 @@ export default function SiteChrome({ banner, clearNav }) {
     .filter(Boolean)
     .join(" ")
 
+  const chromeStyle =
+    bannerVisible && navbarTop != null
+      ? { "--navbar-offset-top": `${navbarTop}px` }
+      : undefined
+
   return (
     <div
       className={className}
+      style={chromeStyle}
       {...(bannerEnabled && versionKey
         ? { "data-announcement-version": versionKey }
         : {})}
