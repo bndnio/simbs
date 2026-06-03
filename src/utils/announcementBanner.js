@@ -1,5 +1,4 @@
-import { Link as PrismicLink, RichText } from "prismic-reactjs"
-import linkResolver from "./linkResolver"
+import { RichText } from "prismic-reactjs"
 
 export const ANNOUNCEMENT_BANNER_STORAGE_KEY = "announcement-banner-dismissed"
 
@@ -11,11 +10,16 @@ export function getAnnouncementBannerVersion(banner) {
   return `${banner.id}:${banner.last_publication_date}`
 }
 
+/** Gatsby resolves Prismic link URLs at build time; use `link.url` (see CTA slices). */
+export function getAnnouncementBannerHref(link) {
+  if (!link?.url || link.isBroken) return null
+  return link.url
+}
+
 export function isAnnouncementBannerEnabled(banner) {
   if (!banner?.data?.show_banner) return false
   const message = banner.data.message?.raw
-  const link = banner.data.link
-  const href = PrismicLink.url(link, linkResolver)
+  const href = getAnnouncementBannerHref(banner.data.link)
   if (!message || !href) return false
   const text = RichText.asText(message)
   return Boolean(text?.trim())

@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react"
-import { Link as PrismicLink, RichText } from "prismic-reactjs"
-import linkResolver from "../utils/linkResolver"
+import { RichText } from "prismic-reactjs"
 import {
+  getAnnouncementBannerHref,
   getAnnouncementBannerVersion,
   isAnnouncementBannerEnabled,
 } from "../utils/announcementBanner"
@@ -17,7 +17,7 @@ const AnnouncementBanner = forwardRef(function AnnouncementBanner(
   }
 
   const { message, link } = banner.data
-  const href = PrismicLink.url(link, linkResolver)
+  const href = getAnnouncementBannerHref(link)
 
   const handleDismiss = (event) => {
     event.preventDefault()

@@ -32,6 +32,7 @@ export default (props) => (
               url
               link_type
               target
+              isBroken
             }
           }
         }
